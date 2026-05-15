@@ -1,7 +1,8 @@
 import mlflow
 import mlflow.sklearn
 import pandas as pd
-
+#ma_modification
+import dice_ml
 # Liste des features réelles (one-hot encodées)
 REQUIRED_FEATURES = [
     "AGE",
@@ -103,4 +104,41 @@ def predict_risk(model, row_dict):
     risk_score = float(proba[1])
     prediction = "Risque Élevé" if risk_score > 0.5 else "Risque Faible"
     
-    return {"risk_score": risk_score, "prediction": prediction}
+    return {"risk_score": risk_score, "prediction": prediction, "df": df}
+
+#ma_modification
+import dice_ml
+
+def get_counterfactuals(model, current_employee_df):
+    """
+    Génère des alternatives pour transformer un risque "Élevé" en "Faible".
+    """
+    # 1. Préparation des données pour DiCE
+    # Note: DiCE a besoin de connaître les types de colonnes.
+    # On crée un dataset fictif basé sur tes REQUIRED_FEATURES pour l'initialisation
+    d = dice_ml.Data(
+        dataframe=current_employee_df.assign(ATTRITION=[1]), # Label temporaire
+        continuous_features=['AGE', 'DISTANCEFROMHOME', 'MONTHLYINCOME', 'TOTALWORKINGYEARS', 'EDUCATION'],
+        outcome_name='ATTRITION'
+    )
+    
+    # 2. Configuration du modèle
+    m = dice_ml.Model(model=model, backend="sklearn")
+    
+    # 3. Initialisation de l'expliquateur (Random est plus rapide pour le One-Hot)
+    exp = dice_ml.Dice(d, m, method="random")
+    
+    # 4. Génération des scénarios
+    # On interdit de changer l'âge, le genre, la distance ou l'expérience (variables non-actionnables)
+    # On permet de changer : Salaire et Heures Sup (OVERTIME)
+    try:
+        dice_exp = exp.generate_counterfactuals(
+            current_employee_df, 
+            total_CFs=2, 
+            desired_class=0, # On veut que la prédiction devienne "Reste"
+            features_to_vary=['MONTHLYINCOME', 'OVERTIME_YES', 'OVERTIME_NO']
+        )
+        return dice_exp
+    except Exception as e:
+        print(f"Erreur DiCE: {e}")
+        return None

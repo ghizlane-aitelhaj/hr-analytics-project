@@ -1,7 +1,6 @@
 import dash
 from dash import dcc, html, Input, Output, State
-from simulation_service import load_model, predict_risk
-
+from simulation_service import load_model, predict_risk, get_counterfactuals
 app = dash.Dash(__name__)
 server = app.server
 
@@ -222,21 +221,12 @@ app.layout = html.Div(
     State("businesstravel", "value"),
     State("overtime", "value"),
 )
-def run_simulation(
-    n,
-    age,
-    gender,
-    maritalstatus,
-    education,
-    department,
-    distance,
-    total_working_years,
-    monthly_income,
-    businesstravel,
-    overtime,
-):
+def run_simulation(n, age, gender, maritalstatus, education, department, distance, total_working_years, monthly_income, businesstravel, overtime):
     if n == 0:
         return "Remplissez tous les champs et cliquez sur « Analyser le risque »."
+
+    # Initialisation par défaut pour éviter les erreurs de variable non définie
+    tips_block = html.Null()
 
     data = {
         "AGE": age or 35,
@@ -254,33 +244,45 @@ def run_simulation(
     try:
         res = predict_risk(model, data)
         risk_score = res.get("risk_score", 0)
-        risk_percent = risk_score * 100 if risk_score <= 1 else risk_score
-
-        # Déterminer le niveau de risque et la couleur
+        risk_percent = risk_score * 100
+        current_df = res.get("df")
+        
         if risk_percent < 30:
-            color = "#4ade80"  # Vert
-            level = "TRÈS FAIBLE"
-            icon = "✓"
+            color, level, icon = "#4ade80", "TRÈS FAIBLE", "✓"
             verdict = f"Excellent ! Ce candidat a un risque très faible de départ ({risk_percent:.1f}%)."
         elif risk_percent < 50:
-            color = "#fbbf24"  # Orange
-            level = "MODÉRÉ"
-            icon = "⚠️"
+            color, level, icon = "#fbbf24", "MODÉRÉ", "⚠️"
             verdict = f"Attention : Ce candidat a un risque modéré de départ ({risk_percent:.1f}%). À surveiller."
         else:
-            color = "#f87171"  # Rouge
-            level = "ÉLEVÉ"
-            icon = "⛔"
+            # CAS RISQUE ÉLEVÉ
+            color, level, icon = "#f87171", "ÉLEVÉ", "⛔"
             verdict = f"Danger : Ce candidat risque probablement de quitter l'entreprise ({risk_percent:.1f}%)."
+            
+            # Génération DiCE
+            cf = get_counterfactuals(model, current_df)
+            if cf:
+                suggestion_df = cf.cf_examples_list[0].final_cfs_df
+                sug_salary = suggestion_df['MONTHLYINCOME'].values[0]
+                sug_ot = suggestion_df['OVERTIME'].values[0] if 'OVERTIME' in suggestion_df else None
+                
+                tips_block = html.Div([
+                    html.Hr(style={"borderColor": "rgba(255,255,255,0.1)", "margin": "20px 0"}),
+                    html.B("💡 Recommandations de rétention (DiCE) :", style={"color": "#4ade80", "display": "block", "marginBottom": "10px"}),
+                    html.Div([
+                        html.P(f"• Porter le salaire à : {sug_salary:.0f} €", style={"margin": "5px 0"}),
+                        html.P("• Éviter les heures supplémentaires" if sug_ot == "No" else "", style={"margin": "5px 0"}),
+                    ], style={"fontSize": "14px", "backgroundColor": "rgba(74, 222, 128, 0.1)", "padding": "12px", "borderRadius": "8px"})
+                ])
 
         return html.Div([
             html.Div(f"{risk_percent:.1f}%", style={"fontSize": "56px", "fontWeight": "800", "color": color, "marginBottom": "8px"}),
             html.Div(f"{icon} Risque {level}", style={"fontSize": "20px", "fontWeight": "700", "color": color, "marginBottom": "12px"}),
             html.Div(verdict, style={"marginTop": "10px", "fontSize": "15px", "lineHeight": "1.5"}),
-            html.Div(f"Classe prédite : {res.get('prediction', 'N/A')}", style={"marginTop": "14px", "color": "#cbd5e1", "fontSize": "13px"})
+            html.Div(f"Classe prédite : {res.get('prediction', 'N/A')}", style={"marginTop": "14px", "color": "#cbd5e1", "fontSize": "13px"}),
+            tips_block 
         ])
     except Exception as e:
         return html.Div(f"Erreur lors de la prédiction : {str(e)}", style={"color": "#fca5a5"})
-
+    
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8000, debug=False)
