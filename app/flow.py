@@ -20,7 +20,7 @@ def prepare_data():
     """Exécuter les transformations dbt"""
     print("LOG: Démarrage dbt run")
     result = subprocess.run(
-        ["dbt", "run", "--project-dir", "dbt_hr_project", "--profiles-dir", "dbt_hr_project"],
+        ["dbt", "run", "--project-dir", "/app/dbt_hr_project", "--profiles-dir", "/app/dbt_hr_project"],
         capture_output=True,
         text=True
     )
@@ -76,7 +76,5 @@ def hr_attrition_flow():
     print("✓ ✓ ✓ Pipeline ML terminé avec succès ✓ ✓ ✓")
 
 if __name__ == "__main__":
-    hr_attrition_flow.serve(
-        name="daily-ml-pipeline",
-        interval=timedelta(days=1)
-    )
+    # On appelle la fonction directement au lieu de .serve()
+    hr_attrition_flow()

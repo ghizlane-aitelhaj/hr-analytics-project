@@ -3,15 +3,22 @@ pandas>=1.5.0,<2.0.0
 numpy>=1.26.4,<2.0.0
 scikit-learn==1.5.1
 
-# --- Snowflake & dbt (Versions compatibles) ---
+# --- Explainabilité contrefactuelle ---
+# v0.9 : seule version compatible avec pandas<2.0.0 ET sans tensorflow/torch obligatoires.
+# Dépendances légères : jsonschema, h5py, tqdm (toutes compatibles).
+# v0.11 exige raiutils ; v0.12 exige pandas>=2.0.0 (incompatible avec ce projet).
+dice-ml==0.9
+h5py>=3.8.0,<4.0.0    # Requis par dice-ml 0.9, absent de l'image slim par défaut
+
+# --- Snowflake & dbt ---
 snowflake-connector-python[pandas]==3.10.1
-snowflake-sqlalchemy>=1.4.0,<2.0.0  # <--- FIX : Compatible avec SQLAlchemy 1.4
-sqlalchemy>=1.4.0,<2.0.0            # <--- FIX : Obligatoire pour snowflake-sqlalchemy
+snowflake-sqlalchemy>=1.4.0,<2.0.0
+sqlalchemy>=1.4.0,<2.0.0
 dbt-snowflake==1.8.0
 
 # --- Orchestration & MLOps ---
 prefect==2.19.5
-pydantic>=1.10.0,<2.0.0  # <--- CRITIQUE : Prefect 2.x demande la V1
+pydantic>=1.10.0,<2.0.0
 mlflow==2.13.0
 
 # --- Data Quality ---
@@ -24,6 +31,3 @@ python-dotenv==1.0.1
 requests==2.32.3
 griffe==0.38.0
 setuptools<70.0.0
-
-#Dice 
-dice-ml==0.11

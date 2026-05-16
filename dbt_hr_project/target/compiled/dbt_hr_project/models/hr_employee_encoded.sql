@@ -3,7 +3,7 @@
 with base as (
 
     select *
-    from RH_DB.GOLD.hr_employee_cleaned
+    from RH_DB.RAW_gold.hr_employee_cleaned
 
 )
 

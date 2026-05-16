@@ -55,7 +55,7 @@ def train_model():
         warehouse=os.getenv('SNOWFLAKE_WAREHOUSE')
     )
     
-    query = "SELECT * FROM HR_EMPLOYEE_ENCODED"
+    query = 'SELECT * FROM "RH_DB"."RAW_GOLD"."HR_EMPLOYEE_ENCODED"'
     df = pd.read_sql(query, ctx)
     ctx.close()
 
@@ -78,12 +78,13 @@ def train_model():
         stratify=y
     )
 
+    # CORRECTION : Paramètres bridés pour forcer la généralisation et éviter le 100% (Overfitting)
     param_grid = {
-        "n_estimators": [100, 200, 300],
-        "max_depth": [5, 10, 15],
-        "min_samples_split": [2, 5, 10],
-        "min_samples_leaf": [1, 2, 4],
-        "max_features": ["sqrt", "log2"]
+        "n_estimators": [100, 200],
+        "max_depth": [3, 5, 8],                  # Limite la hauteur des arbres pour empêcher le par cœur
+        "min_samples_split": [10, 20],           # Empêche la création de règles basées sur de trop petits groupes
+        "min_samples_leaf": [5, 10],             # Assure des groupes finaux (feuilles) plus denses et stables
+        "max_features": ["sqrt"]
     }
 
     base_model = RandomForestClassifier(
@@ -134,24 +135,31 @@ def train_model():
         client = MlflowClient()
         model_name = "RF_Attrition_v1"
 
-        # 1. Récupérer la meilleure performance précédente (Production)
+        # CORRECTION : Utilisation de la méthode moderne recommandée à la place de get_latest_versions
         try:
-            latest_version_info = client.get_latest_versions(model_name, stages=["Production"])
-            if latest_version_info:
-                production_run_id = latest_version_info[0].run_id
+            versions = client.search_model_versions(f"name='{model_name}'")
+            # Filtrer manuellement pour trouver la version actuellement en Production
+            prod_versions = [v for v in versions if v.current_stage == "Production"]
+            
+            if prod_versions:
+                production_run_id = prod_versions[0].run_id
                 old_f1 = client.get_run(production_run_id).data.metrics['f1_score']
             else:
                 old_f1 = 0
-        except Exception:
+        except Exception as e:
+            print(f"Note: Impossible de récupérer l'ancien modèle ({e}), initialisation à 0.")
             old_f1 = 0
 
         # 2. Comparer et Promouvoir
         if f1 > old_f1:
             print("✓ Nouveau modèle meilleur ! Promotion en PRODUCTION.")
-            new_version = client.get_latest_versions(model_name, stages=["None"])[0].version
+            # Récupérer la toute dernière version générée (qui est sans stage "None")
+            all_versions = client.search_model_versions(f"name='{model_name}'")
+            latest_version = max(int(v.version) for v in all_versions)
+            
             client.transition_model_version_stage(
                 name=model_name,
-                version=new_version,
+                version=str(latest_version),
                 stage="Production",
                 archive_existing_versions=True
             )
@@ -164,3 +172,5 @@ def train_model():
 
 if __name__ == "__main__":
     train_model()
+
+#git

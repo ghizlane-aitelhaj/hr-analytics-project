@@ -1,141 +1,63 @@
-[0m16:48:32.546550 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fce8f744650>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fce8f744b50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fce8f744810>]}
+[0m01:10:20.206312 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x74bedb9e61d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x74bedb617750>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x74bedc507690>]}
 
 
-============================== 16:48:32.575901 | ca47d8d9-6338-4be0-80b8-ec2cb1832228 ==============================
-[0m16:48:32.575901 [info ] [MainThread]: Running with dbt=1.9.0-b4
-[0m16:48:32.578429 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'debug': 'False', 'profiles_dir': 'dbt_hr_project', 'log_path': 'dbt_hr_project/logs', 'fail_fast': 'False', 'version_check': 'True', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'False', 'log_format': 'default', 'introspect': 'True', 'invocation_command': 'dbt run --project-dir dbt_hr_project --profiles-dir dbt_hr_project', 'static_parser': 'True', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'send_anonymous_usage_stats': 'True'}
-[0m16:48:38.761832 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'ca47d8d9-6338-4be0-80b8-ec2cb1832228', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fce72253490>]}
-[0m16:48:39.177450 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': 'ca47d8d9-6338-4be0-80b8-ec2cb1832228', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fce90263f10>]}
-[0m16:48:39.188438 [info ] [MainThread]: Registered adapter: snowflake=1.8.0
-[0m16:48:39.675409 [debug] [MainThread]: checksum: 0d3acddb5afbce98f9888b13248063cae3d09e6e329263e3ffe4b2a6aa072c8d, vars: {}, profile: , target: , version: 1.9.0b4
-[0m16:48:39.677829 [info ] [MainThread]: Unable to do partial parsing because saved manifest not found. Starting full parse.
-[0m16:48:39.678842 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'partial_parser', 'label': 'ca47d8d9-6338-4be0-80b8-ec2cb1832228', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fce720de350>]}
-[0m16:48:46.184675 [error] [MainThread]: Encountered an error:
-Compilation Error
-  Model 'model.dbt_hr_project.hr_employee_cleaned' (models/hr_employee_cleaned.sql) depends on a source named 'raw.hr_raw_data' which was not found
-[0m16:48:46.188669 [debug] [MainThread]: Resource report: {"command_name": "run", "command_wall_clock_time": 13.833096, "process_user_time": 18.548475, "process_kernel_time": 3.123513, "process_mem_max_rss": "223384", "process_in_blocks": "5568", "process_out_blocks": "16", "command_success": false}
-[0m16:48:46.191163 [debug] [MainThread]: Command `dbt run` failed at 16:48:46.189897 after 13.84 seconds
-[0m16:48:46.194991 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fce8f36a3d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fce8f510490>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fce71ebba90>]}
-[0m16:48:46.199598 [debug] [MainThread]: Flushing usage events
-[0m16:48:47.094776 [debug] [MainThread]: An error was encountered while trying to flush usage events
-[0m17:08:08.391006 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x72ddd15beb10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x72ddd13fa210>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x72ddd17c4810>]}
-
-
-============================== 17:08:08.407163 | d3ea3674-2684-44e5-b79c-7c9e3f208b85 ==============================
-[0m17:08:08.407163 [info ] [MainThread]: Running with dbt=1.9.0-b4
-[0m17:08:08.409238 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': 'dbt_hr_project', 'version_check': 'True', 'debug': 'False', 'log_path': 'dbt_hr_project/logs', 'warn_error': 'None', 'fail_fast': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'False', 'quiet': 'False', 'no_print': 'None', 'log_format': 'default', 'invocation_command': 'dbt run --project-dir dbt_hr_project --profiles-dir dbt_hr_project', 'static_parser': 'True', 'introspect': 'True', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'send_anonymous_usage_stats': 'True'}
-[0m17:08:10.598221 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'd3ea3674-2684-44e5-b79c-7c9e3f208b85', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x72ddb4437f10>]}
-[0m17:08:10.851552 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': 'd3ea3674-2684-44e5-b79c-7c9e3f208b85', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x72ddd2317e10>]}
-[0m17:08:10.854360 [info ] [MainThread]: Registered adapter: snowflake=1.8.0
-[0m17:08:11.374872 [debug] [MainThread]: checksum: 0d3acddb5afbce98f9888b13248063cae3d09e6e329263e3ffe4b2a6aa072c8d, vars: {}, profile: , target: , version: 1.9.0b4
-[0m17:08:11.376628 [info ] [MainThread]: Unable to do partial parsing because saved manifest not found. Starting full parse.
-[0m17:08:11.377871 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'partial_parser', 'label': 'd3ea3674-2684-44e5-b79c-7c9e3f208b85', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x72ddb412f110>]}
-[0m17:08:15.182135 [error] [MainThread]: Encountered an error:
-Compilation Error
-  Model 'model.dbt_hr_project.hr_employee_cleaned' (models/hr_employee_cleaned.sql) depends on a source named 'raw.hr_raw_data' which was not found
-[0m17:08:15.184884 [debug] [MainThread]: Resource report: {"command_name": "run", "command_wall_clock_time": 7.032777, "process_user_time": 14.692019, "process_kernel_time": 2.558056, "process_mem_max_rss": "223240", "process_out_blocks": "16", "command_success": false, "process_in_blocks": "0"}
-[0m17:08:15.185918 [debug] [MainThread]: Command `dbt run` failed at 17:08:15.185676 after 7.03 seconds
-[0m17:08:15.186798 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x72ddd15bf5d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x72ddd15c8410>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x72ddd18cc390>]}
-[0m17:08:15.187793 [debug] [MainThread]: Flushing usage events
-[0m17:08:16.516304 [debug] [MainThread]: An error was encountered while trying to flush usage events
-[0m17:11:50.979816 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x70557310b6d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x705574b17490>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x705573435450>]}
-
-
-============================== 17:11:50.991822 | d9626c71-7abb-4fb9-b448-cc21326a666a ==============================
-[0m17:11:50.991822 [info ] [MainThread]: Running with dbt=1.9.0-b4
-[0m17:11:50.992837 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'fail_fast': 'False', 'profiles_dir': 'dbt_hr_project', 'log_path': 'dbt_hr_project/logs', 'version_check': 'True', 'debug': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'None', 'quiet': 'False', 'no_print': 'None', 'log_format': 'default', 'static_parser': 'True', 'introspect': 'True', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'target_path': 'None', 'invocation_command': 'dbt deps --project-dir dbt_hr_project --profiles-dir dbt_hr_project', 'send_anonymous_usage_stats': 'True'}
-[0m17:11:51.324275 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'd9626c71-7abb-4fb9-b448-cc21326a666a', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x705573017e90>]}
-[0m17:11:51.480324 [info ] [MainThread]: Warning: No packages were found in packages.yml
-[0m17:11:51.484069 [info ] [MainThread]: Warning: No packages were found in packages.yml
-[0m17:11:51.488096 [debug] [MainThread]: Resource report: {"command_name": "deps", "command_success": true, "command_wall_clock_time": 0.6120058, "process_user_time": 7.052382, "process_kernel_time": 0.834513, "process_mem_max_rss": "123684", "process_in_blocks": "384", "process_out_blocks": "16"}
-[0m17:11:51.489883 [debug] [MainThread]: Command `dbt deps` succeeded at 17:11:51.489453 after 0.61 seconds
-[0m17:11:51.491196 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x705573145e50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7055731141d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x705572fb97d0>]}
-[0m17:11:51.492306 [debug] [MainThread]: Flushing usage events
-[0m17:11:52.429619 [debug] [MainThread]: An error was encountered while trying to flush usage events
-[0m17:12:00.434294 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fcc5569c790>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fcc556d6310>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fcc5569fcd0>]}
-
-
-============================== 17:12:00.446718 | c003cedc-b865-44d2-a41f-cd9baed2fe47 ==============================
-[0m17:12:00.446718 [info ] [MainThread]: Running with dbt=1.9.0-b4
-[0m17:12:00.448065 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': 'dbt_hr_project', 'debug': 'False', 'fail_fast': 'False', 'log_path': 'dbt_hr_project/logs', 'warn_error': 'None', 'version_check': 'True', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'None', 'quiet': 'False', 'no_print': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'static_parser': 'True', 'invocation_command': 'dbt parse --project-dir dbt_hr_project --profiles-dir dbt_hr_project', 'introspect': 'True', 'target_path': 'None', 'log_format': 'default', 'send_anonymous_usage_stats': 'True'}
-[0m17:12:02.237699 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'c003cedc-b865-44d2-a41f-cd9baed2fe47', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fcc39f0fb90>]}
-[0m17:12:02.365268 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': 'c003cedc-b865-44d2-a41f-cd9baed2fe47', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fcc39f0fb90>]}
-[0m17:12:02.366754 [info ] [MainThread]: Registered adapter: snowflake=1.8.0
-[0m17:12:02.580973 [debug] [MainThread]: checksum: 0d3acddb5afbce98f9888b13248063cae3d09e6e329263e3ffe4b2a6aa072c8d, vars: {}, profile: , target: , version: 1.9.0b4
-[0m17:12:02.582311 [info ] [MainThread]: Unable to do partial parsing because saved manifest not found. Starting full parse.
-[0m17:12:02.583566 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'partial_parser', 'label': 'c003cedc-b865-44d2-a41f-cd9baed2fe47', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fcc385179d0>]}
-[0m17:12:05.070342 [warn ] [MainThread]: [[33mWARNING[0m]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+============================== 01:10:20.263107 | b90fe36b-9f9a-4fcf-8ba6-008f343f8df3 ==============================
+[0m01:10:20.263107 [info ] [MainThread]: Running with dbt=1.9.0-b4
+[0m01:10:20.269421 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': '/app/dbt_hr_project', 'fail_fast': 'False', 'warn_error': 'None', 'log_path': '/app/dbt_hr_project/logs', 'version_check': 'True', 'debug': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'False', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'static_parser': 'True', 'invocation_command': 'dbt run --project-dir /app/dbt_hr_project --profiles-dir /app/dbt_hr_project', 'introspect': 'True', 'target_path': 'None', 'log_format': 'default', 'send_anonymous_usage_stats': 'True'}
+[0m01:10:24.041382 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'b90fe36b-9f9a-4fcf-8ba6-008f343f8df3', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x74becd4c4050>]}
+[0m01:10:24.288269 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': 'b90fe36b-9f9a-4fcf-8ba6-008f343f8df3', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x74bedb631890>]}
+[0m01:10:24.294479 [info ] [MainThread]: Registered adapter: snowflake=1.8.0
+[0m01:10:24.758235 [debug] [MainThread]: checksum: 0d3acddb5afbce98f9888b13248063cae3d09e6e329263e3ffe4b2a6aa072c8d, vars: {}, profile: , target: , version: 1.9.0b4
+[0m01:10:24.772009 [info ] [MainThread]: Unable to do partial parsing because saved manifest not found. Starting full parse.
+[0m01:10:24.776017 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'partial_parser', 'label': 'b90fe36b-9f9a-4fcf-8ba6-008f343f8df3', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x74becd315050>]}
+[0m01:10:27.474107 [warn ] [MainThread]: [[33mWARNING[0m]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
 There are 1 unused configuration paths:
 - models.dbt_hr_project.example
-[0m17:12:05.103268 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': 'c003cedc-b865-44d2-a41f-cd9baed2fe47', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fcc564354d0>]}
-[0m17:12:05.115296 [info ] [MainThread]: Performance info: dbt_hr_project/target/perf_info.json
-[0m17:12:05.424599 [debug] [MainThread]: Wrote artifact WritableManifest to dbt_hr_project/target/manifest.json
-[0m17:12:05.427391 [debug] [MainThread]: Wrote artifact SemanticManifest to dbt_hr_project/target/semantic_manifest.json
-[0m17:12:05.428987 [debug] [MainThread]: Resource report: {"command_name": "parse", "command_success": true, "command_wall_clock_time": 5.1303773, "process_user_time": 11.163096, "process_kernel_time": 1.775182, "process_mem_max_rss": "224664", "process_out_blocks": "1840", "process_in_blocks": "0"}
-[0m17:12:05.429760 [debug] [MainThread]: Command `dbt parse` succeeded at 17:12:05.429579 after 5.13 seconds
-[0m17:12:05.430384 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fcc556fc490>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fcc556fff10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fcc5ad2a190>]}
-[0m17:12:05.431101 [debug] [MainThread]: Flushing usage events
-[0m17:12:05.635744 [debug] [MainThread]: An error was encountered while trying to flush usage events
-[0m17:12:13.020719 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7b11fe8138d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7b11fe813a90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7b11fe813810>]}
-
-
-============================== 17:12:13.032007 | ebd0ec1b-ed6d-4360-8da1-bf0ba2201c32 ==============================
-[0m17:12:13.032007 [info ] [MainThread]: Running with dbt=1.9.0-b4
-[0m17:12:13.033389 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'version_check': 'True', 'profiles_dir': 'dbt_hr_project', 'log_path': 'dbt_hr_project/logs', 'debug': 'False', 'fail_fast': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'False', 'quiet': 'False', 'no_print': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'introspect': 'True', 'static_parser': 'True', 'invocation_command': 'dbt run --project-dir dbt_hr_project --profiles-dir dbt_hr_project', 'target_path': 'None', 'log_format': 'default', 'send_anonymous_usage_stats': 'True'}
-[0m17:12:15.191627 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'ebd0ec1b-ed6d-4360-8da1-bf0ba2201c32', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7b11e14ed190>]}
-[0m17:12:15.595435 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': 'ebd0ec1b-ed6d-4360-8da1-bf0ba2201c32', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7b11ff580090>]}
-[0m17:12:15.597442 [info ] [MainThread]: Registered adapter: snowflake=1.8.0
-[0m17:12:15.845267 [debug] [MainThread]: checksum: 0d3acddb5afbce98f9888b13248063cae3d09e6e329263e3ffe4b2a6aa072c8d, vars: {}, profile: , target: , version: 1.9.0b4
-[0m17:12:16.079416 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
-[0m17:12:16.080389 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
-[0m17:12:16.094357 [warn ] [MainThread]: [[33mWARNING[0m]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
-There are 1 unused configuration paths:
-- models.dbt_hr_project.example
-[0m17:12:16.147627 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': 'ebd0ec1b-ed6d-4360-8da1-bf0ba2201c32', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7b11e11c40d0>]}
-[0m17:12:16.269857 [debug] [MainThread]: Wrote artifact WritableManifest to dbt_hr_project/target/manifest.json
-[0m17:12:16.272491 [debug] [MainThread]: Wrote artifact SemanticManifest to dbt_hr_project/target/semantic_manifest.json
-[0m17:12:16.338764 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': 'ebd0ec1b-ed6d-4360-8da1-bf0ba2201c32', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7b11e1236150>]}
-[0m17:12:16.340077 [info ] [MainThread]: Found 2 models, 1 source, 458 macros
-[0m17:12:16.341398 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'ebd0ec1b-ed6d-4360-8da1-bf0ba2201c32', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7b11e2118190>]}
-[0m17:12:16.347337 [info ] [MainThread]: 
-[0m17:12:16.349017 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
-[0m17:12:16.350779 [info ] [MainThread]: 
-[0m17:12:16.353227 [debug] [MainThread]: Acquiring new snowflake connection 'master'
-[0m17:12:16.366791 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_RH_DB'
-[0m17:12:16.415808 [debug] [ThreadPool]: Using snowflake connection "list_RH_DB"
-[0m17:12:16.417150 [debug] [ThreadPool]: On list_RH_DB: /* {"app": "dbt", "dbt_version": "1.9.0b4", "profile_name": "dbt_hr_project", "target_name": "dev", "connection_name": "list_RH_DB"} */
+[0m01:10:27.546346 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': 'b90fe36b-9f9a-4fcf-8ba6-008f343f8df3', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x74bedc3de950>]}
+[0m01:10:27.787471 [debug] [MainThread]: Wrote artifact WritableManifest to /app/dbt_hr_project/target/manifest.json
+[0m01:10:27.799080 [debug] [MainThread]: Wrote artifact SemanticManifest to /app/dbt_hr_project/target/semantic_manifest.json
+[0m01:10:27.863118 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': 'b90fe36b-9f9a-4fcf-8ba6-008f343f8df3', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x74becd1c8d90>]}
+[0m01:10:27.866126 [info ] [MainThread]: Found 2 models, 1 source, 458 macros
+[0m01:10:27.868511 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'b90fe36b-9f9a-4fcf-8ba6-008f343f8df3', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x74becd0a13d0>]}
+[0m01:10:27.873261 [info ] [MainThread]: 
+[0m01:10:27.875251 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
+[0m01:10:27.876807 [info ] [MainThread]: 
+[0m01:10:27.879477 [debug] [MainThread]: Acquiring new snowflake connection 'master'
+[0m01:10:27.891961 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_RH_DB'
+[0m01:10:27.937625 [debug] [ThreadPool]: Using snowflake connection "list_RH_DB"
+[0m01:10:27.939454 [debug] [ThreadPool]: On list_RH_DB: /* {"app": "dbt", "dbt_version": "1.9.0b4", "profile_name": "dbt_hr_project", "target_name": "dev", "connection_name": "list_RH_DB"} */
 show terse schemas in database RH_DB
     limit 10000
-[0m17:12:16.418210 [debug] [ThreadPool]: Opening a new connection, currently in state init
-[0m17:12:18.286917 [debug] [ThreadPool]: SQL status: SUCCESS 4 in 1.869 seconds
-[0m17:12:18.295801 [debug] [ThreadPool]: On list_RH_DB: Close
-[0m17:12:18.464982 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_RH_DB, now create_RH_DB_RAW_gold)
-[0m17:12:18.468737 [debug] [ThreadPool]: Creating schema "database: "RH_DB"
+[0m01:10:27.940996 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m01:10:30.255307 [debug] [ThreadPool]: SQL status: SUCCESS 4 in 2.314 seconds
+[0m01:10:30.271043 [debug] [ThreadPool]: On list_RH_DB: Close
+[0m01:10:32.049677 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_RH_DB, now create_RH_DB_RAW_gold)
+[0m01:10:32.054795 [debug] [ThreadPool]: Creating schema "database: "RH_DB"
 schema: "RAW_gold"
 "
-[0m17:12:18.492527 [debug] [ThreadPool]: Using snowflake connection "create_RH_DB_RAW_gold"
-[0m17:12:18.499948 [debug] [ThreadPool]: On create_RH_DB_RAW_gold: /* {"app": "dbt", "dbt_version": "1.9.0b4", "profile_name": "dbt_hr_project", "target_name": "dev", "connection_name": "create_RH_DB_RAW_gold"} */
+[0m01:10:32.076548 [debug] [ThreadPool]: Using snowflake connection "create_RH_DB_RAW_gold"
+[0m01:10:32.079856 [debug] [ThreadPool]: On create_RH_DB_RAW_gold: /* {"app": "dbt", "dbt_version": "1.9.0b4", "profile_name": "dbt_hr_project", "target_name": "dev", "connection_name": "create_RH_DB_RAW_gold"} */
 create schema if not exists RH_DB.RAW_gold
-[0m17:12:18.502082 [debug] [ThreadPool]: Opening a new connection, currently in state closed
-[0m17:12:19.056342 [debug] [ThreadPool]: SQL status: SUCCESS 1 in 0.553 seconds
-[0m17:12:19.063218 [debug] [ThreadPool]: On create_RH_DB_RAW_gold: Close
-[0m17:12:19.218239 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly create_RH_DB_RAW_gold, now list_RH_DB_RAW_gold)
-[0m17:12:19.261139 [debug] [ThreadPool]: Using snowflake connection "list_RH_DB_RAW_gold"
-[0m17:12:19.263073 [debug] [ThreadPool]: On list_RH_DB_RAW_gold: /* {"app": "dbt", "dbt_version": "1.9.0b4", "profile_name": "dbt_hr_project", "target_name": "dev", "connection_name": "list_RH_DB_RAW_gold"} */
+[0m01:10:32.083312 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m01:10:34.031332 [debug] [ThreadPool]: SQL status: SUCCESS 1 in 1.948 seconds
+[0m01:10:34.037235 [debug] [ThreadPool]: On create_RH_DB_RAW_gold: Close
+[0m01:10:35.152728 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly create_RH_DB_RAW_gold, now list_RH_DB_RAW_gold)
+[0m01:10:35.164000 [debug] [ThreadPool]: Using snowflake connection "list_RH_DB_RAW_gold"
+[0m01:10:35.165539 [debug] [ThreadPool]: On list_RH_DB_RAW_gold: /* {"app": "dbt", "dbt_version": "1.9.0b4", "profile_name": "dbt_hr_project", "target_name": "dev", "connection_name": "list_RH_DB_RAW_gold"} */
 show terse objects in RH_DB.RAW_gold limit 10000
-[0m17:12:19.264747 [debug] [ThreadPool]: Opening a new connection, currently in state closed
-[0m17:12:20.735686 [debug] [ThreadPool]: SQL status: SUCCESS 0 in 1.470 seconds
-[0m17:12:20.743623 [debug] [ThreadPool]: On list_RH_DB_RAW_gold: Close
-[0m17:12:20.914324 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'ebd0ec1b-ed6d-4360-8da1-bf0ba2201c32', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7b11e104d3d0>]}
-[0m17:12:20.970894 [debug] [Thread-1 (]: Began running node model.dbt_hr_project.hr_employee_cleaned
-[0m17:12:20.974068 [info ] [Thread-1 (]: 1 of 2 START sql table model RAW_gold.hr_employee_cleaned ...................... [RUN]
-[0m17:12:20.978594 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list_RH_DB_RAW_gold, now model.dbt_hr_project.hr_employee_cleaned)
-[0m17:12:20.982730 [debug] [Thread-1 (]: Began compiling node model.dbt_hr_project.hr_employee_cleaned
-[0m17:12:21.023760 [debug] [Thread-1 (]: Writing injected SQL for node "model.dbt_hr_project.hr_employee_cleaned"
-[0m17:12:21.034589 [debug] [Thread-1 (]: Began executing node model.dbt_hr_project.hr_employee_cleaned
-[0m17:12:21.210706 [debug] [Thread-1 (]: Writing runtime sql for node "model.dbt_hr_project.hr_employee_cleaned"
-[0m17:12:21.231020 [debug] [Thread-1 (]: Using snowflake connection "model.dbt_hr_project.hr_employee_cleaned"
-[0m17:12:21.233043 [debug] [Thread-1 (]: On model.dbt_hr_project.hr_employee_cleaned: /* {"app": "dbt", "dbt_version": "1.9.0b4", "profile_name": "dbt_hr_project", "target_name": "dev", "node_id": "model.dbt_hr_project.hr_employee_cleaned"} */
+[0m01:10:35.166999 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m01:10:38.625867 [debug] [ThreadPool]: SQL status: SUCCESS 0 in 3.458 seconds
+[0m01:10:38.643727 [debug] [ThreadPool]: On list_RH_DB_RAW_gold: Close
+[0m01:10:39.339786 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'b90fe36b-9f9a-4fcf-8ba6-008f343f8df3', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x74becd0a0690>]}
+[0m01:10:39.367888 [debug] [Thread-1 (]: Began running node model.dbt_hr_project.hr_employee_cleaned
+[0m01:10:39.371061 [info ] [Thread-1 (]: 1 of 2 START sql table model RAW_gold.hr_employee_cleaned ...................... [RUN]
+[0m01:10:39.374661 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list_RH_DB_RAW_gold, now model.dbt_hr_project.hr_employee_cleaned)
+[0m01:10:39.377320 [debug] [Thread-1 (]: Began compiling node model.dbt_hr_project.hr_employee_cleaned
+[0m01:10:39.396761 [debug] [Thread-1 (]: Writing injected SQL for node "model.dbt_hr_project.hr_employee_cleaned"
+[0m01:10:39.448227 [debug] [Thread-1 (]: Began executing node model.dbt_hr_project.hr_employee_cleaned
+[0m01:10:39.520926 [debug] [Thread-1 (]: Writing runtime sql for node "model.dbt_hr_project.hr_employee_cleaned"
+[0m01:10:39.583619 [debug] [Thread-1 (]: Using snowflake connection "model.dbt_hr_project.hr_employee_cleaned"
+[0m01:10:39.587924 [debug] [Thread-1 (]: On model.dbt_hr_project.hr_employee_cleaned: /* {"app": "dbt", "dbt_version": "1.9.0b4", "profile_name": "dbt_hr_project", "target_name": "dev", "node_id": "model.dbt_hr_project.hr_employee_cleaned"} */
 create or replace transient table RH_DB.RAW_gold.hr_employee_cleaned
          as
         (
@@ -271,21 +193,21 @@ from base b
 cross join stats s
 cross join mode_values mv
         );
-[0m17:12:21.234977 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
-[0m17:12:23.019543 [debug] [Thread-1 (]: SQL status: SUCCESS 1 in 1.784 seconds
-[0m17:12:23.126794 [debug] [Thread-1 (]: On model.dbt_hr_project.hr_employee_cleaned: Close
-[0m17:12:23.293427 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'ebd0ec1b-ed6d-4360-8da1-bf0ba2201c32', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7b11e07096d0>]}
-[0m17:12:23.297392 [info ] [Thread-1 (]: 1 of 2 OK created sql table model RAW_gold.hr_employee_cleaned ................. [[32mSUCCESS 1[0m in 2.30s]
-[0m17:12:23.301912 [debug] [Thread-1 (]: Finished running node model.dbt_hr_project.hr_employee_cleaned
-[0m17:12:23.307967 [debug] [Thread-3 (]: Began running node model.dbt_hr_project.hr_employee_encoded
-[0m17:12:23.314349 [info ] [Thread-3 (]: 2 of 2 START sql table model RAW_gold.hr_employee_encoded ...................... [RUN]
-[0m17:12:23.328250 [debug] [Thread-3 (]: Acquiring new snowflake connection 'model.dbt_hr_project.hr_employee_encoded'
-[0m17:12:23.332322 [debug] [Thread-3 (]: Began compiling node model.dbt_hr_project.hr_employee_encoded
-[0m17:12:23.359556 [debug] [Thread-3 (]: Writing injected SQL for node "model.dbt_hr_project.hr_employee_encoded"
-[0m17:12:23.365744 [debug] [Thread-3 (]: Began executing node model.dbt_hr_project.hr_employee_encoded
-[0m17:12:23.380923 [debug] [Thread-3 (]: Writing runtime sql for node "model.dbt_hr_project.hr_employee_encoded"
-[0m17:12:23.397720 [debug] [Thread-3 (]: Using snowflake connection "model.dbt_hr_project.hr_employee_encoded"
-[0m17:12:23.400763 [debug] [Thread-3 (]: On model.dbt_hr_project.hr_employee_encoded: /* {"app": "dbt", "dbt_version": "1.9.0b4", "profile_name": "dbt_hr_project", "target_name": "dev", "node_id": "model.dbt_hr_project.hr_employee_encoded"} */
+[0m01:10:39.591600 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m01:10:45.214748 [debug] [Thread-1 (]: SQL status: SUCCESS 1 in 2.906 seconds
+[0m01:10:45.240365 [debug] [Thread-1 (]: On model.dbt_hr_project.hr_employee_cleaned: Close
+[0m01:10:45.808320 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'b90fe36b-9f9a-4fcf-8ba6-008f343f8df3', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x74becd0b3610>]}
+[0m01:10:45.815183 [info ] [Thread-1 (]: 1 of 2 OK created sql table model RAW_gold.hr_employee_cleaned ................. [[32mSUCCESS 1[0m in 6.41s]
+[0m01:10:45.836737 [debug] [Thread-1 (]: Finished running node model.dbt_hr_project.hr_employee_cleaned
+[0m01:10:45.848418 [debug] [Thread-3 (]: Began running node model.dbt_hr_project.hr_employee_encoded
+[0m01:10:45.852945 [info ] [Thread-3 (]: 2 of 2 START sql table model RAW_gold.hr_employee_encoded ...................... [RUN]
+[0m01:10:45.857549 [debug] [Thread-3 (]: Acquiring new snowflake connection 'model.dbt_hr_project.hr_employee_encoded'
+[0m01:10:45.860959 [debug] [Thread-3 (]: Began compiling node model.dbt_hr_project.hr_employee_encoded
+[0m01:10:45.873270 [debug] [Thread-3 (]: Writing injected SQL for node "model.dbt_hr_project.hr_employee_encoded"
+[0m01:10:45.894685 [debug] [Thread-3 (]: Began executing node model.dbt_hr_project.hr_employee_encoded
+[0m01:10:45.909958 [debug] [Thread-3 (]: Writing runtime sql for node "model.dbt_hr_project.hr_employee_encoded"
+[0m01:10:45.948536 [debug] [Thread-3 (]: Using snowflake connection "model.dbt_hr_project.hr_employee_encoded"
+[0m01:10:45.953702 [debug] [Thread-3 (]: On model.dbt_hr_project.hr_employee_encoded: /* {"app": "dbt", "dbt_version": "1.9.0b4", "profile_name": "dbt_hr_project", "target_name": "dev", "node_id": "model.dbt_hr_project.hr_employee_encoded"} */
 create or replace transient table RH_DB.RAW_gold.hr_employee_encoded
          as
         (
@@ -371,82 +293,81 @@ select
 
 from base
         );
-[0m17:12:23.403844 [debug] [Thread-3 (]: Opening a new connection, currently in state init
-[0m17:12:24.620444 [debug] [Thread-3 (]: SQL status: SUCCESS 1 in 1.217 seconds
-[0m17:12:24.637127 [debug] [Thread-3 (]: On model.dbt_hr_project.hr_employee_encoded: Close
-[0m17:12:24.776293 [debug] [Thread-3 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'ebd0ec1b-ed6d-4360-8da1-bf0ba2201c32', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7b11e0453110>]}
-[0m17:12:24.778732 [info ] [Thread-3 (]: 2 of 2 OK created sql table model RAW_gold.hr_employee_encoded ................. [[32mSUCCESS 1[0m in 1.46s]
-[0m17:12:24.781503 [debug] [Thread-3 (]: Finished running node model.dbt_hr_project.hr_employee_encoded
-[0m17:12:24.787688 [debug] [MainThread]: Connection 'master' was properly closed.
-[0m17:12:24.788877 [debug] [MainThread]: Connection 'model.dbt_hr_project.hr_employee_cleaned' was properly closed.
-[0m17:12:24.789924 [debug] [MainThread]: Connection 'model.dbt_hr_project.hr_employee_encoded' was properly closed.
-[0m17:12:24.791794 [info ] [MainThread]: 
-[0m17:12:24.792917 [info ] [MainThread]: Finished running 2 table models in 0 hours 0 minutes and 8.44 seconds (8.44s).
-[0m17:12:24.795156 [debug] [MainThread]: Command end result
-[0m17:12:24.967551 [debug] [MainThread]: Wrote artifact WritableManifest to dbt_hr_project/target/manifest.json
-[0m17:12:24.973269 [debug] [MainThread]: Wrote artifact SemanticManifest to dbt_hr_project/target/semantic_manifest.json
-[0m17:12:24.996853 [debug] [MainThread]: Wrote artifact RunExecutionResult to dbt_hr_project/target/run_results.json
-[0m17:12:24.997996 [info ] [MainThread]: 
-[0m17:12:25.002901 [info ] [MainThread]: [32mCompleted successfully[0m
-[0m17:12:25.008101 [info ] [MainThread]: 
-[0m17:12:25.010823 [info ] [MainThread]: Done. PASS=2 WARN=0 ERROR=0 SKIP=0 TOTAL=2
-[0m17:12:25.013817 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": true, "command_wall_clock_time": 12.105271, "process_user_time": 10.663544, "process_kernel_time": 1.79176, "process_mem_max_rss": "231680", "process_in_blocks": "312", "process_out_blocks": "1992"}
-[0m17:12:25.015213 [debug] [MainThread]: Command `dbt run` succeeded at 17:12:25.014875 after 12.11 seconds
-[0m17:12:25.016337 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7b11fe813550>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7b11fe675410>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7b1203cb8110>]}
-[0m17:12:25.017681 [debug] [MainThread]: Flushing usage events
-[0m17:12:25.643012 [debug] [MainThread]: An error was encountered while trying to flush usage events
-[0m17:17:34.212406 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d8704578510>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d870491c490>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d87045796d0>]}
+[0m01:10:45.963407 [debug] [Thread-3 (]: Opening a new connection, currently in state init
+[0m01:10:48.689051 [debug] [Thread-3 (]: SQL status: SUCCESS 1 in 2.725 seconds
+[0m01:10:48.704798 [debug] [Thread-3 (]: On model.dbt_hr_project.hr_employee_encoded: Close
+[0m01:10:50.474282 [debug] [Thread-3 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'b90fe36b-9f9a-4fcf-8ba6-008f343f8df3', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x74bebfd87e50>]}
+[0m01:10:50.480128 [info ] [Thread-3 (]: 2 of 2 OK created sql table model RAW_gold.hr_employee_encoded ................. [[32mSUCCESS 1[0m in 4.62s]
+[0m01:10:50.484628 [debug] [Thread-3 (]: Finished running node model.dbt_hr_project.hr_employee_encoded
+[0m01:10:50.497610 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m01:10:50.501659 [debug] [MainThread]: Connection 'model.dbt_hr_project.hr_employee_cleaned' was properly closed.
+[0m01:10:50.505871 [debug] [MainThread]: Connection 'model.dbt_hr_project.hr_employee_encoded' was properly closed.
+[0m01:10:50.509725 [info ] [MainThread]: 
+[0m01:10:50.513474 [info ] [MainThread]: Finished running 2 table models in 0 hours 0 minutes and 22.63 seconds (22.63s).
+[0m01:10:50.518455 [debug] [MainThread]: Command end result
+[0m01:10:50.606372 [debug] [MainThread]: Wrote artifact WritableManifest to /app/dbt_hr_project/target/manifest.json
+[0m01:10:50.625453 [debug] [MainThread]: Wrote artifact SemanticManifest to /app/dbt_hr_project/target/semantic_manifest.json
+[0m01:10:50.664344 [debug] [MainThread]: Wrote artifact RunExecutionResult to /app/dbt_hr_project/target/run_results.json
+[0m01:10:50.668540 [info ] [MainThread]: 
+[0m01:10:50.673303 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m01:10:50.682357 [info ] [MainThread]: 
+[0m01:10:50.687376 [info ] [MainThread]: Done. PASS=2 WARN=0 ERROR=0 SKIP=0 TOTAL=2
+[0m01:10:50.701821 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": true, "command_wall_clock_time": 28.15243, "process_user_time": 12.437785, "process_kernel_time": 3.882973, "process_mem_max_rss": "235532", "process_in_blocks": "7912", "process_out_blocks": "8"}
+[0m01:10:50.704739 [debug] [MainThread]: Command `dbt run` succeeded at 01:10:50.704423 after 28.16 seconds
+[0m01:10:50.706794 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x74bee0fb5a50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x74bee0c85d50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x74bee0e71890>]}
+[0m01:10:50.708973 [debug] [MainThread]: Flushing usage events
+[0m01:10:56.757223 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m01:19:11.962454 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7e0223632950>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7e022380b7d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7e02237de590>]}
 
 
-============================== 17:17:34.224114 | 9e74ea86-d09d-4368-be8a-55fe5d87e736 ==============================
-[0m17:17:34.224114 [info ] [MainThread]: Running with dbt=1.9.0-b4
-[0m17:17:34.225482 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': 'dbt_hr_project', 'version_check': 'True', 'debug': 'False', 'log_path': 'dbt_hr_project/logs', 'warn_error': 'None', 'fail_fast': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'False', 'quiet': 'False', 'no_print': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'introspect': 'True', 'static_parser': 'True', 'invocation_command': 'dbt run --project-dir dbt_hr_project --profiles-dir dbt_hr_project', 'target_path': 'None', 'log_format': 'default', 'send_anonymous_usage_stats': 'True'}
-[0m17:17:36.319530 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '9e74ea86-d09d-4368-be8a-55fe5d87e736', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d86e3433d10>]}
-[0m17:17:36.446695 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '9e74ea86-d09d-4368-be8a-55fe5d87e736', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d86e8423b10>]}
-[0m17:17:36.448216 [info ] [MainThread]: Registered adapter: snowflake=1.8.0
-[0m17:17:36.683150 [debug] [MainThread]: checksum: 0d3acddb5afbce98f9888b13248063cae3d09e6e329263e3ffe4b2a6aa072c8d, vars: {}, profile: , target: , version: 1.9.0b4
-[0m17:17:36.901238 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 1 files added, 0 files changed.
-[0m17:17:36.902375 [debug] [MainThread]: Partial parsing: added file: dbt_hr_project://macros/generate_schema_name.sql
-[0m17:17:36.906282 [info ] [MainThread]: Unable to do partial parsing because change detected to override macro. Starting full parse.
-[0m17:17:38.963869 [warn ] [MainThread]: [[33mWARNING[0m]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+============================== 01:19:11.970672 | 012dc1aa-9ee4-4c03-a8ee-717c485f7eed ==============================
+[0m01:19:11.970672 [info ] [MainThread]: Running with dbt=1.9.0-b4
+[0m01:19:11.972050 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': '/app/dbt_hr_project', 'version_check': 'True', 'debug': 'False', 'log_path': '/app/dbt_hr_project/logs', 'warn_error': 'None', 'fail_fast': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'False', 'log_format': 'default', 'invocation_command': 'dbt run --project-dir /app/dbt_hr_project --profiles-dir /app/dbt_hr_project', 'introspect': 'True', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'target_path': 'None', 'static_parser': 'True', 'send_anonymous_usage_stats': 'True'}
+[0m01:19:13.583280 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '012dc1aa-9ee4-4c03-a8ee-717c485f7eed', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7e02156d55d0>]}
+[0m01:19:13.686106 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '012dc1aa-9ee4-4c03-a8ee-717c485f7eed', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7e0223629810>]}
+[0m01:19:13.688768 [info ] [MainThread]: Registered adapter: snowflake=1.8.0
+[0m01:19:13.889683 [debug] [MainThread]: checksum: 0d3acddb5afbce98f9888b13248063cae3d09e6e329263e3ffe4b2a6aa072c8d, vars: {}, profile: , target: , version: 1.9.0b4
+[0m01:19:14.330799 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m01:19:14.333450 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m01:19:14.344769 [warn ] [MainThread]: [[33mWARNING[0m]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
 There are 1 unused configuration paths:
 - models.dbt_hr_project.example
-[0m17:17:38.985363 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '9e74ea86-d09d-4368-be8a-55fe5d87e736', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d86e344c450>]}
-[0m17:17:39.128175 [debug] [MainThread]: Wrote artifact WritableManifest to dbt_hr_project/target/manifest.json
-[0m17:17:39.131218 [debug] [MainThread]: Wrote artifact SemanticManifest to dbt_hr_project/target/semantic_manifest.json
-[0m17:17:39.154870 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '9e74ea86-d09d-4368-be8a-55fe5d87e736', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d86e30f95d0>]}
-[0m17:17:39.155837 [info ] [MainThread]: Found 2 models, 1 source, 459 macros
-[0m17:17:39.156498 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '9e74ea86-d09d-4368-be8a-55fe5d87e736', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d8704551950>]}
-[0m17:17:39.159935 [info ] [MainThread]: 
-[0m17:17:39.162110 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
-[0m17:17:39.163345 [info ] [MainThread]: 
-[0m17:17:39.164937 [debug] [MainThread]: Acquiring new snowflake connection 'master'
-[0m17:17:39.172901 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_RH_DB'
-[0m17:17:39.197762 [debug] [ThreadPool]: Using snowflake connection "list_RH_DB"
-[0m17:17:39.198540 [debug] [ThreadPool]: On list_RH_DB: /* {"app": "dbt", "dbt_version": "1.9.0b4", "profile_name": "dbt_hr_project", "target_name": "dev", "connection_name": "list_RH_DB"} */
+[0m01:19:14.405853 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '012dc1aa-9ee4-4c03-a8ee-717c485f7eed', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7e021537e5d0>]}
+[0m01:19:14.516197 [debug] [MainThread]: Wrote artifact WritableManifest to /app/dbt_hr_project/target/manifest.json
+[0m01:19:14.526899 [debug] [MainThread]: Wrote artifact SemanticManifest to /app/dbt_hr_project/target/semantic_manifest.json
+[0m01:19:14.567517 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '012dc1aa-9ee4-4c03-a8ee-717c485f7eed', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7e02151b0cd0>]}
+[0m01:19:14.569629 [info ] [MainThread]: Found 2 models, 1 source, 458 macros
+[0m01:19:14.571273 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '012dc1aa-9ee4-4c03-a8ee-717c485f7eed', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7e0226042190>]}
+[0m01:19:14.576517 [info ] [MainThread]: 
+[0m01:19:14.578233 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
+[0m01:19:14.579930 [info ] [MainThread]: 
+[0m01:19:14.581911 [debug] [MainThread]: Acquiring new snowflake connection 'master'
+[0m01:19:14.589762 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_RH_DB'
+[0m01:19:14.631482 [debug] [ThreadPool]: Using snowflake connection "list_RH_DB"
+[0m01:19:14.636107 [debug] [ThreadPool]: On list_RH_DB: /* {"app": "dbt", "dbt_version": "1.9.0b4", "profile_name": "dbt_hr_project", "target_name": "dev", "connection_name": "list_RH_DB"} */
 show terse schemas in database RH_DB
     limit 10000
-[0m17:17:39.200287 [debug] [ThreadPool]: Opening a new connection, currently in state init
-[0m17:17:40.885876 [debug] [ThreadPool]: SQL status: SUCCESS 4 in 1.852 seconds
-[0m17:17:40.895340 [debug] [ThreadPool]: On list_RH_DB: Close
-[0m17:17:41.074122 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_RH_DB, now list_RH_DB_GOLD)
-[0m17:17:41.130079 [debug] [ThreadPool]: Using snowflake connection "list_RH_DB_GOLD"
-[0m17:17:41.132468 [debug] [ThreadPool]: On list_RH_DB_GOLD: /* {"app": "dbt", "dbt_version": "1.9.0b4", "profile_name": "dbt_hr_project", "target_name": "dev", "connection_name": "list_RH_DB_GOLD"} */
-show terse objects in RH_DB.GOLD limit 10000
-[0m17:17:41.134790 [debug] [ThreadPool]: Opening a new connection, currently in state closed
-[0m17:17:42.527330 [debug] [ThreadPool]: SQL status: SUCCESS 0 in 1.392 seconds
-[0m17:17:42.536642 [debug] [ThreadPool]: On list_RH_DB_GOLD: Close
-[0m17:17:42.702175 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '9e74ea86-d09d-4368-be8a-55fe5d87e736', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d86e2f23f10>]}
-[0m17:17:42.759743 [debug] [Thread-1 (]: Began running node model.dbt_hr_project.hr_employee_cleaned
-[0m17:17:42.763089 [info ] [Thread-1 (]: 1 of 2 START sql table model GOLD.hr_employee_cleaned .......................... [RUN]
-[0m17:17:42.767643 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list_RH_DB_GOLD, now model.dbt_hr_project.hr_employee_cleaned)
-[0m17:17:42.771170 [debug] [Thread-1 (]: Began compiling node model.dbt_hr_project.hr_employee_cleaned
-[0m17:17:42.823989 [debug] [Thread-1 (]: Writing injected SQL for node "model.dbt_hr_project.hr_employee_cleaned"
-[0m17:17:42.827334 [debug] [Thread-1 (]: Began executing node model.dbt_hr_project.hr_employee_cleaned
-[0m17:17:42.886736 [debug] [Thread-1 (]: Writing runtime sql for node "model.dbt_hr_project.hr_employee_cleaned"
-[0m17:17:42.896652 [debug] [Thread-1 (]: Using snowflake connection "model.dbt_hr_project.hr_employee_cleaned"
-[0m17:17:42.897922 [debug] [Thread-1 (]: On model.dbt_hr_project.hr_employee_cleaned: /* {"app": "dbt", "dbt_version": "1.9.0b4", "profile_name": "dbt_hr_project", "target_name": "dev", "node_id": "model.dbt_hr_project.hr_employee_cleaned"} */
-create or replace transient table RH_DB.GOLD.hr_employee_cleaned
+[0m01:19:14.641301 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m01:19:16.760747 [debug] [ThreadPool]: SQL status: SUCCESS 5 in 2.119 seconds
+[0m01:19:16.767207 [debug] [ThreadPool]: On list_RH_DB: Close
+[0m01:19:17.770980 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_RH_DB, now list_RH_DB_RAW_gold)
+[0m01:19:17.790201 [debug] [ThreadPool]: Using snowflake connection "list_RH_DB_RAW_gold"
+[0m01:19:17.793404 [debug] [ThreadPool]: On list_RH_DB_RAW_gold: /* {"app": "dbt", "dbt_version": "1.9.0b4", "profile_name": "dbt_hr_project", "target_name": "dev", "connection_name": "list_RH_DB_RAW_gold"} */
+show terse objects in RH_DB.RAW_gold limit 10000
+[0m01:19:17.797137 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m01:19:19.908064 [debug] [ThreadPool]: SQL status: SUCCESS 2 in 2.111 seconds
+[0m01:19:19.912287 [debug] [ThreadPool]: On list_RH_DB_RAW_gold: Close
+[0m01:19:20.388093 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '012dc1aa-9ee4-4c03-a8ee-717c485f7eed', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7e0223667590>]}
+[0m01:19:20.415503 [debug] [Thread-1 (]: Began running node model.dbt_hr_project.hr_employee_cleaned
+[0m01:19:20.419404 [info ] [Thread-1 (]: 1 of 2 START sql table model RAW_gold.hr_employee_cleaned ...................... [RUN]
+[0m01:19:20.423156 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list_RH_DB_RAW_gold, now model.dbt_hr_project.hr_employee_cleaned)
+[0m01:19:20.426328 [debug] [Thread-1 (]: Began compiling node model.dbt_hr_project.hr_employee_cleaned
+[0m01:19:20.446435 [debug] [Thread-1 (]: Writing injected SQL for node "model.dbt_hr_project.hr_employee_cleaned"
+[0m01:19:20.471014 [debug] [Thread-1 (]: Began executing node model.dbt_hr_project.hr_employee_cleaned
+[0m01:19:20.562360 [debug] [Thread-1 (]: Writing runtime sql for node "model.dbt_hr_project.hr_employee_cleaned"
+[0m01:19:20.601062 [debug] [Thread-1 (]: Using snowflake connection "model.dbt_hr_project.hr_employee_cleaned"
+[0m01:19:20.604840 [debug] [Thread-1 (]: On model.dbt_hr_project.hr_employee_cleaned: /* {"app": "dbt", "dbt_version": "1.9.0b4", "profile_name": "dbt_hr_project", "target_name": "dev", "node_id": "model.dbt_hr_project.hr_employee_cleaned"} */
+create or replace transient table RH_DB.RAW_gold.hr_employee_cleaned
          as
         (
 
@@ -581,29 +502,29 @@ from base b
 cross join stats s
 cross join mode_values mv
         );
-[0m17:17:42.898981 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
-[0m17:17:44.619541 [debug] [Thread-1 (]: SQL status: SUCCESS 1 in 1.720 seconds
-[0m17:17:44.712695 [debug] [Thread-1 (]: On model.dbt_hr_project.hr_employee_cleaned: Close
-[0m17:17:44.885891 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '9e74ea86-d09d-4368-be8a-55fe5d87e736', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d86e10c6fd0>]}
-[0m17:17:44.889679 [info ] [Thread-1 (]: 1 of 2 OK created sql table model GOLD.hr_employee_cleaned ..................... [[32mSUCCESS 1[0m in 2.11s]
-[0m17:17:44.894510 [debug] [Thread-1 (]: Finished running node model.dbt_hr_project.hr_employee_cleaned
-[0m17:17:44.902475 [debug] [Thread-3 (]: Began running node model.dbt_hr_project.hr_employee_encoded
-[0m17:17:44.906089 [info ] [Thread-3 (]: 2 of 2 START sql table model GOLD.hr_employee_encoded .......................... [RUN]
-[0m17:17:44.910157 [debug] [Thread-3 (]: Acquiring new snowflake connection 'model.dbt_hr_project.hr_employee_encoded'
-[0m17:17:44.913135 [debug] [Thread-3 (]: Began compiling node model.dbt_hr_project.hr_employee_encoded
-[0m17:17:44.934506 [debug] [Thread-3 (]: Writing injected SQL for node "model.dbt_hr_project.hr_employee_encoded"
-[0m17:17:44.938494 [debug] [Thread-3 (]: Began executing node model.dbt_hr_project.hr_employee_encoded
-[0m17:17:44.954410 [debug] [Thread-3 (]: Writing runtime sql for node "model.dbt_hr_project.hr_employee_encoded"
-[0m17:17:44.971638 [debug] [Thread-3 (]: Using snowflake connection "model.dbt_hr_project.hr_employee_encoded"
-[0m17:17:44.974440 [debug] [Thread-3 (]: On model.dbt_hr_project.hr_employee_encoded: /* {"app": "dbt", "dbt_version": "1.9.0b4", "profile_name": "dbt_hr_project", "target_name": "dev", "node_id": "model.dbt_hr_project.hr_employee_encoded"} */
-create or replace transient table RH_DB.GOLD.hr_employee_encoded
+[0m01:19:20.609163 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m01:19:23.502934 [debug] [Thread-1 (]: SQL status: SUCCESS 1 in 2.894 seconds
+[0m01:19:23.575486 [debug] [Thread-1 (]: On model.dbt_hr_project.hr_employee_cleaned: Close
+[0m01:19:24.114994 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '012dc1aa-9ee4-4c03-a8ee-717c485f7eed', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7e0223629610>]}
+[0m01:19:24.120778 [info ] [Thread-1 (]: 1 of 2 OK created sql table model RAW_gold.hr_employee_cleaned ................. [[32mSUCCESS 1[0m in 3.69s]
+[0m01:19:24.125816 [debug] [Thread-1 (]: Finished running node model.dbt_hr_project.hr_employee_cleaned
+[0m01:19:24.130570 [debug] [Thread-3 (]: Began running node model.dbt_hr_project.hr_employee_encoded
+[0m01:19:24.134854 [info ] [Thread-3 (]: 2 of 2 START sql table model RAW_gold.hr_employee_encoded ...................... [RUN]
+[0m01:19:24.139179 [debug] [Thread-3 (]: Acquiring new snowflake connection 'model.dbt_hr_project.hr_employee_encoded'
+[0m01:19:24.143204 [debug] [Thread-3 (]: Began compiling node model.dbt_hr_project.hr_employee_encoded
+[0m01:19:24.160535 [debug] [Thread-3 (]: Writing injected SQL for node "model.dbt_hr_project.hr_employee_encoded"
+[0m01:19:24.184859 [debug] [Thread-3 (]: Began executing node model.dbt_hr_project.hr_employee_encoded
+[0m01:19:24.197710 [debug] [Thread-3 (]: Writing runtime sql for node "model.dbt_hr_project.hr_employee_encoded"
+[0m01:19:24.235498 [debug] [Thread-3 (]: Using snowflake connection "model.dbt_hr_project.hr_employee_encoded"
+[0m01:19:24.239644 [debug] [Thread-3 (]: On model.dbt_hr_project.hr_employee_encoded: /* {"app": "dbt", "dbt_version": "1.9.0b4", "profile_name": "dbt_hr_project", "target_name": "dev", "node_id": "model.dbt_hr_project.hr_employee_encoded"} */
+create or replace transient table RH_DB.RAW_gold.hr_employee_encoded
          as
         (
 
 with base as (
 
     select *
-    from RH_DB.GOLD.hr_employee_cleaned
+    from RH_DB.RAW_gold.hr_employee_cleaned
 
 )
 
@@ -681,91 +602,81 @@ select
 
 from base
         );
-[0m17:17:44.977614 [debug] [Thread-3 (]: Opening a new connection, currently in state init
-[0m17:17:45.796914 [debug] [Thread-3 (]: SQL status: SUCCESS 1 in 1.237 seconds
-[0m17:17:45.809796 [debug] [Thread-3 (]: On model.dbt_hr_project.hr_employee_encoded: Close
-[0m17:17:45.976806 [debug] [Thread-3 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '9e74ea86-d09d-4368-be8a-55fe5d87e736', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d86e1ddf990>]}
-[0m17:17:45.981845 [info ] [Thread-3 (]: 2 of 2 OK created sql table model GOLD.hr_employee_encoded ..................... [[32mSUCCESS 1[0m in 1.07s]
-[0m17:17:45.986858 [debug] [Thread-3 (]: Finished running node model.dbt_hr_project.hr_employee_encoded
-[0m17:17:46.000209 [debug] [MainThread]: Connection 'master' was properly closed.
-[0m17:17:46.002267 [debug] [MainThread]: Connection 'model.dbt_hr_project.hr_employee_cleaned' was properly closed.
-[0m17:17:46.004220 [debug] [MainThread]: Connection 'model.dbt_hr_project.hr_employee_encoded' was properly closed.
-[0m17:17:46.006575 [info ] [MainThread]: 
-[0m17:17:46.009651 [info ] [MainThread]: Finished running 2 table models in 0 hours 0 minutes and 6.84 seconds (6.84s).
-[0m17:17:46.022042 [debug] [MainThread]: Command end result
-[0m17:17:46.151625 [debug] [MainThread]: Wrote artifact WritableManifest to dbt_hr_project/target/manifest.json
-[0m17:17:46.162778 [debug] [MainThread]: Wrote artifact SemanticManifest to dbt_hr_project/target/semantic_manifest.json
-[0m17:17:46.199178 [debug] [MainThread]: Wrote artifact RunExecutionResult to dbt_hr_project/target/run_results.json
-[0m17:17:46.201010 [info ] [MainThread]: 
-[0m17:17:46.204227 [info ] [MainThread]: [32mCompleted successfully[0m
-[0m17:17:46.207410 [info ] [MainThread]: 
-[0m17:17:46.211656 [info ] [MainThread]: Done. PASS=2 WARN=0 ERROR=0 SKIP=0 TOTAL=2
-[0m17:17:46.220208 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": true, "command_wall_clock_time": 13.056713, "process_user_time": 11.244931, "process_kernel_time": 2.074158, "process_mem_max_rss": "238440", "process_out_blocks": "2920", "process_in_blocks": "0"}
-[0m17:17:46.223584 [debug] [MainThread]: Command `dbt run` succeeded at 17:17:46.222854 after 13.06 seconds
-[0m17:17:46.225918 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d8704845410>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d87047fb290>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d8709d3c9d0>]}
-[0m17:17:46.227694 [debug] [MainThread]: Flushing usage events
-[0m17:17:46.865175 [debug] [MainThread]: An error was encountered while trying to flush usage events
-[0m15:12:14.179556 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d4229120850>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d4228ed39d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d4228ed37d0>]}
+[0m01:19:24.244349 [debug] [Thread-3 (]: Opening a new connection, currently in state init
+[0m01:19:30.900412 [debug] [Thread-3 (]: SQL status: SUCCESS 1 in 3.848 seconds
+[0m01:19:30.907828 [debug] [Thread-3 (]: On model.dbt_hr_project.hr_employee_encoded: Close
+[0m01:19:31.852724 [debug] [Thread-3 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '012dc1aa-9ee4-4c03-a8ee-717c485f7eed', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7e021cb87cd0>]}
+[0m01:19:31.865018 [info ] [Thread-3 (]: 2 of 2 OK created sql table model RAW_gold.hr_employee_encoded ................. [[32mSUCCESS 1[0m in 7.71s]
+[0m01:19:31.869837 [debug] [Thread-3 (]: Finished running node model.dbt_hr_project.hr_employee_encoded
+[0m01:19:31.874497 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m01:19:31.875809 [debug] [MainThread]: Connection 'model.dbt_hr_project.hr_employee_cleaned' was properly closed.
+[0m01:19:31.877055 [debug] [MainThread]: Connection 'model.dbt_hr_project.hr_employee_encoded' was properly closed.
+[0m01:19:31.878279 [info ] [MainThread]: 
+[0m01:19:31.879578 [info ] [MainThread]: Finished running 2 table models in 0 hours 0 minutes and 17.30 seconds (17.30s).
+[0m01:19:31.881370 [debug] [MainThread]: Command end result
+[0m01:19:31.933409 [debug] [MainThread]: Wrote artifact WritableManifest to /app/dbt_hr_project/target/manifest.json
+[0m01:19:31.944741 [debug] [MainThread]: Wrote artifact SemanticManifest to /app/dbt_hr_project/target/semantic_manifest.json
+[0m01:19:31.966506 [debug] [MainThread]: Wrote artifact RunExecutionResult to /app/dbt_hr_project/target/run_results.json
+[0m01:19:31.968400 [info ] [MainThread]: 
+[0m01:19:31.971218 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m01:19:31.974008 [info ] [MainThread]: 
+[0m01:19:31.976741 [info ] [MainThread]: Done. PASS=2 WARN=0 ERROR=0 SKIP=0 TOTAL=2
+[0m01:19:31.980476 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": true, "command_wall_clock_time": 17.315836, "process_user_time": 7.990745, "process_kernel_time": 1.655661, "process_mem_max_rss": "231780", "process_in_blocks": "8", "process_out_blocks": "8"}
+[0m01:19:31.982842 [debug] [MainThread]: Command `dbt run` succeeded at 01:19:31.982405 after 17.32 seconds
+[0m01:19:31.985261 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7e0228c97d50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7e0228ded890>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7e0228deca10>]}
+[0m01:19:31.987502 [debug] [MainThread]: Flushing usage events
+[0m01:19:33.400258 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m14:48:25.357582 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7a418fff0b90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7a418fff1050>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7a418fff1150>]}
 
 
-============================== 15:12:14.189535 | 155e0b94-ade3-40da-993c-6fde1c14c73c ==============================
-[0m15:12:14.189535 [info ] [MainThread]: Running with dbt=1.9.0-b4
-[0m15:12:14.190164 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'debug': 'False', 'fail_fast': 'False', 'log_path': 'dbt_hr_project/logs', 'version_check': 'True', 'profiles_dir': 'dbt_hr_project', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'False', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'static_parser': 'True', 'log_format': 'default', 'introspect': 'True', 'target_path': 'None', 'invocation_command': 'dbt run --project-dir dbt_hr_project --profiles-dir dbt_hr_project', 'send_anonymous_usage_stats': 'True'}
-[0m15:12:15.832652 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '155e0b94-ade3-40da-993c-6fde1c14c73c', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d4207be6350>]}
-[0m15:12:15.943287 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '155e0b94-ade3-40da-993c-6fde1c14c73c', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d4229c5c090>]}
-[0m15:12:15.951296 [info ] [MainThread]: Registered adapter: snowflake=1.8.0
-[0m15:12:16.148843 [debug] [MainThread]: checksum: 0d3acddb5afbce98f9888b13248063cae3d09e6e329263e3ffe4b2a6aa072c8d, vars: {}, profile: , target: , version: 1.9.0b4
-[0m15:12:16.599669 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
-[0m15:12:16.600391 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
-[0m15:12:16.606464 [warn ] [MainThread]: [[33mWARNING[0m]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+============================== 14:48:25.366674 | 58f749dc-bad3-4e37-87a3-1983e5db749c ==============================
+[0m14:48:25.366674 [info ] [MainThread]: Running with dbt=1.9.0-b4
+[0m14:48:25.368362 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': '/app/dbt_hr_project', 'debug': 'False', 'warn_error': 'None', 'log_path': '/app/dbt_hr_project/logs', 'version_check': 'True', 'fail_fast': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'False', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'invocation_command': 'dbt run --project-dir /app/dbt_hr_project --profiles-dir /app/dbt_hr_project', 'log_format': 'default', 'introspect': 'True', 'target_path': 'None', 'static_parser': 'True', 'send_anonymous_usage_stats': 'True'}
+[0m14:48:26.558851 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '58f749dc-bad3-4e37-87a3-1983e5db749c', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7a4181ec6150>]}
+[0m14:48:26.650141 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '58f749dc-bad3-4e37-87a3-1983e5db749c', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7a418fe3a450>]}
+[0m14:48:26.653134 [info ] [MainThread]: Registered adapter: snowflake=1.8.0
+[0m14:48:26.823837 [debug] [MainThread]: checksum: 0d3acddb5afbce98f9888b13248063cae3d09e6e329263e3ffe4b2a6aa072c8d, vars: {}, profile: , target: , version: 1.9.0b4
+[0m14:48:27.197383 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m14:48:27.199292 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m14:48:27.207892 [warn ] [MainThread]: [[33mWARNING[0m]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
 There are 1 unused configuration paths:
 - models.dbt_hr_project.example
-[0m15:12:16.640841 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '155e0b94-ade3-40da-993c-6fde1c14c73c', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d4207a29bd0>]}
-[0m15:12:16.739452 [debug] [MainThread]: Wrote artifact WritableManifest to dbt_hr_project/target/manifest.json
-[0m15:12:16.741369 [debug] [MainThread]: Wrote artifact SemanticManifest to dbt_hr_project/target/semantic_manifest.json
-[0m15:12:16.814962 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '155e0b94-ade3-40da-993c-6fde1c14c73c', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d42078cf9d0>]}
-[0m15:12:16.816629 [info ] [MainThread]: Found 2 models, 1 source, 459 macros
-[0m15:12:16.817256 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '155e0b94-ade3-40da-993c-6fde1c14c73c', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d4207c07110>]}
-[0m15:12:16.819598 [info ] [MainThread]: 
-[0m15:12:16.820057 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
-[0m15:12:16.820479 [info ] [MainThread]: 
-[0m15:12:16.821100 [debug] [MainThread]: Acquiring new snowflake connection 'master'
-[0m15:12:16.826149 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_RH_DB'
-[0m15:12:16.849853 [debug] [ThreadPool]: Using snowflake connection "list_RH_DB"
-[0m15:12:16.850664 [debug] [ThreadPool]: On list_RH_DB: /* {"app": "dbt", "dbt_version": "1.9.0b4", "profile_name": "dbt_hr_project", "target_name": "dev", "connection_name": "list_RH_DB"} */
+[0m14:48:27.239779 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '58f749dc-bad3-4e37-87a3-1983e5db749c', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7a4181904e10>]}
+[0m14:48:27.352564 [debug] [MainThread]: Wrote artifact WritableManifest to /app/dbt_hr_project/target/manifest.json
+[0m14:48:27.361757 [debug] [MainThread]: Wrote artifact SemanticManifest to /app/dbt_hr_project/target/semantic_manifest.json
+[0m14:48:27.403133 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '58f749dc-bad3-4e37-87a3-1983e5db749c', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7a418189f650>]}
+[0m14:48:27.405018 [info ] [MainThread]: Found 2 models, 1 source, 458 macros
+[0m14:48:27.406832 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '58f749dc-bad3-4e37-87a3-1983e5db749c', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7a4181921990>]}
+[0m14:48:27.410078 [info ] [MainThread]: 
+[0m14:48:27.411724 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
+[0m14:48:27.413124 [info ] [MainThread]: 
+[0m14:48:27.415030 [debug] [MainThread]: Acquiring new snowflake connection 'master'
+[0m14:48:27.421320 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_RH_DB'
+[0m14:48:27.440540 [debug] [ThreadPool]: Using snowflake connection "list_RH_DB"
+[0m14:48:27.442324 [debug] [ThreadPool]: On list_RH_DB: /* {"app": "dbt", "dbt_version": "1.9.0b4", "profile_name": "dbt_hr_project", "target_name": "dev", "connection_name": "list_RH_DB"} */
 show terse schemas in database RH_DB
     limit 10000
-[0m15:12:16.851025 [debug] [ThreadPool]: Opening a new connection, currently in state init
-[0m15:12:18.224488 [debug] [ThreadPool]: SQL status: SUCCESS 3 in 1.374 seconds
-[0m15:12:18.228613 [debug] [ThreadPool]: On list_RH_DB: Close
-[0m15:12:18.356884 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_RH_DB, now create_RH_DB_GOLD)
-[0m15:12:18.357600 [debug] [ThreadPool]: Creating schema "database: "RH_DB"
-schema: "GOLD"
-"
-[0m15:12:18.366681 [debug] [ThreadPool]: Using snowflake connection "create_RH_DB_GOLD"
-[0m15:12:18.367131 [debug] [ThreadPool]: On create_RH_DB_GOLD: /* {"app": "dbt", "dbt_version": "1.9.0b4", "profile_name": "dbt_hr_project", "target_name": "dev", "connection_name": "create_RH_DB_GOLD"} */
-create schema if not exists RH_DB.GOLD
-[0m15:12:18.367485 [debug] [ThreadPool]: Opening a new connection, currently in state closed
-[0m15:12:18.882085 [debug] [ThreadPool]: SQL status: SUCCESS 1 in 0.514 seconds
-[0m15:12:18.884998 [debug] [ThreadPool]: On create_RH_DB_GOLD: Close
-[0m15:12:19.017290 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly create_RH_DB_GOLD, now list_RH_DB_GOLD)
-[0m15:12:19.030416 [debug] [ThreadPool]: Using snowflake connection "list_RH_DB_GOLD"
-[0m15:12:19.031288 [debug] [ThreadPool]: On list_RH_DB_GOLD: /* {"app": "dbt", "dbt_version": "1.9.0b4", "profile_name": "dbt_hr_project", "target_name": "dev", "connection_name": "list_RH_DB_GOLD"} */
-show terse objects in RH_DB.GOLD limit 10000
-[0m15:12:19.031691 [debug] [ThreadPool]: Opening a new connection, currently in state closed
-[0m15:12:20.059045 [debug] [ThreadPool]: SQL status: SUCCESS 0 in 1.027 seconds
-[0m15:12:20.062273 [debug] [ThreadPool]: On list_RH_DB_GOLD: Close
-[0m15:12:20.213651 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '155e0b94-ade3-40da-993c-6fde1c14c73c', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d42079a7210>]}
-[0m15:12:20.231078 [debug] [Thread-1 (]: Began running node model.dbt_hr_project.hr_employee_cleaned
-[0m15:12:20.231932 [info ] [Thread-1 (]: 1 of 2 START sql table model GOLD.hr_employee_cleaned .......................... [RUN]
-[0m15:12:20.232585 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list_RH_DB_GOLD, now model.dbt_hr_project.hr_employee_cleaned)
-[0m15:12:20.232972 [debug] [Thread-1 (]: Began compiling node model.dbt_hr_project.hr_employee_cleaned
-[0m15:12:20.243077 [debug] [Thread-1 (]: Writing injected SQL for node "model.dbt_hr_project.hr_employee_cleaned"
-[0m15:12:20.245364 [debug] [Thread-1 (]: Began executing node model.dbt_hr_project.hr_employee_cleaned
-[0m15:12:20.279839 [debug] [Thread-1 (]: Writing runtime sql for node "model.dbt_hr_project.hr_employee_cleaned"
-[0m15:12:20.285609 [debug] [Thread-1 (]: Using snowflake connection "model.dbt_hr_project.hr_employee_cleaned"
-[0m15:12:20.286320 [debug] [Thread-1 (]: On model.dbt_hr_project.hr_employee_cleaned: /* {"app": "dbt", "dbt_version": "1.9.0b4", "profile_name": "dbt_hr_project", "target_name": "dev", "node_id": "model.dbt_hr_project.hr_employee_cleaned"} */
-create or replace transient table RH_DB.GOLD.hr_employee_cleaned
+[0m14:48:27.443970 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m14:48:29.215747 [debug] [ThreadPool]: SQL status: SUCCESS 5 in 1.772 seconds
+[0m14:48:29.219835 [debug] [ThreadPool]: On list_RH_DB: Close
+[0m14:48:29.793993 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_RH_DB, now list_RH_DB_RAW_gold)
+[0m14:48:29.812133 [debug] [ThreadPool]: Using snowflake connection "list_RH_DB_RAW_gold"
+[0m14:48:29.814984 [debug] [ThreadPool]: On list_RH_DB_RAW_gold: /* {"app": "dbt", "dbt_version": "1.9.0b4", "profile_name": "dbt_hr_project", "target_name": "dev", "connection_name": "list_RH_DB_RAW_gold"} */
+show terse objects in RH_DB.RAW_gold limit 10000
+[0m14:48:29.816845 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m14:48:31.389071 [debug] [ThreadPool]: SQL status: SUCCESS 2 in 1.572 seconds
+[0m14:48:31.393707 [debug] [ThreadPool]: On list_RH_DB_RAW_gold: Close
+[0m14:48:31.940663 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '58f749dc-bad3-4e37-87a3-1983e5db749c', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7a4181aed590>]}
+[0m14:48:31.955403 [debug] [Thread-1 (]: Began running node model.dbt_hr_project.hr_employee_cleaned
+[0m14:48:31.957197 [info ] [Thread-1 (]: 1 of 2 START sql table model RAW_gold.hr_employee_cleaned ...................... [RUN]
+[0m14:48:31.958869 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list_RH_DB_RAW_gold, now model.dbt_hr_project.hr_employee_cleaned)
+[0m14:48:31.960154 [debug] [Thread-1 (]: Began compiling node model.dbt_hr_project.hr_employee_cleaned
+[0m14:48:31.973509 [debug] [Thread-1 (]: Writing injected SQL for node "model.dbt_hr_project.hr_employee_cleaned"
+[0m14:48:31.983975 [debug] [Thread-1 (]: Began executing node model.dbt_hr_project.hr_employee_cleaned
+[0m14:48:32.026858 [debug] [Thread-1 (]: Writing runtime sql for node "model.dbt_hr_project.hr_employee_cleaned"
+[0m14:48:32.048836 [debug] [Thread-1 (]: Using snowflake connection "model.dbt_hr_project.hr_employee_cleaned"
+[0m14:48:32.051540 [debug] [Thread-1 (]: On model.dbt_hr_project.hr_employee_cleaned: /* {"app": "dbt", "dbt_version": "1.9.0b4", "profile_name": "dbt_hr_project", "target_name": "dev", "node_id": "model.dbt_hr_project.hr_employee_cleaned"} */
+create or replace transient table RH_DB.RAW_gold.hr_employee_cleaned
          as
         (
 
@@ -900,255 +811,29 @@ from base b
 cross join stats s
 cross join mode_values mv
         );
-[0m15:12:20.286979 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
-[0m15:12:20.825848 [debug] [Thread-1 (]: Snowflake adapter: Snowflake query id: 01c42530-0001-c0ef-0002-61760008f1d2
-[0m15:12:20.826479 [debug] [Thread-1 (]: Snowflake adapter: Snowflake error: 002003 (42S02): SQL compilation error:
-Object 'RH_DB.RAW.HR_RAW_DATA' does not exist or not authorized.
-[0m15:12:20.827362 [debug] [Thread-1 (]: On model.dbt_hr_project.hr_employee_cleaned: Close
-[0m15:12:20.949911 [debug] [Thread-1 (]: Database Error in model hr_employee_cleaned (models/hr_employee_cleaned.sql)
-  002003 (42S02): SQL compilation error:
-  Object 'RH_DB.RAW.HR_RAW_DATA' does not exist or not authorized.
-  compiled code at target/run/dbt_hr_project/models/hr_employee_cleaned.sql
-[0m15:12:20.957897 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '155e0b94-ade3-40da-993c-6fde1c14c73c', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d4207835050>]}
-[0m15:12:20.959342 [error] [Thread-1 (]: 1 of 2 ERROR creating sql table model GOLD.hr_employee_cleaned ................. [[31mERROR[0m in 0.72s]
-[0m15:12:20.962871 [debug] [Thread-1 (]: Finished running node model.dbt_hr_project.hr_employee_cleaned
-[0m15:12:20.963855 [debug] [Thread-7 (]: Marking all children of 'model.dbt_hr_project.hr_employee_cleaned' to be skipped because of status 'error'.  Reason: Database Error in model hr_employee_cleaned (models/hr_employee_cleaned.sql)
-  002003 (42S02): SQL compilation error:
-  Object 'RH_DB.RAW.HR_RAW_DATA' does not exist or not authorized.
-  compiled code at target/run/dbt_hr_project/models/hr_employee_cleaned.sql.
-[0m15:12:20.965537 [debug] [Thread-3 (]: Began running node model.dbt_hr_project.hr_employee_encoded
-[0m15:12:20.966839 [info ] [Thread-3 (]: 2 of 2 SKIP relation GOLD.hr_employee_encoded .................................. [[33mSKIP[0m]
-[0m15:12:20.967533 [debug] [Thread-3 (]: Finished running node model.dbt_hr_project.hr_employee_encoded
-[0m15:12:20.969756 [debug] [MainThread]: Connection 'master' was properly closed.
-[0m15:12:20.970141 [debug] [MainThread]: Connection 'model.dbt_hr_project.hr_employee_cleaned' was properly closed.
-[0m15:12:20.970589 [info ] [MainThread]: 
-[0m15:12:20.971008 [info ] [MainThread]: Finished running 2 table models in 0 hours 0 minutes and 4.15 seconds (4.15s).
-[0m15:12:20.971830 [debug] [MainThread]: Command end result
-[0m15:12:21.000926 [debug] [MainThread]: Wrote artifact WritableManifest to dbt_hr_project/target/manifest.json
-[0m15:12:21.002470 [debug] [MainThread]: Wrote artifact SemanticManifest to dbt_hr_project/target/semantic_manifest.json
-[0m15:12:21.012769 [debug] [MainThread]: Wrote artifact RunExecutionResult to dbt_hr_project/target/run_results.json
-[0m15:12:21.013193 [info ] [MainThread]: 
-[0m15:12:21.013663 [info ] [MainThread]: [31mCompleted with 1 error, 0 partial successs, and 0 warnings:[0m
-[0m15:12:21.014017 [info ] [MainThread]: 
-[0m15:12:21.014411 [error] [MainThread]:   Database Error in model hr_employee_cleaned (models/hr_employee_cleaned.sql)
-  002003 (42S02): SQL compilation error:
-  Object 'RH_DB.RAW.HR_RAW_DATA' does not exist or not authorized.
-  compiled code at target/run/dbt_hr_project/models/hr_employee_cleaned.sql
-[0m15:12:21.014745 [info ] [MainThread]: 
-[0m15:12:21.015102 [info ] [MainThread]: Done. PASS=0 WARN=0 ERROR=1 SKIP=1 TOTAL=2
-[0m15:12:21.016384 [debug] [MainThread]: Resource report: {"command_name": "run", "command_wall_clock_time": 6.921726, "process_user_time": 6.782821, "process_kernel_time": 2.131743, "process_mem_max_rss": "231716", "process_in_blocks": "15416", "process_out_blocks": "1968", "command_success": false}
-[0m15:12:21.016855 [debug] [MainThread]: Command `dbt run` failed at 15:12:21.016753 after 6.92 seconds
-[0m15:12:21.017237 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d4228fcd390>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d422e521f50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d4207be6d10>]}
-[0m15:12:21.017661 [debug] [MainThread]: Flushing usage events
-[0m15:12:21.615506 [debug] [MainThread]: An error was encountered while trying to flush usage events
-[0m15:17:49.812157 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d3fc439c710>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d3fc439f7d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d3fc439f690>]}
-
-
-============================== 15:17:49.819249 | 65a0b168-34a5-4986-be99-716cbf6c5120 ==============================
-[0m15:17:49.819249 [info ] [MainThread]: Running with dbt=1.9.0-b4
-[0m15:17:49.819826 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'debug': 'False', 'version_check': 'True', 'log_path': 'dbt_hr_project/logs', 'fail_fast': 'False', 'profiles_dir': 'dbt_hr_project', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'False', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'invocation_command': 'dbt run --project-dir dbt_hr_project --profiles-dir dbt_hr_project', 'static_parser': 'True', 'log_format': 'default', 'target_path': 'None', 'introspect': 'True', 'send_anonymous_usage_stats': 'True'}
-[0m15:17:34.846082 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '65a0b168-34a5-4986-be99-716cbf6c5120', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d3fc0726510>]}
-[0m15:17:34.943305 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '65a0b168-34a5-4986-be99-716cbf6c5120', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d3fc5113d10>]}
-[0m15:17:34.945702 [info ] [MainThread]: Registered adapter: snowflake=1.8.0
-[0m15:17:35.112384 [debug] [MainThread]: checksum: 0d3acddb5afbce98f9888b13248063cae3d09e6e329263e3ffe4b2a6aa072c8d, vars: {}, profile: , target: , version: 1.9.0b4
-[0m15:17:35.262854 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
-[0m15:17:35.263604 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
-[0m15:17:35.270313 [warn ] [MainThread]: [[33mWARNING[0m]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
-There are 1 unused configuration paths:
-- models.dbt_hr_project.example
-[0m15:17:35.304789 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '65a0b168-34a5-4986-be99-716cbf6c5120', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d3fa2f1c050>]}
-[0m15:17:35.391867 [debug] [MainThread]: Wrote artifact WritableManifest to dbt_hr_project/target/manifest.json
-[0m15:17:35.395689 [debug] [MainThread]: Wrote artifact SemanticManifest to dbt_hr_project/target/semantic_manifest.json
-[0m15:17:35.412802 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '65a0b168-34a5-4986-be99-716cbf6c5120', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d3fa2da9610>]}
-[0m15:17:35.413735 [info ] [MainThread]: Found 2 models, 1 source, 459 macros
-[0m15:17:35.414947 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '65a0b168-34a5-4986-be99-716cbf6c5120', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d3fa3257510>]}
-[0m15:17:35.417724 [info ] [MainThread]: 
-[0m15:17:35.418212 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
-[0m15:17:35.418536 [info ] [MainThread]: 
-[0m15:17:35.419043 [debug] [MainThread]: Acquiring new snowflake connection 'master'
-[0m15:17:35.423472 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_RH_DB'
-[0m15:17:35.442477 [debug] [ThreadPool]: Using snowflake connection "list_RH_DB"
-[0m15:17:35.443322 [debug] [ThreadPool]: On list_RH_DB: /* {"app": "dbt", "dbt_version": "1.9.0b4", "profile_name": "dbt_hr_project", "target_name": "dev", "connection_name": "list_RH_DB"} */
-show terse schemas in database RH_DB
-    limit 10000
-[0m15:17:35.444758 [debug] [ThreadPool]: Opening a new connection, currently in state init
-[0m15:17:36.851130 [debug] [ThreadPool]: SQL status: SUCCESS 4 in 1.407 seconds
-[0m15:17:36.853045 [debug] [ThreadPool]: On list_RH_DB: Close
-[0m15:17:36.981748 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_RH_DB_GOLD'
-[0m15:17:36.991576 [debug] [ThreadPool]: Using snowflake connection "list_RH_DB_GOLD"
-[0m15:17:36.992531 [debug] [ThreadPool]: On list_RH_DB_GOLD: /* {"app": "dbt", "dbt_version": "1.9.0b4", "profile_name": "dbt_hr_project", "target_name": "dev", "connection_name": "list_RH_DB_GOLD"} */
-show terse objects in RH_DB.GOLD limit 10000
-[0m15:17:36.993490 [debug] [ThreadPool]: Opening a new connection, currently in state init
-[0m15:17:37.441545 [debug] [ThreadPool]: SQL status: SUCCESS 0 in 0.448 seconds
-[0m15:17:37.448285 [debug] [ThreadPool]: On list_RH_DB_GOLD: Close
-[0m15:17:37.589682 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '65a0b168-34a5-4986-be99-716cbf6c5120', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d3fc439f110>]}
-[0m15:17:37.619096 [debug] [Thread-1 (]: Began running node model.dbt_hr_project.hr_employee_cleaned
-[0m15:17:37.620367 [info ] [Thread-1 (]: 1 of 2 START sql table model GOLD.hr_employee_cleaned .......................... [RUN]
-[0m15:17:37.621569 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list_RH_DB_GOLD, now model.dbt_hr_project.hr_employee_cleaned)
-[0m15:17:37.622210 [debug] [Thread-1 (]: Began compiling node model.dbt_hr_project.hr_employee_cleaned
-[0m15:17:37.635890 [debug] [Thread-1 (]: Writing injected SQL for node "model.dbt_hr_project.hr_employee_cleaned"
-[0m15:17:37.636765 [debug] [Thread-1 (]: Began executing node model.dbt_hr_project.hr_employee_cleaned
-[0m15:17:37.671308 [debug] [Thread-1 (]: Writing runtime sql for node "model.dbt_hr_project.hr_employee_cleaned"
-[0m15:17:37.678179 [debug] [Thread-1 (]: Using snowflake connection "model.dbt_hr_project.hr_employee_cleaned"
-[0m15:17:37.680072 [debug] [Thread-1 (]: On model.dbt_hr_project.hr_employee_cleaned: /* {"app": "dbt", "dbt_version": "1.9.0b4", "profile_name": "dbt_hr_project", "target_name": "dev", "node_id": "model.dbt_hr_project.hr_employee_cleaned"} */
-create or replace transient table RH_DB.GOLD.hr_employee_cleaned
+[0m14:48:32.053939 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m14:48:35.399800 [debug] [Thread-1 (]: SQL status: SUCCESS 1 in 3.346 seconds
+[0m14:48:35.427153 [debug] [Thread-1 (]: On model.dbt_hr_project.hr_employee_cleaned: Close
+[0m14:48:35.907423 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '58f749dc-bad3-4e37-87a3-1983e5db749c', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7a4180e74b10>]}
+[0m14:48:35.910047 [info ] [Thread-1 (]: 1 of 2 OK created sql table model RAW_gold.hr_employee_cleaned ................. [[32mSUCCESS 1[0m in 3.94s]
+[0m14:48:35.912647 [debug] [Thread-1 (]: Finished running node model.dbt_hr_project.hr_employee_cleaned
+[0m14:48:35.916556 [debug] [Thread-3 (]: Began running node model.dbt_hr_project.hr_employee_encoded
+[0m14:48:35.919000 [info ] [Thread-3 (]: 2 of 2 START sql table model RAW_gold.hr_employee_encoded ...................... [RUN]
+[0m14:48:35.921401 [debug] [Thread-3 (]: Acquiring new snowflake connection 'model.dbt_hr_project.hr_employee_encoded'
+[0m14:48:35.923275 [debug] [Thread-3 (]: Began compiling node model.dbt_hr_project.hr_employee_encoded
+[0m14:48:35.935904 [debug] [Thread-3 (]: Writing injected SQL for node "model.dbt_hr_project.hr_employee_encoded"
+[0m14:48:35.951376 [debug] [Thread-3 (]: Began executing node model.dbt_hr_project.hr_employee_encoded
+[0m14:48:35.958228 [debug] [Thread-3 (]: Writing runtime sql for node "model.dbt_hr_project.hr_employee_encoded"
+[0m14:48:35.978344 [debug] [Thread-3 (]: Using snowflake connection "model.dbt_hr_project.hr_employee_encoded"
+[0m14:48:35.980846 [debug] [Thread-3 (]: On model.dbt_hr_project.hr_employee_encoded: /* {"app": "dbt", "dbt_version": "1.9.0b4", "profile_name": "dbt_hr_project", "target_name": "dev", "node_id": "model.dbt_hr_project.hr_employee_encoded"} */
+create or replace transient table RH_DB.RAW_gold.hr_employee_encoded
          as
         (
 
 with base as (
 
     select *
-    from RH_DB.RAW.HR_RAW_DATA
-
-),
-
--- 🔵 MEDIAN NUMÉRIQUES
-stats as (
-
-    select
-        percentile_cont(0.5) within group (order by Age) as median_age,
-        percentile_cont(0.5) within group (order by DailyRate) as median_dailyrate,
-        percentile_cont(0.5) within group (order by DistanceFromHome) as median_distance,
-        percentile_cont(0.5) within group (order by Education) as median_education,
-        percentile_cont(0.5) within group (order by EnvironmentSatisfaction) as median_envsat,
-        percentile_cont(0.5) within group (order by HourlyRate) as median_hourly,
-        percentile_cont(0.5) within group (order by JobInvolvement) as median_jobinv,
-        percentile_cont(0.5) within group (order by JobLevel) as median_joblevel,
-        percentile_cont(0.5) within group (order by JobSatisfaction) as median_jobsat,
-        percentile_cont(0.5) within group (order by MonthlyIncome) as median_income,
-        percentile_cont(0.5) within group (order by MonthlyRate) as median_monthlyrate,
-        percentile_cont(0.5) within group (order by NumCompaniesWorked) as median_numcomp,
-        percentile_cont(0.5) within group (order by PercentSalaryHike) as median_salaryhike,
-        percentile_cont(0.5) within group (order by PerformanceRating) as median_perf,
-        percentile_cont(0.5) within group (order by RelationshipSatisfaction) as median_rel,
-        percentile_cont(0.5) within group (order by StockOptionLevel) as median_stock,
-        percentile_cont(0.5) within group (order by TotalWorkingYears) as median_totalyears,
-        percentile_cont(0.5) within group (order by TrainingTimesLastYear) as median_training,
-        percentile_cont(0.5) within group (order by WorkLifeBalance) as median_wlb,
-        percentile_cont(0.5) within group (order by YearsAtCompany) as median_company,
-        percentile_cont(0.5) within group (order by YearsInCurrentRole) as median_role,
-        percentile_cont(0.5) within group (order by YearsSinceLastPromotion) as median_promo,
-        percentile_cont(0.5) within group (order by YearsWithCurrManager) as median_manager
-
-    from base
-
-),
-
--- 🟢 MODE CATÉGORIELLES
-mode_values as (
-
-    select
-
-        (select BusinessTravel
-         from base
-         where BusinessTravel is not null
-         group by BusinessTravel
-         order by count(*) desc limit 1) as mode_business_travel,
-
-        (select Department
-         from base
-         where Department is not null
-         group by Department
-         order by count(*) desc limit 1) as mode_department,
-
-        (select EducationField
-         from base
-         where EducationField is not null
-         group by EducationField
-         order by count(*) desc limit 1) as mode_educationfield,
-
-        (select Gender
-         from base
-         where Gender is not null
-         group by Gender
-         order by count(*) desc limit 1) as mode_gender,
-
-        (select JobRole
-         from base
-         where JobRole is not null
-         group by JobRole
-         order by count(*) desc limit 1) as mode_jobrole,
-
-        (select MaritalStatus
-         from base
-         where MaritalStatus is not null
-         group by MaritalStatus
-         order by count(*) desc limit 1) as mode_marital,
-
-        (select OverTime
-         from base
-         where OverTime is not null
-         group by OverTime
-         order by count(*) desc limit 1) as mode_overtime
-
-)
-
-select
-
-    -- 🔥 TARGET
-    b.Attrition,
-
-    -- 🔵 NUMÉRIQUES (NULL → MEDIAN)
-    coalesce(b.Age, s.median_age) as Age,
-    coalesce(b.DailyRate, s.median_dailyrate) as DailyRate,
-    coalesce(b.DistanceFromHome, s.median_distance) as DistanceFromHome,
-    coalesce(b.Education, s.median_education) as Education,
-    coalesce(b.EnvironmentSatisfaction, s.median_envsat) as EnvironmentSatisfaction,
-    coalesce(b.HourlyRate, s.median_hourly) as HourlyRate,
-    coalesce(b.JobInvolvement, s.median_jobinv) as JobInvolvement,
-    coalesce(b.JobLevel, s.median_joblevel) as JobLevel,
-    coalesce(b.JobSatisfaction, s.median_jobsat) as JobSatisfaction,
-    coalesce(b.MonthlyIncome, s.median_income) as MonthlyIncome,
-    coalesce(b.MonthlyRate, s.median_monthlyrate) as MonthlyRate,
-    coalesce(b.NumCompaniesWorked, s.median_numcomp) as NumCompaniesWorked,
-    coalesce(b.PercentSalaryHike, s.median_salaryhike) as PercentSalaryHike,
-    coalesce(b.PerformanceRating, s.median_perf) as PerformanceRating,
-    coalesce(b.RelationshipSatisfaction, s.median_rel) as RelationshipSatisfaction,
-    coalesce(b.StockOptionLevel, s.median_stock) as StockOptionLevel,
-    coalesce(b.TotalWorkingYears, s.median_totalyears) as TotalWorkingYears,
-    coalesce(b.TrainingTimesLastYear, s.median_training) as TrainingTimesLastYear,
-    coalesce(b.WorkLifeBalance, s.median_wlb) as WorkLifeBalance,
-    coalesce(b.YearsAtCompany, s.median_company) as YearsAtCompany,
-    coalesce(b.YearsInCurrentRole, s.median_role) as YearsInCurrentRole,
-    coalesce(b.YearsSinceLastPromotion, s.median_promo) as YearsSinceLastPromotion,
-    coalesce(b.YearsWithCurrManager, s.median_manager) as YearsWithCurrManager,
-
-    -- 🟢 CATÉGORIELLES (NULL → MODE)
-    coalesce(b.BusinessTravel, mv.mode_business_travel) as BusinessTravel,
-    coalesce(b.Department, mv.mode_department) as Department,
-    coalesce(b.EducationField, mv.mode_educationfield) as EducationField,
-    coalesce(b.Gender, mv.mode_gender) as Gender,
-    coalesce(b.JobRole, mv.mode_jobrole) as JobRole,
-    coalesce(b.MaritalStatus, mv.mode_marital) as MaritalStatus,
-    coalesce(b.OverTime, mv.mode_overtime) as OverTime
-
-from base b
-cross join stats s
-cross join mode_values mv
-        );
-[0m15:17:37.681251 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
-[0m15:17:38.887730 [debug] [Thread-1 (]: SQL status: SUCCESS 1 in 1.210 seconds
-[0m15:17:38.916225 [debug] [Thread-1 (]: On model.dbt_hr_project.hr_employee_cleaned: Close
-[0m15:17:39.031398 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '65a0b168-34a5-4986-be99-716cbf6c5120', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d3fa2d1f090>]}
-[0m15:17:39.032159 [info ] [Thread-1 (]: 1 of 2 OK created sql table model GOLD.hr_employee_cleaned ..................... [[32mSUCCESS 1[0m in 1.41s]
-[0m15:17:39.032801 [debug] [Thread-1 (]: Finished running node model.dbt_hr_project.hr_employee_cleaned
-[0m15:17:39.033936 [debug] [Thread-3 (]: Began running node model.dbt_hr_project.hr_employee_encoded
-[0m15:17:39.034862 [info ] [Thread-3 (]: 2 of 2 START sql table model GOLD.hr_employee_encoded .......................... [RUN]
-[0m15:17:39.035959 [debug] [Thread-3 (]: Acquiring new snowflake connection 'model.dbt_hr_project.hr_employee_encoded'
-[0m15:17:39.037710 [debug] [Thread-3 (]: Began compiling node model.dbt_hr_project.hr_employee_encoded
-[0m15:17:39.045541 [debug] [Thread-3 (]: Writing injected SQL for node "model.dbt_hr_project.hr_employee_encoded"
-[0m15:17:39.046593 [debug] [Thread-3 (]: Began executing node model.dbt_hr_project.hr_employee_encoded
-[0m15:17:39.049956 [debug] [Thread-3 (]: Writing runtime sql for node "model.dbt_hr_project.hr_employee_encoded"
-[0m15:17:39.055573 [debug] [Thread-3 (]: Using snowflake connection "model.dbt_hr_project.hr_employee_encoded"
-[0m15:17:39.056932 [debug] [Thread-3 (]: On model.dbt_hr_project.hr_employee_encoded: /* {"app": "dbt", "dbt_version": "1.9.0b4", "profile_name": "dbt_hr_project", "target_name": "dev", "node_id": "model.dbt_hr_project.hr_employee_encoded"} */
-create or replace transient table RH_DB.GOLD.hr_employee_encoded
-         as
-        (
-
-with base as (
-
-    select *
-    from RH_DB.GOLD.hr_employee_cleaned
+    from RH_DB.RAW_gold.hr_employee_cleaned
 
 )
 
@@ -1226,646 +911,27 @@ select
 
 from base
         );
-[0m15:17:39.057685 [debug] [Thread-3 (]: Opening a new connection, currently in state init
-[0m15:17:41.082382 [debug] [Thread-3 (]: SQL status: SUCCESS 1 in 2.025 seconds
-[0m15:17:41.087561 [debug] [Thread-3 (]: On model.dbt_hr_project.hr_employee_encoded: Close
-[0m15:17:41.221305 [debug] [Thread-3 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '65a0b168-34a5-4986-be99-716cbf6c5120', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d3fa234aa50>]}
-[0m15:17:41.223502 [info ] [Thread-3 (]: 2 of 2 OK created sql table model GOLD.hr_employee_encoded ..................... [[32mSUCCESS 1[0m in 2.19s]
-[0m15:17:41.224534 [debug] [Thread-3 (]: Finished running node model.dbt_hr_project.hr_employee_encoded
-[0m15:17:41.227539 [debug] [MainThread]: Connection 'master' was properly closed.
-[0m15:17:41.227979 [debug] [MainThread]: Connection 'list_RH_DB' was properly closed.
-[0m15:17:41.228322 [debug] [MainThread]: Connection 'model.dbt_hr_project.hr_employee_cleaned' was properly closed.
-[0m15:17:41.228774 [debug] [MainThread]: Connection 'model.dbt_hr_project.hr_employee_encoded' was properly closed.
-[0m15:17:41.229210 [info ] [MainThread]: 
-[0m15:17:41.229652 [info ] [MainThread]: Finished running 2 table models in 0 hours 0 minutes and 5.81 seconds (5.81s).
-[0m15:17:41.230613 [debug] [MainThread]: Command end result
-[0m15:17:41.261581 [debug] [MainThread]: Wrote artifact WritableManifest to dbt_hr_project/target/manifest.json
-[0m15:17:41.263363 [debug] [MainThread]: Wrote artifact SemanticManifest to dbt_hr_project/target/semantic_manifest.json
-[0m15:17:41.274474 [debug] [MainThread]: Wrote artifact RunExecutionResult to dbt_hr_project/target/run_results.json
-[0m15:17:41.274993 [info ] [MainThread]: 
-[0m15:17:41.275461 [info ] [MainThread]: [32mCompleted successfully[0m
-[0m15:17:41.275801 [info ] [MainThread]: 
-[0m15:17:41.276154 [info ] [MainThread]: Done. PASS=2 WARN=0 ERROR=0 SKIP=0 TOTAL=2
-[0m15:17:41.277192 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": true, "command_wall_clock_time": 8.237999, "process_user_time": 6.705082, "process_kernel_time": 1.510551, "process_mem_max_rss": "231980", "process_out_blocks": "2000", "process_in_blocks": "0"}
-[0m15:17:41.277622 [debug] [MainThread]: Command `dbt run` succeeded at 15:17:41.277524 after 8.24 seconds
-[0m15:17:41.277971 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d3fc5dd7ad0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d3fc99726d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d3fc99e5690>]}
-[0m15:17:41.278325 [debug] [MainThread]: Flushing usage events
-[0m15:17:41.856278 [debug] [MainThread]: An error was encountered while trying to flush usage events
-[0m15:26:21.480831 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d6dc6ec0590>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d6dc70986d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d6dc7223250>]}
-
-
-============================== 15:26:21.490279 | 899eddf6-6c0f-46ad-be93-a92fcc4b786c ==============================
-[0m15:26:21.490279 [info ] [MainThread]: Running with dbt=1.9.0-b4
-[0m15:26:21.490870 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': 'dbt_hr_project', 'fail_fast': 'False', 'warn_error': 'None', 'log_path': 'dbt_hr_project/logs', 'debug': 'False', 'version_check': 'True', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'False', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'invocation_command': 'dbt run --project-dir dbt_hr_project --profiles-dir dbt_hr_project', 'static_parser': 'True', 'introspect': 'True', 'target_path': 'None', 'log_format': 'default', 'send_anonymous_usage_stats': 'True'}
-[0m15:26:22.746886 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '899eddf6-6c0f-46ad-be93-a92fcc4b786c', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d6dc7c84ed0>]}
-[0m15:26:22.860562 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '899eddf6-6c0f-46ad-be93-a92fcc4b786c', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d6dc7c33f50>]}
-[0m15:26:22.861468 [info ] [MainThread]: Registered adapter: snowflake=1.8.0
-[0m15:26:23.028166 [debug] [MainThread]: checksum: 0d3acddb5afbce98f9888b13248063cae3d09e6e329263e3ffe4b2a6aa072c8d, vars: {}, profile: , target: , version: 1.9.0b4
-[0m15:26:23.159608 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
-[0m15:26:23.160098 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
-[0m15:26:23.168396 [warn ] [MainThread]: [[33mWARNING[0m]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
-There are 1 unused configuration paths:
-- models.dbt_hr_project.example
-[0m15:26:23.204611 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '899eddf6-6c0f-46ad-be93-a92fcc4b786c', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d6da984c350>]}
-[0m15:26:23.291777 [debug] [MainThread]: Wrote artifact WritableManifest to dbt_hr_project/target/manifest.json
-[0m15:26:23.293353 [debug] [MainThread]: Wrote artifact SemanticManifest to dbt_hr_project/target/semantic_manifest.json
-[0m15:26:23.310050 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '899eddf6-6c0f-46ad-be93-a92fcc4b786c', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d6da98d8dd0>]}
-[0m15:26:23.310663 [info ] [MainThread]: Found 2 models, 1 source, 459 macros
-[0m15:26:23.311057 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '899eddf6-6c0f-46ad-be93-a92fcc4b786c', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d6da9a032d0>]}
-[0m15:26:23.312949 [info ] [MainThread]: 
-[0m15:26:23.314597 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
-[0m15:26:23.315676 [info ] [MainThread]: 
-[0m15:26:23.316507 [debug] [MainThread]: Acquiring new snowflake connection 'master'
-[0m15:26:23.322525 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_RH_DB'
-[0m15:26:23.342764 [debug] [ThreadPool]: Using snowflake connection "list_RH_DB"
-[0m15:26:23.343227 [debug] [ThreadPool]: On list_RH_DB: /* {"app": "dbt", "dbt_version": "1.9.0b4", "profile_name": "dbt_hr_project", "target_name": "dev", "connection_name": "list_RH_DB"} */
-show terse schemas in database RH_DB
-    limit 10000
-[0m15:26:23.343525 [debug] [ThreadPool]: Opening a new connection, currently in state init
-[0m15:26:24.792794 [debug] [ThreadPool]: SQL status: SUCCESS 4 in 1.449 seconds
-[0m15:26:24.794662 [debug] [ThreadPool]: On list_RH_DB: Close
-[0m15:26:24.927688 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_RH_DB, now list_RH_DB_GOLD)
-[0m15:26:24.940943 [debug] [ThreadPool]: Using snowflake connection "list_RH_DB_GOLD"
-[0m15:26:24.941383 [debug] [ThreadPool]: On list_RH_DB_GOLD: /* {"app": "dbt", "dbt_version": "1.9.0b4", "profile_name": "dbt_hr_project", "target_name": "dev", "connection_name": "list_RH_DB_GOLD"} */
-show terse objects in RH_DB.GOLD limit 10000
-[0m15:26:24.941746 [debug] [ThreadPool]: Opening a new connection, currently in state closed
-[0m15:26:25.305717 [debug] [ThreadPool]: SQL status: SUCCESS 0 in 0.364 seconds
-[0m15:26:25.308323 [debug] [ThreadPool]: On list_RH_DB_GOLD: Close
-[0m15:26:25.458510 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '899eddf6-6c0f-46ad-be93-a92fcc4b786c', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d6da98d8d50>]}
-[0m15:26:25.472088 [debug] [Thread-1 (]: Began running node model.dbt_hr_project.hr_employee_cleaned
-[0m15:26:25.472767 [info ] [Thread-1 (]: 1 of 2 START sql table model GOLD.hr_employee_cleaned .......................... [RUN]
-[0m15:26:25.473678 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list_RH_DB_GOLD, now model.dbt_hr_project.hr_employee_cleaned)
-[0m15:26:25.474103 [debug] [Thread-1 (]: Began compiling node model.dbt_hr_project.hr_employee_cleaned
-[0m15:26:25.485260 [debug] [Thread-1 (]: Writing injected SQL for node "model.dbt_hr_project.hr_employee_cleaned"
-[0m15:26:25.486099 [debug] [Thread-1 (]: Began executing node model.dbt_hr_project.hr_employee_cleaned
-[0m15:26:25.518588 [debug] [Thread-1 (]: Writing runtime sql for node "model.dbt_hr_project.hr_employee_cleaned"
-[0m15:26:25.524177 [debug] [Thread-1 (]: Using snowflake connection "model.dbt_hr_project.hr_employee_cleaned"
-[0m15:26:25.524810 [debug] [Thread-1 (]: On model.dbt_hr_project.hr_employee_cleaned: /* {"app": "dbt", "dbt_version": "1.9.0b4", "profile_name": "dbt_hr_project", "target_name": "dev", "node_id": "model.dbt_hr_project.hr_employee_cleaned"} */
-create or replace transient table RH_DB.GOLD.hr_employee_cleaned
-         as
-        (
-
-with base as (
-
-    select *
-    from RH_DB.RAW.HR_RAW_DATA
-
-),
-
--- 🔵 MEDIAN NUMÉRIQUES
-stats as (
-
-    select
-        percentile_cont(0.5) within group (order by Age) as median_age,
-        percentile_cont(0.5) within group (order by DailyRate) as median_dailyrate,
-        percentile_cont(0.5) within group (order by DistanceFromHome) as median_distance,
-        percentile_cont(0.5) within group (order by Education) as median_education,
-        percentile_cont(0.5) within group (order by EnvironmentSatisfaction) as median_envsat,
-        percentile_cont(0.5) within group (order by HourlyRate) as median_hourly,
-        percentile_cont(0.5) within group (order by JobInvolvement) as median_jobinv,
-        percentile_cont(0.5) within group (order by JobLevel) as median_joblevel,
-        percentile_cont(0.5) within group (order by JobSatisfaction) as median_jobsat,
-        percentile_cont(0.5) within group (order by MonthlyIncome) as median_income,
-        percentile_cont(0.5) within group (order by MonthlyRate) as median_monthlyrate,
-        percentile_cont(0.5) within group (order by NumCompaniesWorked) as median_numcomp,
-        percentile_cont(0.5) within group (order by PercentSalaryHike) as median_salaryhike,
-        percentile_cont(0.5) within group (order by PerformanceRating) as median_perf,
-        percentile_cont(0.5) within group (order by RelationshipSatisfaction) as median_rel,
-        percentile_cont(0.5) within group (order by StockOptionLevel) as median_stock,
-        percentile_cont(0.5) within group (order by TotalWorkingYears) as median_totalyears,
-        percentile_cont(0.5) within group (order by TrainingTimesLastYear) as median_training,
-        percentile_cont(0.5) within group (order by WorkLifeBalance) as median_wlb,
-        percentile_cont(0.5) within group (order by YearsAtCompany) as median_company,
-        percentile_cont(0.5) within group (order by YearsInCurrentRole) as median_role,
-        percentile_cont(0.5) within group (order by YearsSinceLastPromotion) as median_promo,
-        percentile_cont(0.5) within group (order by YearsWithCurrManager) as median_manager
-
-    from base
-
-),
-
--- 🟢 MODE CATÉGORIELLES
-mode_values as (
-
-    select
-
-        (select BusinessTravel
-         from base
-         where BusinessTravel is not null
-         group by BusinessTravel
-         order by count(*) desc limit 1) as mode_business_travel,
-
-        (select Department
-         from base
-         where Department is not null
-         group by Department
-         order by count(*) desc limit 1) as mode_department,
-
-        (select EducationField
-         from base
-         where EducationField is not null
-         group by EducationField
-         order by count(*) desc limit 1) as mode_educationfield,
-
-        (select Gender
-         from base
-         where Gender is not null
-         group by Gender
-         order by count(*) desc limit 1) as mode_gender,
-
-        (select JobRole
-         from base
-         where JobRole is not null
-         group by JobRole
-         order by count(*) desc limit 1) as mode_jobrole,
-
-        (select MaritalStatus
-         from base
-         where MaritalStatus is not null
-         group by MaritalStatus
-         order by count(*) desc limit 1) as mode_marital,
-
-        (select OverTime
-         from base
-         where OverTime is not null
-         group by OverTime
-         order by count(*) desc limit 1) as mode_overtime
-
-)
-
-select
-
-    -- 🔥 TARGET
-    b.Attrition,
-
-    -- 🔵 NUMÉRIQUES (NULL → MEDIAN)
-    coalesce(b.Age, s.median_age) as Age,
-    coalesce(b.DailyRate, s.median_dailyrate) as DailyRate,
-    coalesce(b.DistanceFromHome, s.median_distance) as DistanceFromHome,
-    coalesce(b.Education, s.median_education) as Education,
-    coalesce(b.EnvironmentSatisfaction, s.median_envsat) as EnvironmentSatisfaction,
-    coalesce(b.HourlyRate, s.median_hourly) as HourlyRate,
-    coalesce(b.JobInvolvement, s.median_jobinv) as JobInvolvement,
-    coalesce(b.JobLevel, s.median_joblevel) as JobLevel,
-    coalesce(b.JobSatisfaction, s.median_jobsat) as JobSatisfaction,
-    coalesce(b.MonthlyIncome, s.median_income) as MonthlyIncome,
-    coalesce(b.MonthlyRate, s.median_monthlyrate) as MonthlyRate,
-    coalesce(b.NumCompaniesWorked, s.median_numcomp) as NumCompaniesWorked,
-    coalesce(b.PercentSalaryHike, s.median_salaryhike) as PercentSalaryHike,
-    coalesce(b.PerformanceRating, s.median_perf) as PerformanceRating,
-    coalesce(b.RelationshipSatisfaction, s.median_rel) as RelationshipSatisfaction,
-    coalesce(b.StockOptionLevel, s.median_stock) as StockOptionLevel,
-    coalesce(b.TotalWorkingYears, s.median_totalyears) as TotalWorkingYears,
-    coalesce(b.TrainingTimesLastYear, s.median_training) as TrainingTimesLastYear,
-    coalesce(b.WorkLifeBalance, s.median_wlb) as WorkLifeBalance,
-    coalesce(b.YearsAtCompany, s.median_company) as YearsAtCompany,
-    coalesce(b.YearsInCurrentRole, s.median_role) as YearsInCurrentRole,
-    coalesce(b.YearsSinceLastPromotion, s.median_promo) as YearsSinceLastPromotion,
-    coalesce(b.YearsWithCurrManager, s.median_manager) as YearsWithCurrManager,
-
-    -- 🟢 CATÉGORIELLES (NULL → MODE)
-    coalesce(b.BusinessTravel, mv.mode_business_travel) as BusinessTravel,
-    coalesce(b.Department, mv.mode_department) as Department,
-    coalesce(b.EducationField, mv.mode_educationfield) as EducationField,
-    coalesce(b.Gender, mv.mode_gender) as Gender,
-    coalesce(b.JobRole, mv.mode_jobrole) as JobRole,
-    coalesce(b.MaritalStatus, mv.mode_marital) as MaritalStatus,
-    coalesce(b.OverTime, mv.mode_overtime) as OverTime
-
-from base b
-cross join stats s
-cross join mode_values mv
-        );
-[0m15:26:25.525441 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
-[0m15:26:26.791395 [debug] [Thread-1 (]: SQL status: SUCCESS 1 in 1.266 seconds
-[0m15:26:26.825248 [debug] [Thread-1 (]: On model.dbt_hr_project.hr_employee_cleaned: Close
-[0m15:26:26.951373 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '899eddf6-6c0f-46ad-be93-a92fcc4b786c', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d6da9d82950>]}
-[0m15:26:26.952256 [info ] [Thread-1 (]: 1 of 2 OK created sql table model GOLD.hr_employee_cleaned ..................... [[32mSUCCESS 1[0m in 1.48s]
-[0m15:26:26.952903 [debug] [Thread-1 (]: Finished running node model.dbt_hr_project.hr_employee_cleaned
-[0m15:26:26.954500 [debug] [Thread-3 (]: Began running node model.dbt_hr_project.hr_employee_encoded
-[0m15:26:26.955203 [info ] [Thread-3 (]: 2 of 2 START sql table model GOLD.hr_employee_encoded .......................... [RUN]
-[0m15:26:26.956086 [debug] [Thread-3 (]: Acquiring new snowflake connection 'model.dbt_hr_project.hr_employee_encoded'
-[0m15:26:26.956533 [debug] [Thread-3 (]: Began compiling node model.dbt_hr_project.hr_employee_encoded
-[0m15:26:26.962604 [debug] [Thread-3 (]: Writing injected SQL for node "model.dbt_hr_project.hr_employee_encoded"
-[0m15:26:26.963551 [debug] [Thread-3 (]: Began executing node model.dbt_hr_project.hr_employee_encoded
-[0m15:26:26.967861 [debug] [Thread-3 (]: Writing runtime sql for node "model.dbt_hr_project.hr_employee_encoded"
-[0m15:26:26.971272 [debug] [Thread-3 (]: Using snowflake connection "model.dbt_hr_project.hr_employee_encoded"
-[0m15:26:26.971828 [debug] [Thread-3 (]: On model.dbt_hr_project.hr_employee_encoded: /* {"app": "dbt", "dbt_version": "1.9.0b4", "profile_name": "dbt_hr_project", "target_name": "dev", "node_id": "model.dbt_hr_project.hr_employee_encoded"} */
-create or replace transient table RH_DB.GOLD.hr_employee_encoded
-         as
-        (
-
-with base as (
-
-    select *
-    from RH_DB.GOLD.hr_employee_cleaned
-
-)
-
-select
-
-    -- 🔥 TARGET
-    Attrition,
-
-    -- 🔵 NUMÉRIQUES (déjà clean)
-    Age,
-    DailyRate,
-    DistanceFromHome,
-    Education,
-    EnvironmentSatisfaction,
-    HourlyRate,
-    JobInvolvement,
-    JobLevel,
-    JobSatisfaction,
-    MonthlyIncome,
-    MonthlyRate,
-    NumCompaniesWorked,
-    PercentSalaryHike,
-    PerformanceRating,
-    RelationshipSatisfaction,
-    StockOptionLevel,
-    TotalWorkingYears,
-    TrainingTimesLastYear,
-    WorkLifeBalance,
-    YearsAtCompany,
-    YearsInCurrentRole,
-    YearsSinceLastPromotion,
-    YearsWithCurrManager,
-
-    -- 🟢 BUSINESS TRAVEL
-    case when BusinessTravel = 'Travel_Rarely' then 1 else 0 end as BusinessTravel_Rarely,
-    case when BusinessTravel = 'Travel_Frequently' then 1 else 0 end as BusinessTravel_Frequently,
-    case when BusinessTravel = 'Non-Travel' then 1 else 0 end as BusinessTravel_NonTravel,
-
-    -- 🟢 DEPARTMENT
-    case when Department = 'Sales' then 1 else 0 end as Department_Sales,
-    case when Department = 'Research & Development' then 1 else 0 end as Department_RnD,
-    case when Department = 'Human Resources' then 1 else 0 end as Department_HR,
-
-    -- 🟢 EDUCATION FIELD
-    case when EducationField = 'Life Sciences' then 1 else 0 end as EducationField_LifeSciences,
-    case when EducationField = 'Medical' then 1 else 0 end as EducationField_Medical,
-    case when EducationField = 'Marketing' then 1 else 0 end as EducationField_Marketing,
-    case when EducationField = 'Technical Degree' then 1 else 0 end as EducationField_Technical,
-    case when EducationField = 'Other' then 1 else 0 end as EducationField_Other,
-    case when EducationField = 'Human Resources' then 1 else 0 end as EducationField_HumanResources,
-
-    -- 🟢 GENDER
-    case when Gender = 'Male' then 1 else 0 end as Gender_Male,
-    case when Gender = 'Female' then 1 else 0 end as Gender_Female,
-
-    -- 🟢 JOB ROLE (IMPORTANT)
-    case when JobRole = 'Sales Executive' then 1 else 0 end as JobRole_SalesExecutive,
-    case when JobRole = 'Research Scientist' then 1 else 0 end as JobRole_ResearchScientist,
-    case when JobRole = 'Laboratory Technician' then 1 else 0 end as JobRole_LaboratoryTechnician,
-    case when JobRole = 'Manager' then 1 else 0 end as JobRole_Manager,
-    case when JobRole = 'Healthcare Representative' then 1 else 0 end as JobRole_HealthcareRepresentative,
-    case when JobRole = 'Manufacturing Director' then 1 else 0 end as JobRole_ManufacturingDirector,
-    case when JobRole = 'Sales Representative' then 1 else 0 end as JobRole_SalesRepresentative,
-    case when JobRole = 'Research Director' then 1 else 0 end as JobRole_ResearchDirector,
-    case when JobRole = 'Human Resources' then 1 else 0 end as JobRole_HumanResources,
-
-    -- 🟢 MARITAL STATUS
-    case when MaritalStatus = 'Single' then 1 else 0 end as MaritalStatus_Single,
-    case when MaritalStatus = 'Married' then 1 else 0 end as MaritalStatus_Married,
-    case when MaritalStatus = 'Divorced' then 1 else 0 end as MaritalStatus_Divorced,
-
-    -- 🟢 OVERTIME (TRÈS IMPORTANT POUR ATTRITION)
-    case when OverTime = 'Yes' then 1 else 0 end as OverTime_Yes,
-    case when OverTime = 'No' then 1 else 0 end as OverTime_No
-
-from base
-        );
-[0m15:26:26.972435 [debug] [Thread-3 (]: Opening a new connection, currently in state init
-[0m15:26:27.836290 [debug] [Thread-3 (]: SQL status: SUCCESS 1 in 0.864 seconds
-[0m15:26:27.839318 [debug] [Thread-3 (]: On model.dbt_hr_project.hr_employee_encoded: Close
-[0m15:26:27.966859 [debug] [Thread-3 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '899eddf6-6c0f-46ad-be93-a92fcc4b786c', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d6da8aaf4d0>]}
-[0m15:26:27.967633 [info ] [Thread-3 (]: 2 of 2 OK created sql table model GOLD.hr_employee_encoded ..................... [[32mSUCCESS 1[0m in 1.01s]
-[0m15:26:27.968267 [debug] [Thread-3 (]: Finished running node model.dbt_hr_project.hr_employee_encoded
-[0m15:26:27.970722 [debug] [MainThread]: Connection 'master' was properly closed.
-[0m15:26:27.971134 [debug] [MainThread]: Connection 'model.dbt_hr_project.hr_employee_cleaned' was properly closed.
-[0m15:26:27.971458 [debug] [MainThread]: Connection 'model.dbt_hr_project.hr_employee_encoded' was properly closed.
-[0m15:26:27.971861 [info ] [MainThread]: 
-[0m15:26:27.972278 [info ] [MainThread]: Finished running 2 table models in 0 hours 0 minutes and 4.66 seconds (4.66s).
-[0m15:26:27.973109 [debug] [MainThread]: Command end result
-[0m15:26:28.002688 [debug] [MainThread]: Wrote artifact WritableManifest to dbt_hr_project/target/manifest.json
-[0m15:26:28.004261 [debug] [MainThread]: Wrote artifact SemanticManifest to dbt_hr_project/target/semantic_manifest.json
-[0m15:26:28.013582 [debug] [MainThread]: Wrote artifact RunExecutionResult to dbt_hr_project/target/run_results.json
-[0m15:26:28.015376 [info ] [MainThread]: 
-[0m15:26:28.016527 [info ] [MainThread]: [32mCompleted successfully[0m
-[0m15:26:28.016964 [info ] [MainThread]: 
-[0m15:26:28.017318 [info ] [MainThread]: Done. PASS=2 WARN=0 ERROR=0 SKIP=0 TOTAL=2
-[0m15:26:28.018443 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": true, "command_wall_clock_time": 6.6155124, "process_user_time": 6.513494, "process_kernel_time": 1.475713, "process_mem_max_rss": "231360", "process_out_blocks": "2008", "process_in_blocks": "0"}
-[0m15:26:28.018874 [debug] [MainThread]: Command `dbt run` succeeded at 15:26:28.018775 after 6.62 seconds
-[0m15:26:28.019258 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d6dc70986d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d6dcc719b50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d6dcc5cda90>]}
-[0m15:26:28.019613 [debug] [MainThread]: Flushing usage events
-[0m15:26:28.659537 [debug] [MainThread]: An error was encountered while trying to flush usage events
-[0m15:34:11.369551 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7872ca470450>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7872cb082e90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7872ca7e9850>]}
-
-
-============================== 15:34:11.375547 | 6bbb14cf-0ccb-4c3d-9966-b0c112faf496 ==============================
-[0m15:34:11.375547 [info ] [MainThread]: Running with dbt=1.9.0-b4
-[0m15:34:11.376151 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': 'dbt_hr_project', 'debug': 'False', 'version_check': 'True', 'log_path': 'dbt_hr_project/logs', 'warn_error': 'None', 'fail_fast': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'False', 'quiet': 'False', 'no_print': 'None', 'log_format': 'default', 'invocation_command': 'dbt run --project-dir dbt_hr_project --profiles-dir dbt_hr_project', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'static_parser': 'True', 'target_path': 'None', 'introspect': 'True', 'send_anonymous_usage_stats': 'True'}
-[0m15:34:12.702604 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '6bbb14cf-0ccb-4c3d-9966-b0c112faf496', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7872ad180550>]}
-[0m15:34:12.803801 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '6bbb14cf-0ccb-4c3d-9966-b0c112faf496', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7872ad2d5d90>]}
-[0m15:34:12.804760 [info ] [MainThread]: Registered adapter: snowflake=1.8.0
-[0m15:34:12.970929 [debug] [MainThread]: checksum: 0d3acddb5afbce98f9888b13248063cae3d09e6e329263e3ffe4b2a6aa072c8d, vars: {}, profile: , target: , version: 1.9.0b4
-[0m15:34:13.102072 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
-[0m15:34:13.102635 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
-[0m15:34:13.108378 [warn ] [MainThread]: [[33mWARNING[0m]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
-There are 1 unused configuration paths:
-- models.dbt_hr_project.example
-[0m15:34:13.142240 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '6bbb14cf-0ccb-4c3d-9966-b0c112faf496', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7872ace0c0d0>]}
-[0m15:34:13.234771 [debug] [MainThread]: Wrote artifact WritableManifest to dbt_hr_project/target/manifest.json
-[0m15:34:13.236440 [debug] [MainThread]: Wrote artifact SemanticManifest to dbt_hr_project/target/semantic_manifest.json
-[0m15:34:13.252903 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '6bbb14cf-0ccb-4c3d-9966-b0c112faf496', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7872ace5bcd0>]}
-[0m15:34:13.253489 [info ] [MainThread]: Found 2 models, 1 source, 459 macros
-[0m15:34:13.253872 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '6bbb14cf-0ccb-4c3d-9966-b0c112faf496', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7872acecb8d0>]}
-[0m15:34:13.255770 [info ] [MainThread]: 
-[0m15:34:13.256209 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
-[0m15:34:13.256551 [info ] [MainThread]: 
-[0m15:34:13.257076 [debug] [MainThread]: Acquiring new snowflake connection 'master'
-[0m15:34:13.264825 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_RH_DB'
-[0m15:34:13.285131 [debug] [ThreadPool]: Using snowflake connection "list_RH_DB"
-[0m15:34:13.285591 [debug] [ThreadPool]: On list_RH_DB: /* {"app": "dbt", "dbt_version": "1.9.0b4", "profile_name": "dbt_hr_project", "target_name": "dev", "connection_name": "list_RH_DB"} */
-show terse schemas in database RH_DB
-    limit 10000
-[0m15:34:13.285913 [debug] [ThreadPool]: Opening a new connection, currently in state init
-[0m15:34:14.839647 [debug] [ThreadPool]: SQL status: SUCCESS 4 in 1.552 seconds
-[0m15:34:14.845424 [debug] [ThreadPool]: On list_RH_DB: Close
-[0m15:34:15.010521 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_RH_DB, now list_RH_DB_GOLD)
-[0m15:34:15.048522 [debug] [ThreadPool]: Using snowflake connection "list_RH_DB_GOLD"
-[0m15:34:15.049744 [debug] [ThreadPool]: On list_RH_DB_GOLD: /* {"app": "dbt", "dbt_version": "1.9.0b4", "profile_name": "dbt_hr_project", "target_name": "dev", "connection_name": "list_RH_DB_GOLD"} */
-show terse objects in RH_DB.GOLD limit 10000
-[0m15:34:15.050533 [debug] [ThreadPool]: Opening a new connection, currently in state closed
-[0m15:34:15.451723 [debug] [ThreadPool]: SQL status: SUCCESS 0 in 0.401 seconds
-[0m15:34:15.461362 [debug] [ThreadPool]: On list_RH_DB_GOLD: Close
-[0m15:34:15.612613 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '6bbb14cf-0ccb-4c3d-9966-b0c112faf496', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7872ac2ef250>]}
-[0m15:34:15.653721 [debug] [Thread-1 (]: Began running node model.dbt_hr_project.hr_employee_cleaned
-[0m15:34:15.654951 [info ] [Thread-1 (]: 1 of 2 START sql table model GOLD.hr_employee_cleaned .......................... [RUN]
-[0m15:34:15.656316 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list_RH_DB_GOLD, now model.dbt_hr_project.hr_employee_cleaned)
-[0m15:34:15.657437 [debug] [Thread-1 (]: Began compiling node model.dbt_hr_project.hr_employee_cleaned
-[0m15:34:15.676027 [debug] [Thread-1 (]: Writing injected SQL for node "model.dbt_hr_project.hr_employee_cleaned"
-[0m15:34:15.677514 [debug] [Thread-1 (]: Began executing node model.dbt_hr_project.hr_employee_cleaned
-[0m15:34:15.721110 [debug] [Thread-1 (]: Writing runtime sql for node "model.dbt_hr_project.hr_employee_cleaned"
-[0m15:34:15.730487 [debug] [Thread-1 (]: Using snowflake connection "model.dbt_hr_project.hr_employee_cleaned"
-[0m15:34:15.731388 [debug] [Thread-1 (]: On model.dbt_hr_project.hr_employee_cleaned: /* {"app": "dbt", "dbt_version": "1.9.0b4", "profile_name": "dbt_hr_project", "target_name": "dev", "node_id": "model.dbt_hr_project.hr_employee_cleaned"} */
-create or replace transient table RH_DB.GOLD.hr_employee_cleaned
-         as
-        (
-
-with base as (
-
-    select *
-    from RH_DB.RAW.HR_RAW_DATA
-
-),
-
--- 🔵 MEDIAN NUMÉRIQUES
-stats as (
-
-    select
-        percentile_cont(0.5) within group (order by Age) as median_age,
-        percentile_cont(0.5) within group (order by DailyRate) as median_dailyrate,
-        percentile_cont(0.5) within group (order by DistanceFromHome) as median_distance,
-        percentile_cont(0.5) within group (order by Education) as median_education,
-        percentile_cont(0.5) within group (order by EnvironmentSatisfaction) as median_envsat,
-        percentile_cont(0.5) within group (order by HourlyRate) as median_hourly,
-        percentile_cont(0.5) within group (order by JobInvolvement) as median_jobinv,
-        percentile_cont(0.5) within group (order by JobLevel) as median_joblevel,
-        percentile_cont(0.5) within group (order by JobSatisfaction) as median_jobsat,
-        percentile_cont(0.5) within group (order by MonthlyIncome) as median_income,
-        percentile_cont(0.5) within group (order by MonthlyRate) as median_monthlyrate,
-        percentile_cont(0.5) within group (order by NumCompaniesWorked) as median_numcomp,
-        percentile_cont(0.5) within group (order by PercentSalaryHike) as median_salaryhike,
-        percentile_cont(0.5) within group (order by PerformanceRating) as median_perf,
-        percentile_cont(0.5) within group (order by RelationshipSatisfaction) as median_rel,
-        percentile_cont(0.5) within group (order by StockOptionLevel) as median_stock,
-        percentile_cont(0.5) within group (order by TotalWorkingYears) as median_totalyears,
-        percentile_cont(0.5) within group (order by TrainingTimesLastYear) as median_training,
-        percentile_cont(0.5) within group (order by WorkLifeBalance) as median_wlb,
-        percentile_cont(0.5) within group (order by YearsAtCompany) as median_company,
-        percentile_cont(0.5) within group (order by YearsInCurrentRole) as median_role,
-        percentile_cont(0.5) within group (order by YearsSinceLastPromotion) as median_promo,
-        percentile_cont(0.5) within group (order by YearsWithCurrManager) as median_manager
-
-    from base
-
-),
-
--- 🟢 MODE CATÉGORIELLES
-mode_values as (
-
-    select
-
-        (select BusinessTravel
-         from base
-         where BusinessTravel is not null
-         group by BusinessTravel
-         order by count(*) desc limit 1) as mode_business_travel,
-
-        (select Department
-         from base
-         where Department is not null
-         group by Department
-         order by count(*) desc limit 1) as mode_department,
-
-        (select EducationField
-         from base
-         where EducationField is not null
-         group by EducationField
-         order by count(*) desc limit 1) as mode_educationfield,
-
-        (select Gender
-         from base
-         where Gender is not null
-         group by Gender
-         order by count(*) desc limit 1) as mode_gender,
-
-        (select JobRole
-         from base
-         where JobRole is not null
-         group by JobRole
-         order by count(*) desc limit 1) as mode_jobrole,
-
-        (select MaritalStatus
-         from base
-         where MaritalStatus is not null
-         group by MaritalStatus
-         order by count(*) desc limit 1) as mode_marital,
-
-        (select OverTime
-         from base
-         where OverTime is not null
-         group by OverTime
-         order by count(*) desc limit 1) as mode_overtime
-
-)
-
-select
-
-    -- 🔥 TARGET
-    b.Attrition,
-
-    -- 🔵 NUMÉRIQUES (NULL → MEDIAN)
-    coalesce(b.Age, s.median_age) as Age,
-    coalesce(b.DailyRate, s.median_dailyrate) as DailyRate,
-    coalesce(b.DistanceFromHome, s.median_distance) as DistanceFromHome,
-    coalesce(b.Education, s.median_education) as Education,
-    coalesce(b.EnvironmentSatisfaction, s.median_envsat) as EnvironmentSatisfaction,
-    coalesce(b.HourlyRate, s.median_hourly) as HourlyRate,
-    coalesce(b.JobInvolvement, s.median_jobinv) as JobInvolvement,
-    coalesce(b.JobLevel, s.median_joblevel) as JobLevel,
-    coalesce(b.JobSatisfaction, s.median_jobsat) as JobSatisfaction,
-    coalesce(b.MonthlyIncome, s.median_income) as MonthlyIncome,
-    coalesce(b.MonthlyRate, s.median_monthlyrate) as MonthlyRate,
-    coalesce(b.NumCompaniesWorked, s.median_numcomp) as NumCompaniesWorked,
-    coalesce(b.PercentSalaryHike, s.median_salaryhike) as PercentSalaryHike,
-    coalesce(b.PerformanceRating, s.median_perf) as PerformanceRating,
-    coalesce(b.RelationshipSatisfaction, s.median_rel) as RelationshipSatisfaction,
-    coalesce(b.StockOptionLevel, s.median_stock) as StockOptionLevel,
-    coalesce(b.TotalWorkingYears, s.median_totalyears) as TotalWorkingYears,
-    coalesce(b.TrainingTimesLastYear, s.median_training) as TrainingTimesLastYear,
-    coalesce(b.WorkLifeBalance, s.median_wlb) as WorkLifeBalance,
-    coalesce(b.YearsAtCompany, s.median_company) as YearsAtCompany,
-    coalesce(b.YearsInCurrentRole, s.median_role) as YearsInCurrentRole,
-    coalesce(b.YearsSinceLastPromotion, s.median_promo) as YearsSinceLastPromotion,
-    coalesce(b.YearsWithCurrManager, s.median_manager) as YearsWithCurrManager,
-
-    -- 🟢 CATÉGORIELLES (NULL → MODE)
-    coalesce(b.BusinessTravel, mv.mode_business_travel) as BusinessTravel,
-    coalesce(b.Department, mv.mode_department) as Department,
-    coalesce(b.EducationField, mv.mode_educationfield) as EducationField,
-    coalesce(b.Gender, mv.mode_gender) as Gender,
-    coalesce(b.JobRole, mv.mode_jobrole) as JobRole,
-    coalesce(b.MaritalStatus, mv.mode_marital) as MaritalStatus,
-    coalesce(b.OverTime, mv.mode_overtime) as OverTime
-
-from base b
-cross join stats s
-cross join mode_values mv
-        );
-[0m15:34:15.732240 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
-[0m15:34:17.178978 [debug] [Thread-1 (]: SQL status: SUCCESS 1 in 1.446 seconds
-[0m15:34:17.205937 [debug] [Thread-1 (]: On model.dbt_hr_project.hr_employee_cleaned: Close
-[0m15:34:17.333056 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '6bbb14cf-0ccb-4c3d-9966-b0c112faf496', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7872acc1c510>]}
-[0m15:34:17.333935 [info ] [Thread-1 (]: 1 of 2 OK created sql table model GOLD.hr_employee_cleaned ..................... [[32mSUCCESS 1[0m in 1.68s]
-[0m15:34:17.334627 [debug] [Thread-1 (]: Finished running node model.dbt_hr_project.hr_employee_cleaned
-[0m15:34:17.336033 [debug] [Thread-3 (]: Began running node model.dbt_hr_project.hr_employee_encoded
-[0m15:34:17.336755 [info ] [Thread-3 (]: 2 of 2 START sql table model GOLD.hr_employee_encoded .......................... [RUN]
-[0m15:34:17.337656 [debug] [Thread-3 (]: Acquiring new snowflake connection 'model.dbt_hr_project.hr_employee_encoded'
-[0m15:34:17.338227 [debug] [Thread-3 (]: Began compiling node model.dbt_hr_project.hr_employee_encoded
-[0m15:34:17.346476 [debug] [Thread-3 (]: Writing injected SQL for node "model.dbt_hr_project.hr_employee_encoded"
-[0m15:34:17.347245 [debug] [Thread-3 (]: Began executing node model.dbt_hr_project.hr_employee_encoded
-[0m15:34:17.350001 [debug] [Thread-3 (]: Writing runtime sql for node "model.dbt_hr_project.hr_employee_encoded"
-[0m15:34:17.353319 [debug] [Thread-3 (]: Using snowflake connection "model.dbt_hr_project.hr_employee_encoded"
-[0m15:34:17.353955 [debug] [Thread-3 (]: On model.dbt_hr_project.hr_employee_encoded: /* {"app": "dbt", "dbt_version": "1.9.0b4", "profile_name": "dbt_hr_project", "target_name": "dev", "node_id": "model.dbt_hr_project.hr_employee_encoded"} */
-create or replace transient table RH_DB.GOLD.hr_employee_encoded
-         as
-        (
-
-with base as (
-
-    select *
-    from RH_DB.GOLD.hr_employee_cleaned
-
-)
-
-select
-
-    -- 🔥 TARGET
-    Attrition,
-
-    -- 🔵 NUMÉRIQUES (déjà clean)
-    Age,
-    DailyRate,
-    DistanceFromHome,
-    Education,
-    EnvironmentSatisfaction,
-    HourlyRate,
-    JobInvolvement,
-    JobLevel,
-    JobSatisfaction,
-    MonthlyIncome,
-    MonthlyRate,
-    NumCompaniesWorked,
-    PercentSalaryHike,
-    PerformanceRating,
-    RelationshipSatisfaction,
-    StockOptionLevel,
-    TotalWorkingYears,
-    TrainingTimesLastYear,
-    WorkLifeBalance,
-    YearsAtCompany,
-    YearsInCurrentRole,
-    YearsSinceLastPromotion,
-    YearsWithCurrManager,
-
-    -- 🟢 BUSINESS TRAVEL
-    case when BusinessTravel = 'Travel_Rarely' then 1 else 0 end as BusinessTravel_Rarely,
-    case when BusinessTravel = 'Travel_Frequently' then 1 else 0 end as BusinessTravel_Frequently,
-    case when BusinessTravel = 'Non-Travel' then 1 else 0 end as BusinessTravel_NonTravel,
-
-    -- 🟢 DEPARTMENT
-    case when Department = 'Sales' then 1 else 0 end as Department_Sales,
-    case when Department = 'Research & Development' then 1 else 0 end as Department_RnD,
-    case when Department = 'Human Resources' then 1 else 0 end as Department_HR,
-
-    -- 🟢 EDUCATION FIELD
-    case when EducationField = 'Life Sciences' then 1 else 0 end as EducationField_LifeSciences,
-    case when EducationField = 'Medical' then 1 else 0 end as EducationField_Medical,
-    case when EducationField = 'Marketing' then 1 else 0 end as EducationField_Marketing,
-    case when EducationField = 'Technical Degree' then 1 else 0 end as EducationField_Technical,
-    case when EducationField = 'Other' then 1 else 0 end as EducationField_Other,
-    case when EducationField = 'Human Resources' then 1 else 0 end as EducationField_HumanResources,
-
-    -- 🟢 GENDER
-    case when Gender = 'Male' then 1 else 0 end as Gender_Male,
-    case when Gender = 'Female' then 1 else 0 end as Gender_Female,
-
-    -- 🟢 JOB ROLE (IMPORTANT)
-    case when JobRole = 'Sales Executive' then 1 else 0 end as JobRole_SalesExecutive,
-    case when JobRole = 'Research Scientist' then 1 else 0 end as JobRole_ResearchScientist,
-    case when JobRole = 'Laboratory Technician' then 1 else 0 end as JobRole_LaboratoryTechnician,
-    case when JobRole = 'Manager' then 1 else 0 end as JobRole_Manager,
-    case when JobRole = 'Healthcare Representative' then 1 else 0 end as JobRole_HealthcareRepresentative,
-    case when JobRole = 'Manufacturing Director' then 1 else 0 end as JobRole_ManufacturingDirector,
-    case when JobRole = 'Sales Representative' then 1 else 0 end as JobRole_SalesRepresentative,
-    case when JobRole = 'Research Director' then 1 else 0 end as JobRole_ResearchDirector,
-    case when JobRole = 'Human Resources' then 1 else 0 end as JobRole_HumanResources,
-
-    -- 🟢 MARITAL STATUS
-    case when MaritalStatus = 'Single' then 1 else 0 end as MaritalStatus_Single,
-    case when MaritalStatus = 'Married' then 1 else 0 end as MaritalStatus_Married,
-    case when MaritalStatus = 'Divorced' then 1 else 0 end as MaritalStatus_Divorced,
-
-    -- 🟢 OVERTIME (TRÈS IMPORTANT POUR ATTRITION)
-    case when OverTime = 'Yes' then 1 else 0 end as OverTime_Yes,
-    case when OverTime = 'No' then 1 else 0 end as OverTime_No
-
-from base
-        );
-[0m15:34:17.354693 [debug] [Thread-3 (]: Opening a new connection, currently in state init
-[0m15:34:18.490780 [debug] [Thread-3 (]: SQL status: SUCCESS 1 in 1.136 seconds
-[0m15:34:18.494739 [debug] [Thread-3 (]: On model.dbt_hr_project.hr_employee_encoded: Close
-[0m15:34:18.614494 [debug] [Thread-3 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '6bbb14cf-0ccb-4c3d-9966-b0c112faf496', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7872ac3d6250>]}
-[0m15:34:18.615674 [info ] [Thread-3 (]: 2 of 2 OK created sql table model GOLD.hr_employee_encoded ..................... [[32mSUCCESS 1[0m in 1.28s]
-[0m15:34:18.616565 [debug] [Thread-3 (]: Finished running node model.dbt_hr_project.hr_employee_encoded
-[0m15:34:18.619633 [debug] [MainThread]: Connection 'master' was properly closed.
-[0m15:34:18.620085 [debug] [MainThread]: Connection 'model.dbt_hr_project.hr_employee_cleaned' was properly closed.
-[0m15:34:18.620446 [debug] [MainThread]: Connection 'model.dbt_hr_project.hr_employee_encoded' was properly closed.
-[0m15:34:18.621360 [info ] [MainThread]: 
-[0m15:34:18.622874 [info ] [MainThread]: Finished running 2 table models in 0 hours 0 minutes and 5.36 seconds (5.36s).
-[0m15:34:18.624611 [debug] [MainThread]: Command end result
-[0m15:34:18.652595 [debug] [MainThread]: Wrote artifact WritableManifest to dbt_hr_project/target/manifest.json
-[0m15:34:18.654505 [debug] [MainThread]: Wrote artifact SemanticManifest to dbt_hr_project/target/semantic_manifest.json
-[0m15:34:18.664939 [debug] [MainThread]: Wrote artifact RunExecutionResult to dbt_hr_project/target/run_results.json
-[0m15:34:18.665341 [info ] [MainThread]: 
-[0m15:34:18.665795 [info ] [MainThread]: [32mCompleted successfully[0m
-[0m15:34:18.666128 [info ] [MainThread]: 
-[0m15:34:18.666480 [info ] [MainThread]: Done. PASS=2 WARN=0 ERROR=0 SKIP=0 TOTAL=2
-[0m15:34:18.667577 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": true, "command_wall_clock_time": 7.3965282, "process_user_time": 6.626916, "process_kernel_time": 1.442539, "process_mem_max_rss": "232192", "process_out_blocks": "2008", "process_in_blocks": "0"}
-[0m15:34:18.668010 [debug] [MainThread]: Command `dbt run` succeeded at 15:34:18.667911 after 7.40 seconds
-[0m15:34:18.668367 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7872ca2d83d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7872ca2d8490>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7872cfaf4c10>]}
-[0m15:34:18.668726 [debug] [MainThread]: Flushing usage events
-[0m15:34:19.307373 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m14:48:35.983596 [debug] [Thread-3 (]: Opening a new connection, currently in state init
+[0m14:48:38.742789 [debug] [Thread-3 (]: SQL status: SUCCESS 1 in 2.759 seconds
+[0m14:48:38.746596 [debug] [Thread-3 (]: On model.dbt_hr_project.hr_employee_encoded: Close
+[0m14:48:39.187059 [debug] [Thread-3 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '58f749dc-bad3-4e37-87a3-1983e5db749c', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7a419039df50>]}
+[0m14:48:39.189305 [info ] [Thread-3 (]: 2 of 2 OK created sql table model RAW_gold.hr_employee_encoded ................. [[32mSUCCESS 1[0m in 3.27s]
+[0m14:48:39.191709 [debug] [Thread-3 (]: Finished running node model.dbt_hr_project.hr_employee_encoded
+[0m14:48:39.196090 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m14:48:39.197975 [debug] [MainThread]: Connection 'model.dbt_hr_project.hr_employee_cleaned' was properly closed.
+[0m14:48:39.199896 [debug] [MainThread]: Connection 'model.dbt_hr_project.hr_employee_encoded' was properly closed.
+[0m14:48:39.201603 [info ] [MainThread]: 
+[0m14:48:39.203382 [info ] [MainThread]: Finished running 2 table models in 0 hours 0 minutes and 11.79 seconds (11.79s).
+[0m14:48:39.206033 [debug] [MainThread]: Command end result
+[0m14:48:39.255121 [debug] [MainThread]: Wrote artifact WritableManifest to /app/dbt_hr_project/target/manifest.json
+[0m14:48:39.265361 [debug] [MainThread]: Wrote artifact SemanticManifest to /app/dbt_hr_project/target/semantic_manifest.json
+[0m14:48:39.280027 [debug] [MainThread]: Wrote artifact RunExecutionResult to /app/dbt_hr_project/target/run_results.json
+[0m14:48:39.281417 [info ] [MainThread]: 
+[0m14:48:39.283101 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m14:48:39.284640 [info ] [MainThread]: 
+[0m14:48:39.286115 [info ] [MainThread]: Done. PASS=2 WARN=0 ERROR=0 SKIP=0 TOTAL=2
+[0m14:48:39.288761 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": true, "command_wall_clock_time": 14.041539, "process_user_time": 6.150307, "process_kernel_time": 1.449747, "process_mem_max_rss": "232684", "process_in_blocks": "32320", "process_out_blocks": "2424"}
+[0m14:48:39.290793 [debug] [MainThread]: Command `dbt run` succeeded at 14:48:39.290514 after 14.04 seconds
+[0m14:48:39.292124 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7a418fe54e50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7a4195490210>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7a4195490090>]}
+[0m14:48:39.293314 [debug] [MainThread]: Flushing usage events
+[0m14:48:39.968291 [debug] [MainThread]: An error was encountered while trying to flush usage events

@@ -2,14 +2,14 @@
   
     
 
-        create or replace transient table RH_DB.GOLD.hr_employee_encoded
+        create or replace transient table RH_DB.RAW_gold.hr_employee_encoded
          as
         (
 
 with base as (
 
     select *
-    from RH_DB.GOLD.hr_employee_cleaned
+    from RH_DB.RAW_gold.hr_employee_cleaned
 
 )
 

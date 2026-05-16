@@ -2,7 +2,7 @@
   
     
 
-        create or replace transient table RH_DB.GOLD.hr_employee_cleaned
+        create or replace transient table RH_DB.RAW_gold.hr_employee_cleaned
          as
         (
 
