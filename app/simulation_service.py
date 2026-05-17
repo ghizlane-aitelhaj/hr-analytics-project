@@ -193,7 +193,7 @@ def get_counterfactuals(model, current_employee_df: pd.DataFrame, n_cfs: int = 3
             current_employee_df,
             total_CFs=n_cfs,
             desired_class=0,  # 0 = Rester dans l'entreprise
-            features_to_vary=ACTIONABLE_FEATURES,
+            features_to_vary=["MONTHLYINCOME"],
             permitted_range=FEATURE_RANGES,
         )
 
