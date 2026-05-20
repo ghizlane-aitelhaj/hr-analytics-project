@@ -11,40 +11,82 @@ from mlflow.tracking import MlflowClient
 
 load_dotenv()
 
-# 1. Configuration MLflow
 mlflow.set_tracking_uri("http://mlflow:5000")
 mlflow.set_experiment("HR_Attrition_Prediction")
 
-# Colonnes réelles disponibles dans HR_EMPLOYEE_ENCODED (one-hot encodées)
+# ─────────────────────────────────────────────────────────────────────────────
+# FEATURES ÉTENDUES — 35 colonnes au lieu de 18
+# Ajouts clés : JobSatisfaction, EnvironmentSatisfaction, WorkLifeBalance,
+# YearsAtCompany, YearsSinceLastPromotion, StockOptionLevel, NumCompaniesWorked,
+# JobLevel, JobRole (9 modalités), EducationField (6 modalités)
+# ─────────────────────────────────────────────────────────────────────────────
+
 REQUIRED_FEATURES = [
-    # Numériques
+    # ── Numériques ────────────────────────────────────────────────────────────
     "AGE",
     "DISTANCEFROMHOME",
     "EDUCATION",
     "MONTHLYINCOME",
     "TOTALWORKINGYEARS",
-    # One-hot encodées - Business Travel
+    "JOBLEVEL",                   # Nouveau — niveau hiérarchique
+    "JOBSATISFACTION",            # Nouveau — satisfaction au travail (1-4)
+    "ENVIRONMENTSATISFACTION",    # Nouveau — qualité environnement (1-4)
+    "WORKLIFEBALANCE",            # Nouveau — équilibre vie pro/perso (1-4)
+    "YEARSATCOMPANY",             # Nouveau — ancienneté
+    "YEARSINCURRENTROLE",         # Nouveau — durée dans le rôle actuel
+    "YEARSSINCELASTPROMOTION",    # Nouveau — temps depuis dernière promotion
+    "YEARSWITHCURRMANAGER",       # Nouveau — stabilité managériale
+    "NUMCOMPANIESWORKED",         # Nouveau — mobilité historique
+    "STOCKOPTIONLEVEL",           # Nouveau — intéressement (0-3)
+    "TRAININGTIMESLASTYEAR",      # Nouveau — formations reçues
+    "JOBINVOLVEMENT",             # Nouveau — implication dans le travail (1-4)
+    "RELATIONSHIPSATISFACTION",   # Nouveau — qualité des relations (1-4)
+
+    # ── BusinessTravel ────────────────────────────────────────────────────────
     "BUSINESSTRAVEL_RARELY",
     "BUSINESSTRAVEL_FREQUENTLY",
     "BUSINESSTRAVEL_NONTRAVEL",
-    # One-hot encodées - Department
+
+    # ── Department ───────────────────────────────────────────────────────────
     "DEPARTMENT_SALES",
     "DEPARTMENT_RND",
     "DEPARTMENT_HR",
-    # One-hot encodées - Gender
+
+    # ── EducationField (Nouveau) ──────────────────────────────────────────────
+    "EDUCATIONFIELD_LIFESCIENCES",
+    "EDUCATIONFIELD_MEDICAL",
+    "EDUCATIONFIELD_MARKETING",
+    "EDUCATIONFIELD_TECHNICAL",
+    "EDUCATIONFIELD_OTHER",
+    "EDUCATIONFIELD_HUMANRESOURCES",
+
+    # ── Gender ───────────────────────────────────────────────────────────────
     "GENDER_MALE",
     "GENDER_FEMALE",
-    # One-hot encodées - Marital Status
+
+    # ── JobRole (Nouveau) ─────────────────────────────────────────────────────
+    "JOBROLE_SALESEXECUTIVE",
+    "JOBROLE_RESEARCHSCIENTIST",
+    "JOBROLE_LABORATORYTECHNICIAN",
+    "JOBROLE_MANAGER",
+    "JOBROLE_HEALTHCAREREPRESENTATIVE",
+    "JOBROLE_MANUFACTURINGDIRECTOR",
+    "JOBROLE_SALESREPRESENTATIVE",
+    "JOBROLE_RESEARCHDIRECTOR",
+    "JOBROLE_HUMANRESOURCES",
+
+    # ── MaritalStatus ─────────────────────────────────────────────────────────
     "MARITALSTATUS_SINGLE",
     "MARITALSTATUS_MARRIED",
     "MARITALSTATUS_DIVORCED",
-    # One-hot encodées - Overtime
+
+    # ── OverTime ──────────────────────────────────────────────────────────────
     "OVERTIME_YES",
     "OVERTIME_NO",
 ]
 
+
 def train_model():
-    # 2. Récupération des données depuis Snowflake (Table GOLD)
     ctx = connect(
         user=os.getenv('SNOWFLAKE_USER'),
         password=os.getenv('SNOWFLAKE_PASS'),
@@ -54,53 +96,54 @@ def train_model():
         role=os.getenv('SNOWFLAKE_ROLE'),
         warehouse=os.getenv('SNOWFLAKE_WAREHOUSE')
     )
-    
-    query = 'SELECT * FROM "RH_DB"."RAW_GOLD"."HR_EMPLOYEE_ENCODED"'
+
+    db = os.getenv('SNOWFLAKE_DATABASE', 'RH_DB')
+    schema = os.getenv('SNOWFLAKE_SCHEMA', 'GOLD')
+    query = f'SELECT * FROM "{db}"."{schema}"."HR_EMPLOYEE_ENCODED"'
     df = pd.read_sql(query, ctx)
     ctx.close()
 
-    # 3. Sélectionner uniquement les features nécessaires + la target
-    df = df[REQUIRED_FEATURES + ['ATTRITION']]
-    
-    print(f"Colonnes utilisées pour l'entraînement ({len(REQUIRED_FEATURES)}):")
-    print(REQUIRED_FEATURES)
-    print(f"Dataset shape: {df.shape}")
+    # Normaliser les noms de colonnes
+    df.columns = [c.strip().upper() for c in df.columns]
 
-    # 4. Préparation Features/Target
-    X = df.drop(columns=['ATTRITION'])
-    # Encodage de la target Attrition (Yes -> 1, No -> 0)
-    y = df['ATTRITION'].apply(lambda x: 1 if x == 'Yes' else 0)
+    print(f"Colonnes disponibles dans Snowflake : {list(df.columns)}")
+
+    # Vérifier quelles features sont disponibles
+    available = [f for f in REQUIRED_FEATURES if f in df.columns]
+    missing = [f for f in REQUIRED_FEATURES if f not in df.columns]
+    if missing:
+        print(f"\n⚠️  Features manquantes dans Snowflake (initialisées à 0) : {missing}")
+        for col in missing:
+            df[col] = 0
+
+    df = df[available + [f for f in missing] + ['ATTRITION']]
+
+    print(f"\nDataset shape: {df.shape}")
+    print(f"Features utilisées : {len(REQUIRED_FEATURES)}")
+
+    X = df[REQUIRED_FEATURES].apply(pd.to_numeric, errors='coerce').fillna(0)
+    y = df['ATTRITION'].apply(lambda x: 1 if str(x).strip().lower() in ['yes', '1'] else 0)
+
+    print(f"Distribution target : {y.value_counts().to_dict()}")
 
     X_train, X_test, y_train, y_test = train_test_split(
-        X, y,
-        test_size=0.2,
-        random_state=42,
-        stratify=y
+        X, y, test_size=0.2, random_state=42, stratify=y
     )
 
-    # CORRECTION : Paramètres bridés pour forcer la généralisation et éviter le 100% (Overfitting)
     param_grid = {
-        "n_estimators": [100, 200],
-        "max_depth": [3, 5, 8],                  # Limite la hauteur des arbres pour empêcher le par cœur
-        "min_samples_split": [10, 20],           # Empêche la création de règles basées sur de trop petits groupes
-        "min_samples_leaf": [5, 10],             # Assure des groupes finaux (feuilles) plus denses et stables
-        "max_features": ["sqrt"]
+        "n_estimators":      [100, 200],
+        "max_depth":         [3, 5, 7],
+        "min_samples_split": [10, 20],
+        "min_samples_leaf":  [5, 10],
+        "max_features":      ["sqrt"],
     }
 
-    base_model = RandomForestClassifier(
-        random_state=42,
-        class_weight="balanced"
-    )
-
+    base_model = RandomForestClassifier(random_state=42, class_weight="balanced")
     cv = StratifiedKFold(n_splits=5, shuffle=True, random_state=42)
 
     grid = GridSearchCV(
-        estimator=base_model,
-        param_grid=param_grid,
-        scoring="f1",
-        cv=cv,
-        n_jobs=-1,
-        verbose=2
+        estimator=base_model, param_grid=param_grid,
+        scoring="f1", cv=cv, n_jobs=-1, verbose=1,
     )
 
     with mlflow.start_run():
@@ -110,67 +153,60 @@ def train_model():
         y_pred = best_model.predict(X_test)
 
         acc = accuracy_score(y_test, y_pred)
-        f1 = f1_score(y_test, y_pred)
+        f1  = f1_score(y_test, y_pred)
 
-        # Feature Importance
-        feature_importance = pd.DataFrame({
+        fi = pd.DataFrame({
             'feature': X.columns,
             'importance': best_model.feature_importances_
         }).sort_values('importance', ascending=False)
-        
-        print("\n--- Feature Importance ---")
-        print(feature_importance)
+
+        print("\n--- Feature Importance (top 15) ---")
+        print(fi.head(15).to_string(index=False))
 
         mlflow.log_params(grid.best_params_)
         mlflow.log_metric("best_cv_f1", grid.best_score_)
-        mlflow.log_metric("accuracy", acc)
-        mlflow.log_metric("f1_score", f1)
+        mlflow.log_metric("accuracy",   acc)
+        mlflow.log_metric("f1_score",   f1)
+        mlflow.log_metric("n_features", len(REQUIRED_FEATURES))
 
         mlflow.sklearn.log_model(
-            best_model,
-            "attrition_model",
-            registered_model_name="RF_Attrition_v1"
+            best_model, "attrition_model",
+            registered_model_name="RF_Attrition_v1",
         )
 
         client = MlflowClient()
         model_name = "RF_Attrition_v1"
 
-        # CORRECTION : Utilisation de la méthode moderne recommandée à la place de get_latest_versions
         try:
             versions = client.search_model_versions(f"name='{model_name}'")
-            # Filtrer manuellement pour trouver la version actuellement en Production
             prod_versions = [v for v in versions if v.current_stage == "Production"]
-            
-            if prod_versions:
-                production_run_id = prod_versions[0].run_id
-                old_f1 = client.get_run(production_run_id).data.metrics['f1_score']
-            else:
-                old_f1 = 0
-        except Exception as e:
-            print(f"Note: Impossible de récupérer l'ancien modèle ({e}), initialisation à 0.")
+            old_f1 = (
+                client.get_run(prod_versions[0].run_id).data.metrics.get('f1_score', 0)
+                if prod_versions else 0
+            )
+        except Exception:
             old_f1 = 0
 
-        # 2. Comparer et Promouvoir
         if f1 > old_f1:
-            print("✓ Nouveau modèle meilleur ! Promotion en PRODUCTION.")
-            # Récupérer la toute dernière version générée (qui est sans stage "None")
+            print(f"\n✓ F1 nouveau ({f1:.3f}) > F1 Production ({old_f1:.3f}) → promotion.")
             all_versions = client.search_model_versions(f"name='{model_name}'")
-            latest_version = max(int(v.version) for v in all_versions)
-            
+            latest = max(int(v.version) for v in all_versions)
             client.transition_model_version_stage(
-                name=model_name,
-                version=str(latest_version),
-                stage="Production",
-                archive_existing_versions=True
+                name=model_name, version=str(latest),
+                stage="Production", archive_existing_versions=True,
             )
+            print(f"  Version {latest} → Production ✓")
         else:
-            print("✗ Le nouveau modèle n'est pas meilleur. On garde l'ancien en Production.")
+            print(f"\n✗ F1 nouveau ({f1:.3f}) ≤ F1 Production ({old_f1:.3f}). Ancien modèle conservé.")
 
         print("\n=== RÉSULTATS ===")
-        print("Meilleurs paramètres:", grid.best_params_)
-        print(f"Accuracy test: {acc:.2f}, F1 test: {f1:.2f}")
+        print(f"Meilleurs paramètres : {grid.best_params_}")
+        print(f"Accuracy test        : {acc:.4f}")
+        print(f"F1 test              : {f1:.4f}")
+        print(f"CV F1 moyen          : {grid.best_score_:.4f}")
+        print(f"Nombre de features   : {len(REQUIRED_FEATURES)}")
+
 
 if __name__ == "__main__":
     train_model()
-
-#git
+    

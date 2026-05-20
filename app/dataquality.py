@@ -21,10 +21,12 @@ ctx = snowflake.connector.connect(
 
 try:
     # Charger dataset dbt de référence
-    TABLE = os.getenv('DQ_TABLE', 'HR_EMPLOYEE_ENCODED')
-    query = 'SELECT * FROM "RH_DB"."RAW_GOLD"."HR_EMPLOYEE_ENCODED"'
-    
-    print(f"Connexion à {os.getenv('SNOWFLAKE_DATABASE')}.GOLD.HR_EMPLOYEE_ENCODED")
+    db = os.getenv('SNOWFLAKE_DATABASE', 'RH_DB')
+    schema = os.getenv('SNOWFLAKE_SCHEMA', 'GOLD')
+    table = os.getenv('DQ_TABLE', 'HR_EMPLOYEE_ENCODED')
+    query = f'SELECT * FROM "{db}"."{schema}"."{table}"'
+
+    print(f"Connexion à {db}.{schema}.{table}")
     df_reference = pd.read_sql(query, ctx)
     
     print(f"Données de référence chargées : {df_reference.shape[0]} lignes, {df_reference.shape[1]} colonnes")

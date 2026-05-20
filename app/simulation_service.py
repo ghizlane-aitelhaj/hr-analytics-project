@@ -6,77 +6,95 @@ import numpy as np
 import dice_ml
 
 # ─────────────────────────────────────────────────────────────────────────────
-# FEATURES
+# FEATURES ÉTENDUES — 47 colonnes
 # ─────────────────────────────────────────────────────────────────────────────
 
 REQUIRED_FEATURES = [
-    "AGE",
-    "DISTANCEFROMHOME",
-    "EDUCATION",
-    "MONTHLYINCOME",
-    "TOTALWORKINGYEARS",
-    "BUSINESSTRAVEL_RARELY",
-    "BUSINESSTRAVEL_FREQUENTLY",
-    "BUSINESSTRAVEL_NONTRAVEL",
-    "DEPARTMENT_SALES",
-    "DEPARTMENT_RND",
-    "DEPARTMENT_HR",
-    "GENDER_MALE",
-    "GENDER_FEMALE",
-    "MARITALSTATUS_SINGLE",
-    "MARITALSTATUS_MARRIED",
-    "MARITALSTATUS_DIVORCED",
-    "OVERTIME_YES",
-    "OVERTIME_NO",
+    # Numériques
+    "AGE", "DISTANCEFROMHOME", "EDUCATION", "MONTHLYINCOME", "TOTALWORKINGYEARS",
+    "JOBLEVEL", "JOBSATISFACTION", "ENVIRONMENTSATISFACTION", "WORKLIFEBALANCE",
+    "YEARSATCOMPANY", "YEARSINCURRENTROLE", "YEARSSINCELASTPROMOTION",
+    "YEARSWITHCURRMANAGER", "NUMCOMPANIESWORKED", "STOCKOPTIONLEVEL",
+    "TRAININGTIMESLASTYEAR", "JOBINVOLVEMENT", "RELATIONSHIPSATISFACTION",
+    # BusinessTravel
+    "BUSINESSTRAVEL_RARELY", "BUSINESSTRAVEL_FREQUENTLY", "BUSINESSTRAVEL_NONTRAVEL",
+    # Department
+    "DEPARTMENT_SALES", "DEPARTMENT_RND", "DEPARTMENT_HR",
+    # EducationField
+    "EDUCATIONFIELD_LIFESCIENCES", "EDUCATIONFIELD_MEDICAL", "EDUCATIONFIELD_MARKETING",
+    "EDUCATIONFIELD_TECHNICAL", "EDUCATIONFIELD_OTHER", "EDUCATIONFIELD_HUMANRESOURCES",
+    # Gender
+    "GENDER_MALE", "GENDER_FEMALE",
+    # JobRole
+    "JOBROLE_SALESEXECUTIVE", "JOBROLE_RESEARCHSCIENTIST", "JOBROLE_LABORATORYTECHNICIAN",
+    "JOBROLE_MANAGER", "JOBROLE_HEALTHCAREREPRESENTATIVE", "JOBROLE_MANUFACTURINGDIRECTOR",
+    "JOBROLE_SALESREPRESENTATIVE", "JOBROLE_RESEARCHDIRECTOR", "JOBROLE_HUMANRESOURCES",
+    # MaritalStatus
+    "MARITALSTATUS_SINGLE", "MARITALSTATUS_MARRIED", "MARITALSTATUS_DIVORCED",
+    # OverTime
+    "OVERTIME_YES", "OVERTIME_NO",
 ]
 
-# Features que DiCE est autorisé à modifier directement
-# CORRECTION : On ne fait varier que OVERTIME_YES directement, OVERTIME_NO sera mis à jour par cohérence logique.
-ACTIONABLE_FEATURES = [
-    "MONTHLYINCOME",
-    "OVERTIME_YES",
-]
+# Features actionnables par le manager → DiCE peut les modifier
+ACTIONABLE_FEATURES = ["MONTHLYINCOME"]
 
-# Bornes réalistes pour les features continues actionnables
 FEATURE_RANGES = {
     "MONTHLYINCOME": (1000, 25000),
-    "OVERTIME_YES": (0, 1)
 }
 
-# ─────────────────────────────────────────────────────────────────────────────
-# Dataset de référence pour DiCE (population synthétique représentative)
-# ─────────────────────────────────────────────────────────────────────────────
+CONTINUOUS_FEATURES = [
+    "AGE", "DISTANCEFROMHOME", "MONTHLYINCOME", "TOTALWORKINGYEARS",
+    "YEARSATCOMPANY", "YEARSINCURRENTROLE", "YEARSSINCELASTPROMOTION",
+    "YEARSWITHCURRMANAGER", "NUMCOMPANIESWORKED", "STOCKOPTIONLEVEL",
+    "TRAININGTIMESLASTYEAR", "JOBSATISFACTION", "ENVIRONMENTSATISFACTION",
+    "WORKLIFEBALANCE", "JOBINVOLVEMENT", "RELATIONSHIPSATISFACTION",
+    "JOBLEVEL", "EDUCATION",
+]
+
 
 def _build_reference_dataset() -> pd.DataFrame:
     rng = np.random.default_rng(42)
-    n = 200
-
+    n = 300
     rows = []
     for _ in range(n):
         row = {f: 0 for f in REQUIRED_FEATURES}
+
+        # Numériques
         row["AGE"] = int(rng.integers(22, 60))
         row["DISTANCEFROMHOME"] = int(rng.integers(1, 50))
         row["EDUCATION"] = int(rng.integers(1, 5))
         row["MONTHLYINCOME"] = int(rng.integers(1500, 20000))
         row["TOTALWORKINGYEARS"] = int(rng.integers(0, 35))
+        row["JOBLEVEL"] = int(rng.integers(1, 5))
+        row["JOBSATISFACTION"] = int(rng.integers(1, 4))
+        row["ENVIRONMENTSATISFACTION"] = int(rng.integers(1, 4))
+        row["WORKLIFEBALANCE"] = int(rng.integers(1, 4))
+        row["YEARSATCOMPANY"] = int(rng.integers(0, 25))
+        row["YEARSINCURRENTROLE"] = int(rng.integers(0, 15))
+        row["YEARSSINCELASTPROMOTION"] = int(rng.integers(0, 15))
+        row["YEARSWITHCURRMANAGER"] = int(rng.integers(0, 17))
+        row["NUMCOMPANIESWORKED"] = int(rng.integers(0, 9))
+        row["STOCKOPTIONLEVEL"] = int(rng.integers(0, 3))
+        row["TRAININGTIMESLASTYEAR"] = int(rng.integers(0, 6))
+        row["JOBINVOLVEMENT"] = int(rng.integers(1, 4))
+        row["RELATIONSHIPSATISFACTION"] = int(rng.integers(1, 4))
 
-        # One-hot catégoriels (exactement 1 colonne = 1 par groupe)
-        travel = rng.choice(["BUSINESSTRAVEL_RARELY", "BUSINESSTRAVEL_FREQUENTLY", "BUSINESSTRAVEL_NONTRAVEL"])
-        row[travel] = 1
+        # One-hot catégoriels
+        for group, cols in [
+            ("travel", ["BUSINESSTRAVEL_RARELY", "BUSINESSTRAVEL_FREQUENTLY", "BUSINESSTRAVEL_NONTRAVEL"]),
+            ("dept",   ["DEPARTMENT_SALES", "DEPARTMENT_RND", "DEPARTMENT_HR"]),
+            ("edu",    ["EDUCATIONFIELD_LIFESCIENCES", "EDUCATIONFIELD_MEDICAL", "EDUCATIONFIELD_MARKETING",
+                        "EDUCATIONFIELD_TECHNICAL", "EDUCATIONFIELD_OTHER", "EDUCATIONFIELD_HUMANRESOURCES"]),
+            ("gender", ["GENDER_MALE", "GENDER_FEMALE"]),
+            ("role",   ["JOBROLE_SALESEXECUTIVE", "JOBROLE_RESEARCHSCIENTIST", "JOBROLE_LABORATORYTECHNICIAN",
+                        "JOBROLE_MANAGER", "JOBROLE_HEALTHCAREREPRESENTATIVE", "JOBROLE_MANUFACTURINGDIRECTOR",
+                        "JOBROLE_SALESREPRESENTATIVE", "JOBROLE_RESEARCHDIRECTOR", "JOBROLE_HUMANRESOURCES"]),
+            ("marital",["MARITALSTATUS_SINGLE", "MARITALSTATUS_MARRIED", "MARITALSTATUS_DIVORCED"]),
+            ("ot",     ["OVERTIME_YES", "OVERTIME_NO"]),
+        ]:
+            chosen = rng.choice(cols)
+            row[chosen] = 1
 
-        dept = rng.choice(["DEPARTMENT_SALES", "DEPARTMENT_RND", "DEPARTMENT_HR"])
-        row[dept] = 1
-
-        gender = rng.choice(["GENDER_MALE", "GENDER_FEMALE"])
-        row[gender] = 1
-
-        marital = rng.choice(["MARITALSTATUS_SINGLE", "MARITALSTATUS_MARRIED", "MARITALSTATUS_DIVORCED"])
-        row[marital] = 1
-
-        ot = rng.choice(["OVERTIME_YES", "OVERTIME_NO"])
-        row[ot] = 1
-
-        # CORRECTION : Pour DiCE, la cible d'entraînement doit correspondre au format dbt/Snowflake utilisé (0 ou 1)
         row["ATTRITION"] = int(rng.integers(0, 2))
         rows.append(row)
 
@@ -85,14 +103,14 @@ def _build_reference_dataset() -> pd.DataFrame:
 
 REFERENCE_DF = _build_reference_dataset()
 
+
 # ─────────────────────────────────────────────────────────────────────────────
 # CHARGEMENT DU MODÈLE
 # ─────────────────────────────────────────────────────────────────────────────
 
 def load_model():
-    mlflow.set_tracking_uri("http://mlflow:5000")
-    model_name = "RF_Attrition_v1"
-    return mlflow.sklearn.load_model(f"models:/{model_name}/Production")
+    mlflow.set_tracking_uri(os.getenv("MLFLOW_TRACKING_URI", "http://mlflow:5000"))
+    return mlflow.sklearn.load_model("models:/RF_Attrition_v1/Production")
 
 
 def _get_feature_names(model):
@@ -109,7 +127,7 @@ def predict_risk(model, row_dict: dict) -> dict:
     feature_names = _get_feature_names(model)
     full_row = {fn: 0 for fn in feature_names}
 
-    # Mapping catégoriels → colonnes one-hot
+    # Mappings catégoriels
     mappings = {
         "GENDER": {"Male": "GENDER_MALE", "Female": "GENDER_FEMALE"},
         "MARITALSTATUS": {
@@ -128,14 +146,42 @@ def predict_risk(model, row_dict: dict) -> dict:
             "Human Resources": "DEPARTMENT_HR",
         },
         "OVERTIME": {"No": "OVERTIME_NO", "Yes": "OVERTIME_YES"},
+        "EDUCATIONFIELD": {
+            "Life Sciences": "EDUCATIONFIELD_LIFESCIENCES",
+            "Medical": "EDUCATIONFIELD_MEDICAL",
+            "Marketing": "EDUCATIONFIELD_MARKETING",
+            "Technical Degree": "EDUCATIONFIELD_TECHNICAL",
+            "Other": "EDUCATIONFIELD_OTHER",
+            "Human Resources": "EDUCATIONFIELD_HUMANRESOURCES",
+        },
+        "JOBROLE": {
+            "Sales Executive": "JOBROLE_SALESEXECUTIVE",
+            "Research Scientist": "JOBROLE_RESEARCHSCIENTIST",
+            "Laboratory Technician": "JOBROLE_LABORATORYTECHNICIAN",
+            "Manager": "JOBROLE_MANAGER",
+            "Healthcare Representative": "JOBROLE_HEALTHCAREREPRESENTATIVE",
+            "Manufacturing Director": "JOBROLE_MANUFACTURINGDIRECTOR",
+            "Sales Representative": "JOBROLE_SALESREPRESENTATIVE",
+            "Research Director": "JOBROLE_RESEARCHDIRECTOR",
+            "Human Resources": "JOBROLE_HUMANRESOURCES",
+        },
     }
 
     numeric_keys = {
-        "AGE": "AGE",
-        "DISTANCEFROMHOME": "DISTANCEFROMHOME",
-        "EDUCATION": "EDUCATION",
-        "MONTHLYINCOME": "MONTHLYINCOME",
-        "TOTALWORKINGYEARS": "TOTALWORKINGYEARS",
+        "AGE": "AGE", "DISTANCEFROMHOME": "DISTANCEFROMHOME",
+        "EDUCATION": "EDUCATION", "MONTHLYINCOME": "MONTHLYINCOME",
+        "TOTALWORKINGYEARS": "TOTALWORKINGYEARS", "JOBLEVEL": "JOBLEVEL",
+        "JOBSATISFACTION": "JOBSATISFACTION",
+        "ENVIRONMENTSATISFACTION": "ENVIRONMENTSATISFACTION",
+        "WORKLIFEBALANCE": "WORKLIFEBALANCE", "YEARSATCOMPANY": "YEARSATCOMPANY",
+        "YEARSINCURRENTROLE": "YEARSINCURRENTROLE",
+        "YEARSSINCELASTPROMOTION": "YEARSSINCELASTPROMOTION",
+        "YEARSWITHCURRMANAGER": "YEARSWITHCURRMANAGER",
+        "NUMCOMPANIESWORKED": "NUMCOMPANIESWORKED",
+        "STOCKOPTIONLEVEL": "STOCKOPTIONLEVEL",
+        "TRAININGTIMESLASTYEAR": "TRAININGTIMESLASTYEAR",
+        "JOBINVOLVEMENT": "JOBINVOLVEMENT",
+        "RELATIONSHIPSATISFACTION": "RELATIONSHIPSATISFACTION",
     }
 
     for key, col in numeric_keys.items():
@@ -150,7 +196,8 @@ def predict_risk(model, row_dict: dict) -> dict:
         if val in mapping:
             full_row[mapping[val]] = 1
 
-    df = pd.DataFrame([full_row], columns=feature_names)
+    # Ne garder que les colonnes connues du modèle
+    df = pd.DataFrame([{k: full_row.get(k, 0) for k in feature_names}], columns=feature_names)
 
     proba = model.predict_proba(df)[0]
     risk_score = float(proba[1])
@@ -163,36 +210,35 @@ def predict_risk(model, row_dict: dict) -> dict:
 # CONTREFACTUELS DiCE
 # ─────────────────────────────────────────────────────────────────────────────
 
-def get_counterfactuals(model, current_employee_df: pd.DataFrame, n_cfs: int = 3):
+def get_counterfactuals(model, current_employee_df: pd.DataFrame, n_cfs: int = 3) -> list[dict]:
     try:
-        # Préparation de l'historique synthétique combiné
-        ref_with_current = pd.concat(
+        ref = pd.concat(
             [REFERENCE_DF.drop(columns=["ATTRITION"]), current_employee_df],
             ignore_index=True,
         )
-        ref_with_label = ref_with_current.copy()
-        
-        # Label synthétique basé sur une règle métier cohérente
-        ref_with_label["ATTRITION"] = (
-            (ref_with_label["MONTHLYINCOME"] < 5000) | (ref_with_label["OVERTIME_YES"] == 1)
+        ref_labeled = ref.copy()
+        ref_labeled["ATTRITION"] = (
+            (ref_labeled["MONTHLYINCOME"] < 5000) | (ref_labeled["OVERTIME_YES"] == 1)
         ).astype(int)
 
-        # Configuration de DiCE
+        # Utiliser uniquement les features connues du modèle
+        feature_names = _get_feature_names(model)
+        continuous = [f for f in CONTINUOUS_FEATURES if f in feature_names]
+
         d = dice_ml.Data(
-            dataframe=ref_with_label,
-            continuous_features=["AGE", "DISTANCEFROMHOME", "MONTHLYINCOME", "TOTALWORKINGYEARS", "EDUCATION"],
+            dataframe=ref_labeled[[f for f in feature_names if f in ref_labeled.columns] + ["ATTRITION"]],
+            continuous_features=continuous,
             outcome_name="ATTRITION",
         )
-
         m = dice_ml.Model(model=model, backend="sklearn")
         exp = dice_ml.Dice(d, m, method="random")
 
-        # CORRECTION : Suppression de OVERTIME_NO de la liste de variation directe.
-        # DiCE fera varier OVERTIME_YES (0 ou 1) et notre parseur s'occupera d'ajuster OVERTIME_NO pour le modèle.
+        cf_df_input = current_employee_df[[f for f in feature_names if f in current_employee_df.columns]]
+
         dice_exp = exp.generate_counterfactuals(
-            current_employee_df,
+            cf_df_input,
             total_CFs=n_cfs,
-            desired_class=0,  # 0 = Rester dans l'entreprise
+            desired_class=0,
             features_to_vary=["MONTHLYINCOME"],
             permitted_range=FEATURE_RANGES,
         )
@@ -200,116 +246,121 @@ def get_counterfactuals(model, current_employee_df: pd.DataFrame, n_cfs: int = 3
         return _parse_counterfactuals(dice_exp, current_employee_df, model)
 
     except Exception as e:
-        print(f"[DiCE] Erreur génération contrefactuels : {e}")
-        # En cas d'erreur de convergence de DiCE, l'UI récupère le plan B de manière transparente
+        print(f"[DiCE] Erreur : {e}")
         return _fallback_recommendations(current_employee_df, model)
 
 
-def _parse_counterfactuals(dice_exp, original_df: pd.DataFrame, model) -> list[dict]:
+def _parse_counterfactuals(dice_exp, original_df, model) -> list[dict]:
     scenarios = []
     original_salary = float(original_df["MONTHLYINCOME"].iloc[0])
-    original_ot_yes = int(original_df["OVERTIME_YES"].iloc[0])
 
     try:
         cf_df = dice_exp.cf_examples_list[0].final_cfs_df
     except (IndexError, AttributeError):
         return []
 
-    if cf_df is None or cf_df.empty:
-        return []
-
     for _, cf_row in cf_df.iterrows():
         changes = []
-        scenario = {
-            "new_salary": None,
-            "delta_salary": None,
-            "remove_overtime": False,
-            "new_risk_proba": None,
-            "changes": [],
-        }
-
-        # Traitement du Salaire
         new_salary = float(cf_row.get("MONTHLYINCOME", original_salary))
         if abs(new_salary - original_salary) > 50:
             delta = new_salary - original_salary
-            scenario["new_salary"] = round(new_salary, 0)
-            scenario["delta_salary"] = round(delta, 0)
             pct = (delta / original_salary) * 100
             direction = "Augmenter" if delta > 0 else "Réduire"
             changes.append(f"{direction} le salaire à {new_salary:,.0f} € ({pct:+.1f}%)")
 
-        # CORRECTION : Gestion propre de la contrainte One-Hot Encodée pour les heures supplémentaires
-        # Si DiCE propose une valeur continue entre 0 et 1 (ex: 0.3), on applique un seuil à 0.5
-        raw_ot_yes = cf_row.get("OVERTIME_YES", original_ot_yes)
-        new_ot_yes = 1 if raw_ot_yes >= 0.5 else 0
-        
-        if original_ot_yes == 1 and new_ot_yes == 0:
-            scenario["remove_overtime"] = True
-            changes.append("Supprimer les heures supplémentaires obligatoires")
-        elif original_ot_yes == 0 and new_ot_yes == 1:
-            changes.append("Note : Activer les heures supplémentaires (scénario théorique)")
-
         if not changes:
-            continue  # Pas de changement visible → on passe au scénario suivant
+            continue
 
-        # Re-calcul strict de la probabilité à l'aide du vrai modèle RandomForest
         cf_features = original_df.copy()
         cf_features["MONTHLYINCOME"] = new_salary
-        
-        # CORRECTION LOGIQUE : On garantit la somme stricte des colonnes binaires (One-Hot)
-        cf_features["OVERTIME_YES"] = new_ot_yes
-        cf_features["OVERTIME_NO"] = 1 - new_ot_yes
-
         try:
-            # Récupération de la probabilité exacte ajustée
             new_proba = float(model.predict_proba(cf_features)[0][1])
         except Exception:
             new_proba = None
 
-        scenario["new_risk_proba"] = new_proba
-        scenario["changes"] = changes
-        scenarios.append(scenario)
+        scenarios.append({
+            "new_salary": round(new_salary),
+            "delta_salary": round(new_salary - original_salary),
+            "remove_overtime": False,
+            "new_risk_proba": new_proba,
+            "changes": changes,
+        })
 
     return scenarios
 
 
-def _fallback_recommendations(original_df: pd.DataFrame, model) -> list[dict]:
+def _fallback_recommendations(original_df, model) -> list[dict]:
+    """
+    Si DiCE échoue, recommandations heuristiques enrichies avec les nouvelles features.
+    """
     salary = float(original_df["MONTHLYINCOME"].iloc[0])
-    ot_yes = int(original_df["OVERTIME_YES"].iloc[0])
+    ot_yes = int(original_df.get("OVERTIME_YES", pd.Series([0])).iloc[0])
+    job_sat = float(original_df.get("JOBSATISFACTION", pd.Series([2])).iloc[0])
+    promo = float(original_df.get("YEARSSINCELASTPROMOTION", pd.Series([0])).iloc[0])
+    stock = float(original_df.get("STOCKOPTIONLEVEL", pd.Series([0])).iloc[0])
+    training = float(original_df.get("TRAININGTIMESLASTYEAR", pd.Series([2])).iloc[0])
+
     scenarios = []
 
-    # Option Heuristique 1 & 2 : Recommandation d'augmentations salariales directes
-    for pct in [0.10, 0.20]:
-        new_salary = round(salary * (1 + pct))
-        cf = original_df.copy()
-        cf["MONTHLYINCOME"] = new_salary
+    # Recommandation salaire +15%
+    new_salary = round(salary * 1.15)
+    cf = original_df.copy()
+    cf["MONTHLYINCOME"] = new_salary
+    try:
+        new_proba = float(model.predict_proba(cf)[0][1])
+    except Exception:
+        new_proba = None
+    scenarios.append({
+        "new_salary": new_salary, "delta_salary": round(new_salary - salary),
+        "remove_overtime": False, "new_risk_proba": new_proba,
+        "changes": [f"Augmenter le salaire à {new_salary:,.0f} € (+15%)"],
+    })
+
+    # Recommandation suppression heures sup
+    if ot_yes == 1:
+        cf2 = original_df.copy()
+        cf2["OVERTIME_YES"] = 0
+        cf2["OVERTIME_NO"] = 1
         try:
-            new_proba = float(model.predict_proba(cf)[0][1])
+            new_proba2 = float(model.predict_proba(cf2)[0][1])
         except Exception:
-            new_proba = None
+            new_proba2 = None
         scenarios.append({
-            "new_salary": new_salary,
-            "delta_salary": round(new_salary - salary),
-            "remove_overtime": False,
-            "new_risk_proba": new_proba,
-            "changes": [f"Augmenter le salaire à {new_salary:,.0f} € (+{pct*100:.0f}%)"],
+            "new_salary": None, "delta_salary": None,
+            "remove_overtime": True, "new_risk_proba": new_proba2,
+            "changes": ["Supprimer les heures supplémentaires obligatoires"],
         })
 
-    # Option Heuristique 3 : Suppression des Heures Supplémentaires
-    if ot_yes == 1:
-        cf = original_df.copy()
-        cf["OVERTIME_YES"] = 0
-        cf["OVERTIME_NO"] = 1
-        try:
-            new_proba = float(model.predict_proba(cf)[0][1])
-        except Exception:
-            new_proba = None
+    # Recommandation satisfaction — si JobSatisfaction faible
+    if job_sat <= 2:
         scenarios.append({
-            "new_salary": None,
-            "delta_salary": None,
-            "remove_overtime": True,
-            "new_risk_proba": new_proba,
-            "changes": ["Supprimer les heures supplémentaires obligatoires"],
+            "new_salary": None, "delta_salary": None,
+            "remove_overtime": False, "new_risk_proba": None,
+            "changes": ["Mener un entretien individuel pour identifier les sources d'insatisfaction au travail"],
+        })
+
+    # Recommandation promotion — si pas de promotion depuis > 3 ans
+    if promo >= 3:
+        scenarios.append({
+            "new_salary": None, "delta_salary": None,
+            "remove_overtime": False, "new_risk_proba": None,
+            "changes": [f"Envisager une promotion ou revalorisation de poste ({promo:.0f} ans sans promotion)"],
+        })
+
+    # Recommandation stock-options — si niveau 0
+    if stock == 0:
+        scenarios.append({
+            "new_salary": None, "delta_salary": None,
+            "remove_overtime": False, "new_risk_proba": None,
+            "changes": ["Attribuer des stock-options niveau 1 pour renforcer l'attachement à long terme"],
+        })
+
+    # Recommandation formation — si peu de formations
+    if training <= 1:
+        scenarios.append({
+            "new_salary": None, "delta_salary": None,
+            "remove_overtime": False, "new_risk_proba": None,
+            "changes": ["Proposer un plan de formation : 2-3 sessions sur l'année pour développer les compétences"],
         })
 
     return scenarios

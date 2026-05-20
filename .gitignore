@@ -1,0 +1,30 @@
+# Credentials — ne jamais commiter
+.env
+**/.env
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+env/
+
+# dbt
+dbt_hr_project/target/
+dbt_hr_project/logs/
+dbt_hr_project/.user.yml
+dbt_packages/
+
+# MLflow
+mlruns/
+mlflow.db
+
+# Rapports générés
+reports/rejected_rows.json
+
+# IDE
+.vscode/
+.idea/

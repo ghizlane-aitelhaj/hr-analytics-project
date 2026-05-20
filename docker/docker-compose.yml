@@ -25,11 +25,12 @@ services:
     container_name: mlflow
     command: >
       mlflow server
-      --backend-store-uri sqlite:///mlflow.db
+      --backend-store-uri sqlite:////mlflow/db/mlflow.db
       --default-artifact-root /mlflow/artifacts
       --host 0.0.0.0
       --port 5000
     volumes:
+      - mlflow-db:/mlflow/db
       - ../mlruns:/mlflow/artifacts
     ports:
       - "5000:5000"
@@ -40,3 +41,6 @@ services:
     command: prefect server start --host 0.0.0.0
     ports:
       - "4200:4200"
+
+volumes:
+  mlflow-db:

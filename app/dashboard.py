@@ -25,24 +25,34 @@ section_style = {
     "padding": "18px", "backgroundColor": "rgba(15,23,42,0.42)",
     "border": "1px solid rgba(255,255,255,0.08)", "borderRadius": "14px",
 }
+sirh_section_style = {
+    "padding": "18px", "backgroundColor": "rgba(15,23,42,0.25)",
+    "border": "1px solid rgba(96,165,250,0.15)", "borderRadius": "14px",
+}
 input_style = {
     "width": "100%", "borderRadius": "8px", "border": "1px solid rgba(255,255,255,0.14)",
     "backgroundColor": "rgba(255,255,255,0.94)", "color": "#0f172a",
     "padding": "8px 12px", "fontSize": "14px", "boxSizing": "border-box",
 }
+sirh_input_style = {
+    **input_style,
+    "backgroundColor": "rgba(96,165,250,0.08)",
+    "border": "1px solid rgba(96,165,250,0.2)",
+    "color": "#94a3b8",
+    "cursor": "not-allowed",
+}
 dropdown_style = {"width": "100%", "backgroundColor": "rgba(255,255,255,0.94)", "color": "#0f172a"}
 label_style = {"display": "block", "marginBottom": "6px", "fontWeight": "700", "color": "#f8fafc", "fontSize": "13px"}
+sirh_label_style = {**label_style, "color": "#60a5fa"}
 help_style = {"display": "block", "marginTop": "5px", "color": "#cbd5e1", "fontSize": "12px"}
+sirh_help_style = {**help_style, "color": "#475569", "fontStyle": "italic"}
 
 
-# ─────────────────────────────────────────────────────────────────────────────
-# COMPOSANTS RÉUTILISABLES
-# ─────────────────────────────────────────────────────────────────────────────
-
-def field_block(label, description, control):
+def field_block(label, description, control, is_sirh=False):
     return html.Div(style={"marginBottom": "14px"}, children=[
-        html.Label(label, style=label_style), control,
-        html.Small(description, style=help_style),
+        html.Label(label, style=sirh_label_style if is_sirh else label_style),
+        control,
+        html.Small(description, style=sirh_help_style if is_sirh else help_style),
     ])
 
 
@@ -50,9 +60,20 @@ def dropdown_control(**kwargs):
     return dcc.Dropdown(className="dark-dropdown", style=dropdown_style, **kwargs)
 
 
-def section(title, children):
-    return html.Div(style=section_style, children=[
-        html.H3(title, style={"marginBottom": "14px", "color": "#f8fafc", "fontSize": "15px"}),
+def section(title, children, is_sirh=False):
+    return html.Div(style=sirh_section_style if is_sirh else section_style, children=[
+        html.Div(style={"display": "flex", "alignItems": "center", "gap": "8px", "marginBottom": "14px"}, children=[
+            html.H3(title, style={"color": "#60a5fa" if is_sirh else "#f8fafc", "fontSize": "15px", "margin": "0"}),
+            html.Span(
+                "📂 Chargé depuis le SIRH",
+                style={
+                    "fontSize": "10px", "color": "#60a5fa",
+                    "backgroundColor": "rgba(96,165,250,0.1)",
+                    "border": "1px solid rgba(96,165,250,0.2)",
+                    "borderRadius": "4px", "padding": "2px 6px",
+                }
+            ) if is_sirh else html.Span(),
+        ]),
         *children,
     ])
 
@@ -60,7 +81,8 @@ def section(title, children):
 def render_scenario_card(scenario, index, original_risk):
     new_risk = scenario.get("new_risk_proba")
     delta_risk = (new_risk - original_risk) * 100 if new_risk is not None else None
-    card_color = "#4ade80" if (new_risk is not None and new_risk < 0.3) else "#fbbf24"
+    card_color = "#4ade80" if (new_risk is not None and new_risk < 0.5) else "#fbbf24"
+
     badge = html.Span(
         f"{delta_risk:+.1f}% de risque",
         style={
@@ -88,8 +110,10 @@ def render_scenario_card(scenario, index, original_risk):
                  for c in scenario.get("changes", [])],
                 style={"margin": "0 0 8px 0", "padding": "0"},
             ),
-            html.Span(f"Risque estimé : {new_risk * 100:.1f}%" if new_risk else "",
-                      style={"color": card_color, "fontWeight": "700", "fontSize": "14px"}),
+            html.Span(
+                f"Risque estimé : {new_risk * 100:.1f}%" if new_risk is not None else "",
+                style={"color": card_color, "fontWeight": "700", "fontSize": "14px"},
+            ),
         ],
     )
 
@@ -109,7 +133,7 @@ def render_dice_panel(scenarios, original_risk, original_income):
             html.H4("Recommandations prescriptives IA (DiCE)",
                     style={"color": "#4ade80", "margin": "0", "fontSize": "16px", "fontWeight": "700"}),
         ]),
-        html.P("Ces scénarios indiquent les changements minimaux pour ramener ce collaborateur sous le seuil de risque.",
+        html.P("Ces scénarios indiquent les actions minimales pour ramener ce collaborateur sous le seuil de risque.",
                style={"color": "#94a3b8", "fontSize": "13px", "marginBottom": "16px"}),
         *cards,
         html.P("ℹ️ Suggestions algorithmiques à valider par le manager et les RH avant toute décision.",
@@ -210,7 +234,7 @@ def build_login_page(error_msg=""):
 def build_dashboard_page(user):
     ri = user.get("role_info", {})
     return html.Div(style={**page_style, "padding": "30px"}, children=[
-        html.Div(style={"maxWidth": "1180px", "margin": "0 auto"}, children=[
+        html.Div(style={"maxWidth": "1280px", "margin": "0 auto"}, children=[
 
             # Navbar
             html.Div(style={**card_style, "padding": "14px 24px", "marginBottom": "24px",
@@ -237,77 +261,161 @@ def build_dashboard_page(user):
                                      style={"color": ri.get("color", "#94a3b8"), "fontSize": "11px"}),
                         ]),
                     ]),
-                    # Bouton déconnexion — utilise dcc.Store pour clearer la session
-                    html.Button(
-                        "Déconnexion",
-                        id="logout-btn",
-                        n_clicks=0,
-                        style={
-                            "padding": "8px 16px",
-                            "backgroundColor": "rgba(248,113,113,0.15)",
-                            "color": "#f87171",
-                            "border": "1px solid rgba(248,113,113,0.3)",
-                            "borderRadius": "8px", "cursor": "pointer",
-                            "fontSize": "12px", "fontWeight": "700",
-                        },
-                    ),
+                    html.Button("Déconnexion", id="logout-btn", n_clicks=0, style={
+                        "padding": "8px 16px", "backgroundColor": "rgba(248,113,113,0.15)",
+                        "color": "#f87171", "border": "1px solid rgba(248,113,113,0.3)",
+                        "borderRadius": "8px", "cursor": "pointer", "fontSize": "12px", "fontWeight": "700",
+                    }),
                 ]),
             ]),
+
+            # Légende
+            html.Div(
+                style={"display": "flex", "gap": "20px", "marginBottom": "18px", "alignItems": "center"},
+                children=[
+                    html.Div(style={"display": "flex", "alignItems": "center", "gap": "6px"}, children=[
+                        html.Div(style={"width": "12px", "height": "12px", "borderRadius": "2px",
+                                        "backgroundColor": "rgba(255,255,255,0.6)"}),
+                        html.Span("Saisie manager", style={"color": "#cbd5e1", "fontSize": "12px"}),
+                    ]),
+                    html.Div(style={"display": "flex", "alignItems": "center", "gap": "6px"}, children=[
+                        html.Div(style={"width": "12px", "height": "12px", "borderRadius": "2px",
+                                        "backgroundColor": "rgba(96,165,250,0.4)"}),
+                        html.Span("📂 Données SIRH — pré-remplies automatiquement",
+                                  style={"color": "#60a5fa", "fontSize": "12px"}),
+                    ]),
+                ],
+            ),
 
             # Formulaire
             html.Div(style={**card_style, "padding": "28px"}, children=[
                 html.H1("Simulateur de risque d'attrition",
                         style={"color": "#f8fafc", "marginBottom": "8px", "fontSize": "22px"}),
-                html.P("Remplissez le profil du collaborateur. Le score est calculé par Random Forest "
-                       "et les recommandations prescriptives par DiCE.",
-                       style={"color": "#cbd5e1", "marginBottom": "18px", "fontSize": "13px"}),
+                html.P("Les champs bleus sont chargés automatiquement depuis le SIRH. "
+                       "Remplissez uniquement les champs blancs.",
+                       style={"color": "#cbd5e1", "marginBottom": "20px", "fontSize": "13px"}),
 
-                html.Div(style={"display": "grid", "gridTemplateColumns": "repeat(2, minmax(0,1fr))", "gap": "18px"}, children=[
-                    section("Identité", [
-                        field_block("Âge", "18-70 ans.",
+                # ── SECTION MANAGER : saisie manuelle ────────────────────────
+                html.H4("✏️ Informations saisies par le manager",
+                        style={"color": "#f8fafc", "fontSize": "14px", "marginBottom": "12px",
+                               "borderBottom": "1px solid rgba(255,255,255,0.08)", "paddingBottom": "8px"}),
+
+                html.Div(style={"display": "grid", "gridTemplateColumns": "repeat(3, minmax(0,1fr))",
+                                "gap": "18px", "marginBottom": "24px"}, children=[
+
+                    section("👤 Identité", [
+                        field_block("Âge", "Âge du collaborateur.",
                                     dcc.Input(id="age", type="number", value=35, min=18, max=70, style=input_style)),
-                        field_block("Genre", "Genre du collaborateur.",
+                        field_block("Genre", "",
                                     dropdown_control(id="gender", value="Male",
                                                      options=[{"label": "Homme", "value": "Male"},
                                                               {"label": "Femme", "value": "Female"}])),
-                        field_block("Situation familiale", "État matrimonial.",
+                        field_block("Situation familiale", "",
                                     dropdown_control(id="maritalstatus", value="Single",
                                                      options=[{"label": "Célibataire", "value": "Single"},
                                                               {"label": "Marié(e)", "value": "Married"},
                                                               {"label": "Divorcé(e)", "value": "Divorced"}])),
-                        field_block("Niveau d'études", "1 à 5.",
-                                    dcc.Input(id="education", type="number", value=3, min=1, max=5, style=input_style)),
                     ]),
-                    section("Poste et conditions", [
-                        field_block("Département", "Département d'affectation.",
+
+                    section("💼 Poste", [
+                        field_block("Département", "",
                                     dropdown_control(id="department", value="Research & Development",
                                                      options=[{"label": "Ventes", "value": "Sales"},
                                                               {"label": "R&D", "value": "Research & Development"},
                                                               {"label": "RH", "value": "Human Resources"}])),
-                        field_block("Distance domicile-travail (km)", "Distance en kilomètres.",
-                                    dcc.Input(id="distance", type="number", value=10, min=0, style=input_style)),
-                        field_block("Expérience (années)", "Années d'expérience totale.",
-                                    dcc.Input(id="total_working_years", type="number", value=5, min=0, style=input_style)),
-                        field_block("Déplacements professionnels", "Fréquence des trajets.",
+                        field_block("Poste occupé", "",
+                                    dropdown_control(id="jobrole", value="Research Scientist",
+                                                     options=[
+                                                         {"label": "Commercial Senior", "value": "Sales Executive"},
+                                                         {"label": "Chercheur Scientifique", "value": "Research Scientist"},
+                                                         {"label": "Technicien Labo", "value": "Laboratory Technician"},
+                                                         {"label": "Manager", "value": "Manager"},
+                                                         {"label": "Représentant Santé", "value": "Healthcare Representative"},
+                                                         {"label": "Directeur Production", "value": "Manufacturing Director"},
+                                                         {"label": "Commercial Junior", "value": "Sales Representative"},
+                                                         {"label": "Directeur R&D", "value": "Research Director"},
+                                                         {"label": "RH", "value": "Human Resources"},
+                                                     ])),
+                        field_block("Déplacements professionnels", "",
                                     dropdown_control(id="businesstravel", value="Non-Travel",
                                                      options=[{"label": "Aucun", "value": "Non-Travel"},
                                                               {"label": "Rares", "value": "Travel_Rarely"},
                                                               {"label": "Fréquents", "value": "Travel_Frequently"}])),
-                    ]),
-                    section("Rémunération", [
-                        field_block("Salaire mensuel (€)", "Revenu mensuel brut.",
-                                    dcc.Input(id="monthly_income", type="number", value=3000, min=0, style=input_style)),
-                        field_block("Heures supplémentaires", "L'employé fait-il des heures sup ?",
+                        field_block("Heures supplémentaires", "",
                                     dropdown_control(id="overtime", value="No",
                                                      options=[{"label": "Non", "value": "No"},
                                                               {"label": "Oui", "value": "Yes"}])),
                     ]),
-                    section("Résultat & Analyse", [
-                        html.Div(id="result", style={"color": "#f8fafc", "minHeight": "120px"}),
+
+                    section("🎯 Résultat", [
+                        html.Div(id="result", style={"color": "#f8fafc", "minHeight": "180px"}),
                     ]),
                 ]),
 
-                html.Div(style={"marginTop": "18px", "display": "flex", "justifyContent": "flex-end"}, children=[
+                # ── SECTION SIRH : lecture seule ─────────────────────────────
+                html.H4("📂 Données chargées automatiquement depuis le SIRH",
+                        style={"color": "#60a5fa", "fontSize": "14px", "marginBottom": "12px",
+                               "borderBottom": "1px solid rgba(96,165,250,0.15)", "paddingBottom": "8px"}),
+
+                html.Div(style={"display": "grid", "gridTemplateColumns": "repeat(3, minmax(0,1fr))",
+                                "gap": "18px", "marginBottom": "24px"}, children=[
+
+                    section("💰 Rémunération & Avantages", [
+                        field_block("Salaire mensuel (€)", "Source : système de paie",
+                                    dcc.Input(id="monthly_income", type="number", value=3000, style=sirh_input_style),
+                                    is_sirh=True),
+                        field_block("Niveau hiérarchique", "1=Junior · 5=Directeur · Source : SIRH",
+                                    dcc.Input(id="joblevel", type="number", value=2, min=1, max=5, style=sirh_input_style),
+                                    is_sirh=True),
+                        field_block("Niveau stock-options", "0=Aucun · 3=Élevé · Source : paie",
+                                    dcc.Input(id="stockoptionlevel", type="number", value=0, min=0, max=3, style=sirh_input_style),
+                                    is_sirh=True),
+                    ], is_sirh=True),
+
+                    section("📅 Ancienneté & Mobilité", [
+                        field_block("Expérience totale (années)", "Source : SIRH",
+                                    dcc.Input(id="total_working_years", type="number", value=5, style=sirh_input_style),
+                                    is_sirh=True),
+                        field_block("Ancienneté dans l'entreprise", "Source : SIRH",
+                                    dcc.Input(id="yearsatcompany", type="number", value=3, style=sirh_input_style),
+                                    is_sirh=True),
+                        field_block("Années sans promotion", "Source : SIRH",
+                                    dcc.Input(id="yearssincelastpromotion", type="number", value=1, style=sirh_input_style),
+                                    is_sirh=True),
+                        field_block("Nb d'entreprises précédentes", "Source : CV / SIRH",
+                                    dcc.Input(id="numcompaniesworked", type="number", value=2, style=sirh_input_style),
+                                    is_sirh=True),
+                    ], is_sirh=True),
+
+                    section("😊 Satisfaction (enquête annuelle)", [
+                        field_block("Satisfaction au travail", "1-4 · Source : enquête RH annuelle",
+                                    dcc.Input(id="jobsatisfaction", type="number", value=3, min=1, max=4, style=sirh_input_style),
+                                    is_sirh=True),
+                        field_block("Satisfaction environnement", "1-4 · Source : enquête RH annuelle",
+                                    dcc.Input(id="environmentsatisfaction", type="number", value=3, min=1, max=4, style=sirh_input_style),
+                                    is_sirh=True),
+                        field_block("Équilibre vie pro/perso", "1-4 · Source : enquête RH annuelle",
+                                    dcc.Input(id="worklifebalance", type="number", value=3, min=1, max=4, style=sirh_input_style),
+                                    is_sirh=True),
+                        field_block("Formations cette année", "Source : plan de formation SIRH",
+                                    dcc.Input(id="trainingtimeslastyear", type="number", value=2, style=sirh_input_style),
+                                    is_sirh=True),
+                    ], is_sirh=True),
+                ]),
+
+                # Champs cachés pour les features restantes
+                html.Div(style={"display": "none"}, children=[
+                    dcc.Input(id="education", type="number", value=3),
+                    dcc.Input(id="distance", type="number", value=10),
+                    dcc.Input(id="yearsincurrentrole", type="number", value=2),
+                    dcc.Input(id="yearswithcurrmanager", type="number", value=2),
+                    dcc.Input(id="jobinvolvement", type="number", value=3),
+                    dcc.Input(id="relationshipsatisfaction", type="number", value=3),
+                    dropdown_control(id="educationfield", value="Life Sciences",
+                                     options=[{"label": "Life Sciences", "value": "Life Sciences"}]),
+                ]),
+
+                html.Div(style={"marginTop": "8px", "display": "flex", "justifyContent": "flex-end"}, children=[
                     html.Button("Analyser le risque", id="btn", n_clicks=0, style={
                         "minWidth": "240px", "padding": "12px 18px", "background": "#b91c1c",
                         "color": "white", "border": "none", "borderRadius": "10px",
@@ -322,42 +430,32 @@ def build_dashboard_page(user):
 
 # ─────────────────────────────────────────────────────────────────────────────
 # LAYOUT RACINE
-# Les composants fantômes permettent à Dash de résoudre les callbacks
-# même quand login-btn/logout-btn ne sont pas encore dans le DOM.
 # ─────────────────────────────────────────────────────────────────────────────
 
 app.layout = html.Div([
     dcc.Store(id="session-store", storage_type="session"),
     dcc.Location(id="url", refresh=False),
     html.Div(id="page-content"),
-    # Composants fantômes — invisibles, permettent la résolution des callbacks
-    html.Div(id="login-btn",      style={"display": "none"}),
-    html.Div(id="logout-btn",     style={"display": "none"}),
-    html.Div(id="login-username", style={"display": "none"}),
-    html.Div(id="login-password", style={"display": "none"}),
 ])
 
 
 # ─────────────────────────────────────────────────────────────────────────────
-# CALLBACK ROUTER — gère login / logout / session
+# CALLBACKS
 # ─────────────────────────────────────────────────────────────────────────────
 
 @app.callback(
     Output("page-content", "children"),
     Output("session-store", "data"),
     Input("url", "pathname"),
-    Input("url", "search"),          # déclenché à chaque navigation
+    Input("url", "search"),
     State("session-store", "data"),
     prevent_initial_call=False,
 )
 def router(pathname, search, session):
-    # Déconnexion via paramètre URL ?logout=1
     if search and "logout=1" in search:
         return build_login_page(), None
-
     if session:
         return build_dashboard_page(session), session
-
     return build_login_page(), None
 
 
@@ -367,9 +465,7 @@ def router(pathname, search, session):
     prevent_initial_call=True,
 )
 def trigger_logout(n_clicks):
-    if n_clicks:
-        return "?logout=1"
-    return ""
+    return "?logout=1" if n_clicks else ""
 
 
 @app.callback(
@@ -391,31 +487,74 @@ def handle_login(n_clicks, username, password):
     return None, build_login_page("❌ Identifiant ou mot de passe incorrect.")
 
 
-# ─────────────────────────────────────────────────────────────────────────────
-# CALLBACK SIMULATION
-# ─────────────────────────────────────────────────────────────────────────────
-
 @app.callback(
     Output("result", "children"),
     Output("dice-panel", "children"),
     Input("btn", "n_clicks"),
-    State("age", "value"), State("gender", "value"), State("maritalstatus", "value"),
-    State("education", "value"), State("department", "value"), State("distance", "value"),
-    State("total_working_years", "value"), State("monthly_income", "value"),
-    State("businesstravel", "value"), State("overtime", "value"),
+    # Champs manager
+    State("age", "value"),
+    State("gender", "value"),
+    State("maritalstatus", "value"),
+    State("department", "value"),
+    State("jobrole", "value"),
+    State("businesstravel", "value"),
+    State("overtime", "value"),
+    # Champs SIRH
+    State("monthly_income", "value"),
+    State("joblevel", "value"),
+    State("stockoptionlevel", "value"),
+    State("total_working_years", "value"),
+    State("yearsatcompany", "value"),
+    State("yearssincelastpromotion", "value"),
+    State("numcompaniesworked", "value"),
+    State("jobsatisfaction", "value"),
+    State("environmentsatisfaction", "value"),
+    State("worklifebalance", "value"),
+    State("trainingtimeslastyear", "value"),
+    # Champs cachés
+    State("education", "value"),
+    State("distance", "value"),
+    State("yearsincurrentrole", "value"),
+    State("yearswithcurrmanager", "value"),
+    State("jobinvolvement", "value"),
+    State("relationshipsatisfaction", "value"),
+    State("educationfield", "value"),
     State("session-store", "data"),
     prevent_initial_call=True,
 )
-def run_simulation(n_clicks, age, gender, maritalstatus, education, department,
-                   distance, total_working_years, monthly_income, businesstravel, overtime, session):
+def run_simulation(n_clicks, age, gender, maritalstatus, department, jobrole,
+                   businesstravel, overtime, monthly_income, joblevel, stockoptionlevel,
+                   total_working_years, yearsatcompany, yearssincelastpromotion,
+                   numcompaniesworked, jobsatisfaction, environmentsatisfaction,
+                   worklifebalance, trainingtimeslastyear, education, distance,
+                   yearsincurrentrole, yearswithcurrmanager, jobinvolvement,
+                   relationshipsatisfaction, educationfield, session):
+
     if not session:
         return html.Div("Session expirée. Reconnectez-vous.", style={"color": "#f87171"}), html.Div()
 
     data = {
-        "AGE": age or 35, "GENDER": gender, "MARITALSTATUS": maritalstatus,
-        "EDUCATION": education or 3, "DEPARTMENT": department,
-        "DISTANCEFROMHOME": distance or 10, "TOTALWORKINGYEARS": total_working_years or 5,
-        "MONTHLYINCOME": monthly_income or 3000, "BUSINESSTRAVEL": businesstravel, "OVERTIME": overtime,
+        "AGE": age or 35,
+        "GENDER": gender, "MARITALSTATUS": maritalstatus,
+        "EDUCATION": education or 3, "EDUCATIONFIELD": educationfield,
+        "DEPARTMENT": department, "JOBROLE": jobrole,
+        "JOBLEVEL": joblevel or 2, "BUSINESSTRAVEL": businesstravel,
+        "DISTANCEFROMHOME": distance or 10,
+        "TOTALWORKINGYEARS": total_working_years or 5,
+        "YEARSATCOMPANY": yearsatcompany or 3,
+        "YEARSINCURRENTROLE": yearsincurrentrole or 2,
+        "YEARSSINCELASTPROMOTION": yearssincelastpromotion or 1,
+        "YEARSWITHCURRMANAGER": yearswithcurrmanager or 2,
+        "NUMCOMPANIESWORKED": numcompaniesworked or 2,
+        "MONTHLYINCOME": monthly_income or 3000,
+        "OVERTIME": overtime,
+        "STOCKOPTIONLEVEL": stockoptionlevel or 0,
+        "TRAININGTIMESLASTYEAR": trainingtimeslastyear or 2,
+        "JOBSATISFACTION": jobsatisfaction or 3,
+        "ENVIRONMENTSATISFACTION": environmentsatisfaction or 3,
+        "WORKLIFEBALANCE": worklifebalance or 3,
+        "JOBINVOLVEMENT": jobinvolvement or 3,
+        "RELATIONSHIPSATISFACTION": relationshipsatisfaction or 3,
     }
 
     try:
