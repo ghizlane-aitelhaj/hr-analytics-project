@@ -127,4 +127,3 @@ hr-analytics-project-main/
 
 ---
 
-*Projet de démonstration technique et de portfolio. Les prédictions doivent être interprétées avec prudence et ne doivent pas servir seules à prendre des décisions individuelles en matière de ressources humaines.*
